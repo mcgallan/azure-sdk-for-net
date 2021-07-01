@@ -24,12 +24,12 @@ namespace Microsoft.Azure.Batch.Protocol
     using System.Threading.Tasks;
 
     /// <summary>
-    /// AccountOperations operations.
+    /// ComputeNodeExtensionOperations operations.
     /// </summary>
-    internal partial class AccountOperations : IServiceOperations<BatchServiceClient>, IAccountOperations
+    internal partial class ComputeNodeExtensionOperations : IServiceOperations<BatchServiceClient>, IComputeNodeExtensionOperations
     {
         /// <summary>
-        /// Initializes a new instance of the AccountOperations class.
+        /// Initializes a new instance of the ComputeNodeExtensionOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Batch.Protocol
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal AccountOperations(BatchServiceClient client)
+        internal ComputeNodeExtensionOperations(BatchServiceClient client)
         {
             if (client == null)
             {
@@ -52,9 +52,19 @@ namespace Microsoft.Azure.Batch.Protocol
         public BatchServiceClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all Virtual Machine Images supported by the Azure Batch service.
+        /// Gets information about the specified Compute Node Extension.
         /// </summary>
-        /// <param name='accountListSupportedImagesOptions'>
+        /// <param name='poolId'>
+        /// The ID of the Pool that contains the Compute Node.
+        /// </param>
+        /// <param name='nodeId'>
+        /// The ID of the Compute Node that contains the extensions.
+        /// </param>
+        /// <param name='extensionName'>
+        /// The name of the of the Compute Node Extension that you want to get
+        /// information about.
+        /// </param>
+        /// <param name='computeNodeExtensionGetOptions'>
         /// Additional parameters for the operation
         /// </param>
         /// <param name='customHeaders'>
@@ -78,45 +88,52 @@ namespace Microsoft.Azure.Batch.Protocol
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<ImageInformation>,AccountListSupportedImagesHeaders>> ListSupportedImagesWithHttpMessagesAsync(AccountListSupportedImagesOptions accountListSupportedImagesOptions = default(AccountListSupportedImagesOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<NodeVMExtension,ComputeNodeExtensionGetHeaders>> GetWithHttpMessagesAsync(string poolId, string nodeId, string extensionName, ComputeNodeExtensionGetOptions computeNodeExtensionGetOptions = default(ComputeNodeExtensionGetOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.BatchUrl == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.BatchUrl");
             }
+            if (poolId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "poolId");
+            }
+            if (nodeId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "nodeId");
+            }
+            if (extensionName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "extensionName");
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
-            string filter = default(string);
-            if (accountListSupportedImagesOptions != null)
+            string select = default(string);
+            if (computeNodeExtensionGetOptions != null)
             {
-                filter = accountListSupportedImagesOptions.Filter;
-            }
-            int? maxResults = default(int?);
-            if (accountListSupportedImagesOptions != null)
-            {
-                maxResults = accountListSupportedImagesOptions.MaxResults;
+                select = computeNodeExtensionGetOptions.Select;
             }
             int? timeout = default(int?);
-            if (accountListSupportedImagesOptions != null)
+            if (computeNodeExtensionGetOptions != null)
             {
-                timeout = accountListSupportedImagesOptions.Timeout;
+                timeout = computeNodeExtensionGetOptions.Timeout;
             }
             System.Guid? clientRequestId = default(System.Guid?);
-            if (accountListSupportedImagesOptions != null)
+            if (computeNodeExtensionGetOptions != null)
             {
-                clientRequestId = accountListSupportedImagesOptions.ClientRequestId;
+                clientRequestId = computeNodeExtensionGetOptions.ClientRequestId;
             }
             bool? returnClientRequestId = default(bool?);
-            if (accountListSupportedImagesOptions != null)
+            if (computeNodeExtensionGetOptions != null)
             {
-                returnClientRequestId = accountListSupportedImagesOptions.ReturnClientRequestId;
+                returnClientRequestId = computeNodeExtensionGetOptions.ReturnClientRequestId;
             }
             System.DateTime? ocpDate = default(System.DateTime?);
-            if (accountListSupportedImagesOptions != null)
+            if (computeNodeExtensionGetOptions != null)
             {
-                ocpDate = accountListSupportedImagesOptions.OcpDate;
+                ocpDate = computeNodeExtensionGetOptions.OcpDate;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -125,27 +142,307 @@ namespace Microsoft.Azure.Batch.Protocol
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("filter", filter);
+                tracingParameters.Add("poolId", poolId);
+                tracingParameters.Add("nodeId", nodeId);
+                tracingParameters.Add("extensionName", extensionName);
+                tracingParameters.Add("select", select);
+                tracingParameters.Add("timeout", timeout);
+                tracingParameters.Add("clientRequestId", clientRequestId);
+                tracingParameters.Add("returnClientRequestId", returnClientRequestId);
+                tracingParameters.Add("ocpDate", ocpDate);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri;
+            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "pools/{poolId}/nodes/{nodeId}/extensions/{extensionName}";
+            _url = _url.Replace("{batchUrl}", Client.BatchUrl);
+            _url = _url.Replace("{poolId}", System.Uri.EscapeDataString(poolId));
+            _url = _url.Replace("{nodeId}", System.Uri.EscapeDataString(nodeId));
+            _url = _url.Replace("{extensionName}", System.Uri.EscapeDataString(extensionName));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (select != null)
+            {
+                _queryParameters.Add(string.Format("$select={0}", System.Uri.EscapeDataString(select)));
+            }
+            if (timeout != null)
+            {
+                _queryParameters.Add(string.Format("timeout={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(timeout, Client.SerializationSettings).Trim('"'))));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+            if (clientRequestId != null)
+            {
+                if (_httpRequest.Headers.Contains("client-request-id"))
+                {
+                    _httpRequest.Headers.Remove("client-request-id");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("client-request-id", SafeJsonConvert.SerializeObject(clientRequestId, Client.SerializationSettings).Trim('"'));
+            }
+            if (returnClientRequestId != null)
+            {
+                if (_httpRequest.Headers.Contains("return-client-request-id"))
+                {
+                    _httpRequest.Headers.Remove("return-client-request-id");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("return-client-request-id", SafeJsonConvert.SerializeObject(returnClientRequestId, Client.SerializationSettings).Trim('"'));
+            }
+            if (ocpDate != null)
+            {
+                if (_httpRequest.Headers.Contains("ocp-date"))
+                {
+                    _httpRequest.Headers.Remove("ocp-date");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("ocp-date", SafeJsonConvert.SerializeObject(ocpDate, new DateTimeRfc1123JsonConverter()).Trim('"'));
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new BatchErrorException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    BatchError _errorBody =  SafeJsonConvert.DeserializeObject<BatchError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<NodeVMExtension,ComputeNodeExtensionGetHeaders>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = SafeJsonConvert.DeserializeObject<NodeVMExtension>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ComputeNodeExtensionGetHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
+            }
+            catch (JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Lists the Compute Nodes Extensions in the specified Pool.
+        /// </summary>
+        /// <param name='poolId'>
+        /// The ID of the Pool that contains Compute Node.
+        /// </param>
+        /// <param name='nodeId'>
+        /// The ID of the Compute Node that you want to list extensions.
+        /// </param>
+        /// <param name='computeNodeExtensionListOptions'>
+        /// Additional parameters for the operation
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="BatchErrorException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<IPage<NodeVMExtension>,ComputeNodeExtensionListHeaders>> ListWithHttpMessagesAsync(string poolId, string nodeId, ComputeNodeExtensionListOptions computeNodeExtensionListOptions = default(ComputeNodeExtensionListOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (Client.BatchUrl == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.BatchUrl");
+            }
+            if (poolId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "poolId");
+            }
+            if (nodeId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "nodeId");
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            string select = default(string);
+            if (computeNodeExtensionListOptions != null)
+            {
+                select = computeNodeExtensionListOptions.Select;
+            }
+            int? maxResults = default(int?);
+            if (computeNodeExtensionListOptions != null)
+            {
+                maxResults = computeNodeExtensionListOptions.MaxResults;
+            }
+            int? timeout = default(int?);
+            if (computeNodeExtensionListOptions != null)
+            {
+                timeout = computeNodeExtensionListOptions.Timeout;
+            }
+            System.Guid? clientRequestId = default(System.Guid?);
+            if (computeNodeExtensionListOptions != null)
+            {
+                clientRequestId = computeNodeExtensionListOptions.ClientRequestId;
+            }
+            bool? returnClientRequestId = default(bool?);
+            if (computeNodeExtensionListOptions != null)
+            {
+                returnClientRequestId = computeNodeExtensionListOptions.ReturnClientRequestId;
+            }
+            System.DateTime? ocpDate = default(System.DateTime?);
+            if (computeNodeExtensionListOptions != null)
+            {
+                ocpDate = computeNodeExtensionListOptions.OcpDate;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("poolId", poolId);
+                tracingParameters.Add("nodeId", nodeId);
+                tracingParameters.Add("select", select);
                 tracingParameters.Add("maxResults", maxResults);
                 tracingParameters.Add("timeout", timeout);
                 tracingParameters.Add("clientRequestId", clientRequestId);
                 tracingParameters.Add("returnClientRequestId", returnClientRequestId);
                 tracingParameters.Add("ocpDate", ocpDate);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListSupportedImages", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri;
-            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "supportedimages";
+            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "pools/{poolId}/nodes/{nodeId}/extensions";
             _url = _url.Replace("{batchUrl}", Client.BatchUrl);
+            _url = _url.Replace("{poolId}", System.Uri.EscapeDataString(poolId));
+            _url = _url.Replace("{nodeId}", System.Uri.EscapeDataString(nodeId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
             }
-            if (filter != null)
+            if (select != null)
             {
-                _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
+                _queryParameters.Add(string.Format("$select={0}", System.Uri.EscapeDataString(select)));
             }
             if (maxResults != null)
             {
@@ -267,7 +564,7 @@ namespace Microsoft.Azure.Batch.Protocol
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<ImageInformation>,AccountListSupportedImagesHeaders>();
+            var _result = new AzureOperationResponse<IPage<NodeVMExtension>,ComputeNodeExtensionListHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("request-id"))
@@ -280,7 +577,7 @@ namespace Microsoft.Azure.Batch.Protocol
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = SafeJsonConvert.DeserializeObject<Page<ImageInformation>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = SafeJsonConvert.DeserializeObject<Page<NodeVMExtension>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -294,7 +591,7 @@ namespace Microsoft.Azure.Batch.Protocol
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<AccountListSupportedImagesHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ComputeNodeExtensionListHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
@@ -313,275 +610,12 @@ namespace Microsoft.Azure.Batch.Protocol
         }
 
         /// <summary>
-        /// Gets the number of Compute Nodes in each state, grouped by Pool. Note that
-        /// the numbers returned may not always be up to date. If you need exact node
-        /// counts, use a list query.
-        /// </summary>
-        /// <param name='accountListPoolNodeCountsOptions'>
-        /// Additional parameters for the operation
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="BatchErrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse<IPage<PoolNodeCounts>,AccountListPoolNodeCountsHeaders>> ListPoolNodeCountsWithHttpMessagesAsync(AccountListPoolNodeCountsOptions accountListPoolNodeCountsOptions = default(AccountListPoolNodeCountsOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (Client.BatchUrl == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.BatchUrl");
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            string filter = default(string);
-            if (accountListPoolNodeCountsOptions != null)
-            {
-                filter = accountListPoolNodeCountsOptions.Filter;
-            }
-            int? maxResults = default(int?);
-            if (accountListPoolNodeCountsOptions != null)
-            {
-                maxResults = accountListPoolNodeCountsOptions.MaxResults;
-            }
-            int? timeout = default(int?);
-            if (accountListPoolNodeCountsOptions != null)
-            {
-                timeout = accountListPoolNodeCountsOptions.Timeout;
-            }
-            System.Guid? clientRequestId = default(System.Guid?);
-            if (accountListPoolNodeCountsOptions != null)
-            {
-                clientRequestId = accountListPoolNodeCountsOptions.ClientRequestId;
-            }
-            bool? returnClientRequestId = default(bool?);
-            if (accountListPoolNodeCountsOptions != null)
-            {
-                returnClientRequestId = accountListPoolNodeCountsOptions.ReturnClientRequestId;
-            }
-            System.DateTime? ocpDate = default(System.DateTime?);
-            if (accountListPoolNodeCountsOptions != null)
-            {
-                ocpDate = accountListPoolNodeCountsOptions.OcpDate;
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("filter", filter);
-                tracingParameters.Add("maxResults", maxResults);
-                tracingParameters.Add("timeout", timeout);
-                tracingParameters.Add("clientRequestId", clientRequestId);
-                tracingParameters.Add("returnClientRequestId", returnClientRequestId);
-                tracingParameters.Add("ocpDate", ocpDate);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListPoolNodeCounts", tracingParameters);
-            }
-            // Construct URL
-            var _baseUrl = Client.BaseUri;
-            var _url = _baseUrl + (_baseUrl.EndsWith("/") ? "" : "/") + "nodecounts";
-            _url = _url.Replace("{batchUrl}", Client.BatchUrl);
-            List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (filter != null)
-            {
-                _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
-            }
-            if (maxResults != null)
-            {
-                _queryParameters.Add(string.Format("maxresults={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(maxResults, Client.SerializationSettings).Trim('"'))));
-            }
-            if (timeout != null)
-            {
-                _queryParameters.Add(string.Format("timeout={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(timeout, Client.SerializationSettings).Trim('"'))));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-            if (clientRequestId != null)
-            {
-                if (_httpRequest.Headers.Contains("client-request-id"))
-                {
-                    _httpRequest.Headers.Remove("client-request-id");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("client-request-id", SafeJsonConvert.SerializeObject(clientRequestId, Client.SerializationSettings).Trim('"'));
-            }
-            if (returnClientRequestId != null)
-            {
-                if (_httpRequest.Headers.Contains("return-client-request-id"))
-                {
-                    _httpRequest.Headers.Remove("return-client-request-id");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("return-client-request-id", SafeJsonConvert.SerializeObject(returnClientRequestId, Client.SerializationSettings).Trim('"'));
-            }
-            if (ocpDate != null)
-            {
-                if (_httpRequest.Headers.Contains("ocp-date"))
-                {
-                    _httpRequest.Headers.Remove("ocp-date");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("ocp-date", SafeJsonConvert.SerializeObject(ocpDate, new DateTimeRfc1123JsonConverter()).Trim('"'));
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200)
-            {
-                var ex = new BatchErrorException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    BatchError _errorBody =  SafeJsonConvert.DeserializeObject<BatchError>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse<IPage<PoolNodeCounts>,AccountListPoolNodeCountsHeaders>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = SafeJsonConvert.DeserializeObject<Page<PoolNodeCounts>>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            try
-            {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<AccountListPoolNodeCountsHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
-            }
-            catch (JsonException ex)
-            {
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw new SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Lists all Virtual Machine Images supported by the Azure Batch service.
+        /// Lists the Compute Nodes Extensions in the specified Pool.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        /// <param name='accountListSupportedImagesNextOptions'>
+        /// <param name='computeNodeExtensionListNextOptions'>
         /// Additional parameters for the operation
         /// </param>
         /// <param name='customHeaders'>
@@ -605,26 +639,26 @@ namespace Microsoft.Azure.Batch.Protocol
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<ImageInformation>,AccountListSupportedImagesHeaders>> ListSupportedImagesNextWithHttpMessagesAsync(string nextPageLink, AccountListSupportedImagesNextOptions accountListSupportedImagesNextOptions = default(AccountListSupportedImagesNextOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<NodeVMExtension>,ComputeNodeExtensionListHeaders>> ListNextWithHttpMessagesAsync(string nextPageLink, ComputeNodeExtensionListNextOptions computeNodeExtensionListNextOptions = default(ComputeNodeExtensionListNextOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
             }
             System.Guid? clientRequestId = default(System.Guid?);
-            if (accountListSupportedImagesNextOptions != null)
+            if (computeNodeExtensionListNextOptions != null)
             {
-                clientRequestId = accountListSupportedImagesNextOptions.ClientRequestId;
+                clientRequestId = computeNodeExtensionListNextOptions.ClientRequestId;
             }
             bool? returnClientRequestId = default(bool?);
-            if (accountListSupportedImagesNextOptions != null)
+            if (computeNodeExtensionListNextOptions != null)
             {
-                returnClientRequestId = accountListSupportedImagesNextOptions.ReturnClientRequestId;
+                returnClientRequestId = computeNodeExtensionListNextOptions.ReturnClientRequestId;
             }
             System.DateTime? ocpDate = default(System.DateTime?);
-            if (accountListSupportedImagesNextOptions != null)
+            if (computeNodeExtensionListNextOptions != null)
             {
-                ocpDate = accountListSupportedImagesNextOptions.OcpDate;
+                ocpDate = computeNodeExtensionListNextOptions.OcpDate;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -638,7 +672,7 @@ namespace Microsoft.Azure.Batch.Protocol
                 tracingParameters.Add("returnClientRequestId", returnClientRequestId);
                 tracingParameters.Add("ocpDate", ocpDate);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListSupportedImagesNext", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListNext", tracingParameters);
             }
             // Construct URL
             string _url = "{nextLink}";
@@ -756,7 +790,7 @@ namespace Microsoft.Azure.Batch.Protocol
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<ImageInformation>,AccountListSupportedImagesHeaders>();
+            var _result = new AzureOperationResponse<IPage<NodeVMExtension>,ComputeNodeExtensionListHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("request-id"))
@@ -769,7 +803,7 @@ namespace Microsoft.Azure.Batch.Protocol
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = SafeJsonConvert.DeserializeObject<Page<ImageInformation>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = SafeJsonConvert.DeserializeObject<Page<NodeVMExtension>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -783,235 +817,7 @@ namespace Microsoft.Azure.Batch.Protocol
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<AccountListSupportedImagesHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
-            }
-            catch (JsonException ex)
-            {
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw new SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Gets the number of Compute Nodes in each state, grouped by Pool. Note that
-        /// the numbers returned may not always be up to date. If you need exact node
-        /// counts, use a list query.
-        /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='accountListPoolNodeCountsNextOptions'>
-        /// Additional parameters for the operation
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="BatchErrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse<IPage<PoolNodeCounts>,AccountListPoolNodeCountsHeaders>> ListPoolNodeCountsNextWithHttpMessagesAsync(string nextPageLink, AccountListPoolNodeCountsNextOptions accountListPoolNodeCountsNextOptions = default(AccountListPoolNodeCountsNextOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (nextPageLink == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
-            }
-            System.Guid? clientRequestId = default(System.Guid?);
-            if (accountListPoolNodeCountsNextOptions != null)
-            {
-                clientRequestId = accountListPoolNodeCountsNextOptions.ClientRequestId;
-            }
-            bool? returnClientRequestId = default(bool?);
-            if (accountListPoolNodeCountsNextOptions != null)
-            {
-                returnClientRequestId = accountListPoolNodeCountsNextOptions.ReturnClientRequestId;
-            }
-            System.DateTime? ocpDate = default(System.DateTime?);
-            if (accountListPoolNodeCountsNextOptions != null)
-            {
-                ocpDate = accountListPoolNodeCountsNextOptions.OcpDate;
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("nextPageLink", nextPageLink);
-                tracingParameters.Add("clientRequestId", clientRequestId);
-                tracingParameters.Add("returnClientRequestId", returnClientRequestId);
-                tracingParameters.Add("ocpDate", ocpDate);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListPoolNodeCountsNext", tracingParameters);
-            }
-            // Construct URL
-            string _url = "{nextLink}";
-            _url = _url.Replace("{nextLink}", nextPageLink);
-            List<string> _queryParameters = new List<string>();
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("GET");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-            if (clientRequestId != null)
-            {
-                if (_httpRequest.Headers.Contains("client-request-id"))
-                {
-                    _httpRequest.Headers.Remove("client-request-id");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("client-request-id", SafeJsonConvert.SerializeObject(clientRequestId, Client.SerializationSettings).Trim('"'));
-            }
-            if (returnClientRequestId != null)
-            {
-                if (_httpRequest.Headers.Contains("return-client-request-id"))
-                {
-                    _httpRequest.Headers.Remove("return-client-request-id");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("return-client-request-id", SafeJsonConvert.SerializeObject(returnClientRequestId, Client.SerializationSettings).Trim('"'));
-            }
-            if (ocpDate != null)
-            {
-                if (_httpRequest.Headers.Contains("ocp-date"))
-                {
-                    _httpRequest.Headers.Remove("ocp-date");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("ocp-date", SafeJsonConvert.SerializeObject(ocpDate, new DateTimeRfc1123JsonConverter()).Trim('"'));
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200)
-            {
-                var ex = new BatchErrorException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    BatchError _errorBody =  SafeJsonConvert.DeserializeObject<BatchError>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse<IPage<PoolNodeCounts>,AccountListPoolNodeCountsHeaders>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = SafeJsonConvert.DeserializeObject<Page<PoolNodeCounts>>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            try
-            {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<AccountListPoolNodeCountsHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ComputeNodeExtensionListHeaders>(JsonSerializer.Create(Client.DeserializationSettings));
             }
             catch (JsonException ex)
             {
