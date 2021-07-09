@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Batch
             public PropertyContainer(Models.OSDisk protocolObject) : base(BindingState.Bound)
             {
                 this.EphemeralOSDiskSettingsProperty = this.CreatePropertyAccessor(
-                    UtilitiesInternal.CreateObjectWithNullCheck(protocolObject.EphemeralOSDiskSettings, o => new Models.DiffDiskSettings(o).Freeze()),
+                    UtilitiesInternal.CreateObjectWithNullCheck(protocolObject.EphemeralOSDiskSettings, o => new Models.DiffDiskSettings(o)),
                     nameof(EphemeralOSDiskSettings),
-                    BindingAccess.Read);
+                    BindingAccess.Read | BindingAccess.Write);
             }
         }
 
