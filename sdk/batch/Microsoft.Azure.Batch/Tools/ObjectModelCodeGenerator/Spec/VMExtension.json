@@ -54,7 +54,7 @@
     },
     {
       "Key": {
-        "Type": "bool",
+        "Type": "bool?",
         "Name": "AutoUpgradeMinorVersion",
         "SummaryComment": "Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.",
         "RemarksComment": null,

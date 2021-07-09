@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Batch
         Task<AzureOperationHeaderResponse<Models.JobPatchHeaders>> PatchJob(
             string jobId, 
             int? priority,
+            int? maxParallelTasks,
             Models.OnAllTasksComplete? onAllTasksComplete,
             Models.PoolInformation poolInfo, 
             Models.JobConstraints constraints, 

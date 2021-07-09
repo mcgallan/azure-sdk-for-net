@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Batch
         /// </summary>
         /// <param name='policy'>Node placement Policy type on Batch Pools.</param>
         public NodePlacementConfiguration(
-            Common.NodePlacementPolicyType policy)
+            Common.NodePlacementPolicyType? policy)
         {
             this.Policy = policy;
         }
 
         internal NodePlacementConfiguration(Models.NodePlacementConfiguration protocolObject)
         {
-            this.Policy = UtilitiesInternal.MapEnum<Models.NodePlacementPolicyType, Common.NodePlacementPolicyType>(protocolObject.Policy);
+            this.Policy = UtilitiesInternal.MapNullableEnum<Models.NodePlacementPolicyType, Common.NodePlacementPolicyType>(protocolObject.Policy);
         }
 
         #endregion Constructors
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Batch
         /// Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional 
         /// policy.
         /// </remarks>
-        public Common.NodePlacementPolicyType Policy { get; }
+        public Common.NodePlacementPolicyType? Policy { get; }
 
         #endregion // NodePlacementConfiguration
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Batch
         {
             Models.NodePlacementConfiguration result = new Models.NodePlacementConfiguration()
             {
-                Policy = UtilitiesInternal.MapEnum<Common.NodePlacementPolicyType, Models.NodePlacementPolicyType>(this.Policy),
+                Policy = UtilitiesInternal.MapNullableEnum<Common.NodePlacementPolicyType, Models.NodePlacementPolicyType>(this.Policy),
             };
 
             return result;

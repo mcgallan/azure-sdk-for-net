@@ -16,7 +16,7 @@
     },
     {
       "Key": {
-        "Type": "IReadOnlyList<InstanceViewStatus>",
+        "Type": "IList<InstanceViewStatus>",
         "Name": "Statuses",
         "SummaryComment": "The resource status information.",
         "RemarksComment": null,
@@ -27,7 +27,7 @@
     },
     {
       "Key": {
-        "Type": "IReadOnlyList<InstanceViewStatus>",
+        "Type": "IList<InstanceViewStatus>",
         "Name": "SubStatuses",
         "SummaryComment": "The resource substatus information.",
         "RemarksComment": null,

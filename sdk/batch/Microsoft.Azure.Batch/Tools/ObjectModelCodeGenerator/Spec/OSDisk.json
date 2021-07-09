@@ -5,7 +5,7 @@
   "Properties": [
     {
       "Key": {
-        "Type": "Models.DiffDiskSettings",
+        "Type": "DiffDiskSettings",
         "Name": "EphemeralOSDiskSettings",
         "SummaryComment": "Specifies the ephemeral Disk Settings for the operating system disk used by the compute node (VM).",
         "RemarksComment": null,

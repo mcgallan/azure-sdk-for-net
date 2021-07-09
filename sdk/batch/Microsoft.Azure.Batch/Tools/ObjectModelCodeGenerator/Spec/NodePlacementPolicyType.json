@@ -6,7 +6,7 @@
   "Properties": [
     {
       "Key": {
-        "Type": "Common.NodePlacementPolicyType",
+        "Type": "Common.NodePlacementPolicyType?",
         "Name": "Policy",
         "SummaryComment": "Node placement Policy type on Batch Pools.",
         "RemarksComment": "Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.",
@@ -16,7 +16,7 @@
         "ConstructorArgumentType": "Required"
       },
       "Value": {
-        "Type": "Models.NodePlacementPolicyType",
+        "Type": "Models.NodePlacementPolicyType?",
         "Name": "Policy"
       }
     }

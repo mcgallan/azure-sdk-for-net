@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Batch
         {
             this.Code = protocolObject.Code;
             this.DisplayStatus = protocolObject.DisplayStatus;
-            this.Level = UtilitiesInternal.MapEnum<Models.StatusLevelTypes, Common.StatusLevelTypes>(protocolObject.Level);
+            this.Level = UtilitiesInternal.MapNullableEnum<Models.StatusLevelTypes, Common.StatusLevelTypes>(protocolObject.Level);
             this.Message = protocolObject.Message;
             this.Time = protocolObject.Time;
         }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Batch
         /// <summary>
         /// Gets level code.
         /// </summary>
-        public Common.StatusLevelTypes Level { get; }
+        public Common.StatusLevelTypes? Level { get; }
 
         /// <summary>
         /// Gets the detailed status message.
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Batch
             {
                 Code = this.Code,
                 DisplayStatus = this.DisplayStatus,
-                Level = UtilitiesInternal.MapEnum<Common.StatusLevelTypes, Models.StatusLevelTypes>(this.Level),
+                Level = UtilitiesInternal.MapNullableEnum<Common.StatusLevelTypes, Models.StatusLevelTypes>(this.Level),
                 Message = this.Message,
                 Time = this.Time,
             };

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Batch
     {
         private class PropertyContainer : PropertyCollection
         {
-            public readonly PropertyAccessor<bool> AutoUpgradeMinorVersionProperty;
+            public readonly PropertyAccessor<bool?> AutoUpgradeMinorVersionProperty;
             public readonly PropertyAccessor<string> NameProperty;
             public readonly PropertyAccessor<object> ProtectedSettingsProperty;
             public readonly PropertyAccessor<IList<string>> ProvisionAfterExtensionsProperty;
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Batch
 
             public PropertyContainer() : base(BindingState.Unbound)
             {
-                this.AutoUpgradeMinorVersionProperty = this.CreatePropertyAccessor<bool>(nameof(AutoUpgradeMinorVersion), BindingAccess.Read | BindingAccess.Write);
+                this.AutoUpgradeMinorVersionProperty = this.CreatePropertyAccessor<bool?>(nameof(AutoUpgradeMinorVersion), BindingAccess.Read | BindingAccess.Write);
                 this.NameProperty = this.CreatePropertyAccessor<string>(nameof(Name), BindingAccess.Read | BindingAccess.Write);
                 this.ProtectedSettingsProperty = this.CreatePropertyAccessor<object>(nameof(ProtectedSettings), BindingAccess.Read | BindingAccess.Write);
                 this.ProvisionAfterExtensionsProperty = this.CreatePropertyAccessor<IList<string>>(nameof(ProvisionAfterExtensions), BindingAccess.Read | BindingAccess.Write);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Batch
                     nameof(Name),
                     BindingAccess.Read | BindingAccess.Write);
                 this.ProtectedSettingsProperty = this.CreatePropertyAccessor(
-                    UtilitiesInternal.CreateObjectWithNullCheck(protocolObject.ProtectedSettings, o => new object(o)),
+                    UtilitiesInternal.CreateObjectWithNullCheck(protocolObject.ProtectedSettings, o => o),
                     nameof(ProtectedSettings),
                     BindingAccess.Read | BindingAccess.Write);
                 this.ProvisionAfterExtensionsProperty = this.CreatePropertyAccessor(
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Batch
                     nameof(Publisher),
                     BindingAccess.Read | BindingAccess.Write);
                 this.SettingsProperty = this.CreatePropertyAccessor(
-                    UtilitiesInternal.CreateObjectWithNullCheck(protocolObject.Settings, o => new object(o)),
+                    UtilitiesInternal.CreateObjectWithNullCheck(protocolObject.Settings, o => o),
                     nameof(Settings),
                     BindingAccess.Read | BindingAccess.Write);
                 this.TypeProperty = this.CreatePropertyAccessor(
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Batch
         /// time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this 
         /// property set to true.
         /// </summary>
-        public bool AutoUpgradeMinorVersion
+        public bool? AutoUpgradeMinorVersion
         {
             get { return this.propertyContainer.AutoUpgradeMinorVersionProperty.Value; }
             set { this.propertyContainer.AutoUpgradeMinorVersionProperty.Value = value; }
@@ -221,10 +221,10 @@ namespace Microsoft.Azure.Batch
             {
                 AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion,
                 Name = this.Name,
-                ProtectedSettings = UtilitiesInternal.CreateObjectWithNullCheck(this.ProtectedSettings, (o) => o.GetTransportObject()),
+                ProtectedSettings = UtilitiesInternal.CreateObjectWithNullCheck(this.ProtectedSettings, (o) => o),
                 ProvisionAfterExtensions = this.ProvisionAfterExtensions,
                 Publisher = this.Publisher,
-                Settings = UtilitiesInternal.CreateObjectWithNullCheck(this.Settings, (o) => o.GetTransportObject()),
+                Settings = UtilitiesInternal.CreateObjectWithNullCheck(this.Settings, (o) => o),
                 Type = this.Type,
                 TypeHandlerVersion = this.TypeHandlerVersion,
             };

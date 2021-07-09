@@ -729,7 +729,6 @@ namespace Microsoft.Azure.Batch
                 CloudServiceConfiguration = UtilitiesInternal.CreateObjectWithNullCheck(this.CloudServiceConfiguration, (o) => o.GetTransportObject()),
                 DisplayName = this.DisplayName,
                 Id = this.Id,
-                Identity = UtilitiesInternal.CreateObjectWithNullCheck(this.Identity, (o) => o.GetTransportObject()),
                 EnableInterNodeCommunication = this.InterComputeNodeCommunicationEnabled,
                 Metadata = UtilitiesInternal.ConvertToProtocolCollection(this.Metadata),
                 MountConfiguration = UtilitiesInternal.ConvertToProtocolCollection(this.MountConfiguration),

@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Batch
         private class PropertyContainer : PropertyCollection
         {
             public readonly PropertyAccessor<string> NameProperty;
-            public readonly PropertyAccessor<IReadOnlyList<InstanceViewStatus>> StatusesProperty;
-            public readonly PropertyAccessor<IReadOnlyList<InstanceViewStatus>> SubStatusesProperty;
+            public readonly PropertyAccessor<IList<InstanceViewStatus>> StatusesProperty;
+            public readonly PropertyAccessor<IList<InstanceViewStatus>> SubStatusesProperty;
 
             public PropertyContainer() : base(BindingState.Unbound)
             {
                 this.NameProperty = this.CreatePropertyAccessor<string>(nameof(Name), BindingAccess.Read | BindingAccess.Write);
-                this.StatusesProperty = this.CreatePropertyAccessor<IReadOnlyList<InstanceViewStatus>>(nameof(Statuses), BindingAccess.Read | BindingAccess.Write);
-                this.SubStatusesProperty = this.CreatePropertyAccessor<IReadOnlyList<InstanceViewStatus>>(nameof(SubStatuses), BindingAccess.Read | BindingAccess.Write);
+                this.StatusesProperty = this.CreatePropertyAccessor<IList<InstanceViewStatus>>(nameof(Statuses), BindingAccess.Read | BindingAccess.Write);
+                this.SubStatusesProperty = this.CreatePropertyAccessor<IList<InstanceViewStatus>>(nameof(SubStatuses), BindingAccess.Read | BindingAccess.Write);
             }
 
             public PropertyContainer(Models.VMExtensionInstanceView protocolObject) : base(BindingState.Bound)
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Batch
         /// <summary>
         /// Gets or sets the resource status information.
         /// </summary>
-        public IReadOnlyList<InstanceViewStatus> Statuses
+        public IList<InstanceViewStatus> Statuses
         {
             get { return this.propertyContainer.StatusesProperty.Value; }
             set
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Batch
         /// <summary>
         /// Gets or sets the resource substatus information.
         /// </summary>
-        public IReadOnlyList<InstanceViewStatus> SubStatuses
+        public IList<InstanceViewStatus> SubStatuses
         {
             get { return this.propertyContainer.SubStatusesProperty.Value; }
             set

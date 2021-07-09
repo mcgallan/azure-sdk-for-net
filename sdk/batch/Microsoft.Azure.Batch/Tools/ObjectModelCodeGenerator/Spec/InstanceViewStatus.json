@@ -30,7 +30,7 @@
     },
     {
       "Key": {
-        "Type": "Common.StatusLevelTypes",
+        "Type": "Common.StatusLevelTypes?",
         "Name": "Level",
         "SummaryComment": "Level code.",
         "RemarksComment": null,
@@ -39,7 +39,7 @@
         "HideSetter": true
       },
       "Value": {
-        "Type": "Models.StatusLevelTypes",
+        "Type": "Models.StatusLevelTypes?",
         "Name": "Level"
       }
     },

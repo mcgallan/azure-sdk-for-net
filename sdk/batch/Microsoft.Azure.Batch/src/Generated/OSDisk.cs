@@ -24,17 +24,17 @@ namespace Microsoft.Azure.Batch
     {
         private class PropertyContainer : PropertyCollection
         {
-            public readonly PropertyAccessor<Models.DiffDiskSettings> EphemeralOSDiskSettingsProperty;
+            public readonly PropertyAccessor<DiffDiskSettings> EphemeralOSDiskSettingsProperty;
 
             public PropertyContainer() : base(BindingState.Unbound)
             {
-                this.EphemeralOSDiskSettingsProperty = this.CreatePropertyAccessor<Models.DiffDiskSettings>(nameof(EphemeralOSDiskSettings), BindingAccess.Read | BindingAccess.Write);
+                this.EphemeralOSDiskSettingsProperty = this.CreatePropertyAccessor<DiffDiskSettings>(nameof(EphemeralOSDiskSettings), BindingAccess.Read | BindingAccess.Write);
             }
 
             public PropertyContainer(Models.OSDisk protocolObject) : base(BindingState.Bound)
             {
                 this.EphemeralOSDiskSettingsProperty = this.CreatePropertyAccessor(
-                    UtilitiesInternal.CreateObjectWithNullCheck(protocolObject.EphemeralOSDiskSettings, o => new Models.DiffDiskSettings(o)),
+                    UtilitiesInternal.CreateObjectWithNullCheck(protocolObject.EphemeralOSDiskSettings, o => new DiffDiskSettings(o)),
                     nameof(EphemeralOSDiskSettings),
                     BindingAccess.Read | BindingAccess.Write);
             }
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Batch
         /// <summary>
         /// Gets or sets specifies the ephemeral Disk Settings for the operating system disk used by the compute node (VM).
         /// </summary>
-        public Models.DiffDiskSettings EphemeralOSDiskSettings
+        public DiffDiskSettings EphemeralOSDiskSettings
         {
             get { return this.propertyContainer.EphemeralOSDiskSettingsProperty.Value; }
             set { this.propertyContainer.EphemeralOSDiskSettingsProperty.Value = value; }

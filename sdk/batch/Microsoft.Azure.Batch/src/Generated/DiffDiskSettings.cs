@@ -24,17 +24,17 @@ namespace Microsoft.Azure.Batch
     {
         private class PropertyContainer : PropertyCollection
         {
-            public readonly PropertyAccessor<Common.DiffDiskPlacement> PlacementProperty;
+            public readonly PropertyAccessor<Common.DiffDiskPlacement?> PlacementProperty;
 
             public PropertyContainer() : base(BindingState.Unbound)
             {
-                this.PlacementProperty = this.CreatePropertyAccessor<Common.DiffDiskPlacement>(nameof(Placement), BindingAccess.Read | BindingAccess.Write);
+                this.PlacementProperty = this.CreatePropertyAccessor<Common.DiffDiskPlacement?>(nameof(Placement), BindingAccess.Read | BindingAccess.Write);
             }
 
             public PropertyContainer(Models.DiffDiskSettings protocolObject) : base(BindingState.Bound)
             {
                 this.PlacementProperty = this.CreatePropertyAccessor(
-                    UtilitiesInternal.MapEnum<Models.DiffDiskPlacement, Common.DiffDiskPlacement>(protocolObject.Placement),
+                    UtilitiesInternal.MapNullableEnum<Models.DiffDiskPlacement, Common.DiffDiskPlacement>(protocolObject.Placement),
                     nameof(Placement),
                     BindingAccess.Read | BindingAccess.Write);
             }
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Batch
         /// Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements 
         /// and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
         /// </summary>
-        public Common.DiffDiskPlacement Placement
+        public Common.DiffDiskPlacement? Placement
         {
             get { return this.propertyContainer.PlacementProperty.Value; }
             set { this.propertyContainer.PlacementProperty.Value = value; }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Batch
         {
             Models.DiffDiskSettings result = new Models.DiffDiskSettings()
             {
-                Placement = UtilitiesInternal.MapEnum<Common.DiffDiskPlacement, Models.DiffDiskPlacement>(this.Placement),
+                Placement = UtilitiesInternal.MapNullableEnum<Common.DiffDiskPlacement, Models.DiffDiskPlacement>(this.Placement),
             };
 
             return result;
