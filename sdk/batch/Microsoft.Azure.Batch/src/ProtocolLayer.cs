@@ -1330,6 +1330,52 @@
             return asyncTask;
         }
 
+        public Task<AzureOperationResponse<Models.NodeVMExtension, Models.ComputeNodeExtensionGetHeaders>> GetComputeNodeExtension(string poolId, string nodeId, string extensionName, BehaviorManager bhMgr, CancellationToken cancellationToken)
+        {
+            var request = new ComputeNodeExtensionGetBatchRequest(_client, cancellationToken);
+
+            request.ServiceRequestFunc = (lambdaCancelToken) => request.RestClient.ComputeNodeExtension.GetWithHttpMessagesAsync(
+                poolId,
+                nodeId,
+                extensionName,
+                request.Options,
+                request.CustomHeaders,
+                cancellationToken
+            );
+
+            var asyncTask = ProcessAndExecuteBatchRequest(request, bhMgr);
+
+            return asyncTask;
+        }
+
+        public Task<AzureOperationResponse<IPage<Models.NodeVMExtension>, Models.ComputeNodeExtensionListHeaders>> ListComputeNodeExtensions(string poolId, string computeNodeId, string skipToken, BehaviorManager bhMgr, CancellationToken cancellationToken)
+        {
+            Task<AzureOperationResponse<IPage<Models.NodeVMExtension>, Models.ComputeNodeExtensionListHeaders>> asyncTask;
+
+            if (string.IsNullOrEmpty(skipToken))
+            {
+                var request = new ComputeNodeExtensionListBatchRequest(this._client, cancellationToken);
+
+                request.ServiceRequestFunc = (lambdaCancelToken) => request.RestClient.ComputeNodeExtension.ListWithHttpMessagesAsync(
+                    poolId,
+                    computeNodeId,
+                    request.Options,
+                    request.CustomHeaders,
+                    lambdaCancelToken);
+
+                asyncTask = ProcessAndExecuteBatchRequest(request, bhMgr);
+            }
+            else
+            {
+                var request = new ComputeNodeExtensionListNextBatchRequest(_client, cancellationToken);
+
+                request.ServiceRequestFunc = (lambdaCancelToken) => request.RestClient.ComputeNodeExtension.ListNextWithHttpMessagesAsync(skipToken, request.Options, request.CustomHeaders, lambdaCancelToken);
+                asyncTask = ProcessAndExecuteBatchRequest(request, bhMgr);
+            }
+
+            return asyncTask;
+        }
+
         public Task<AzureOperationHeaderResponse<Models.TaskUpdateHeaders>> UpdateTask(string jobId, string taskId, Models.TaskConstraints taskConstraints, BehaviorManager bhMgr, CancellationToken cancellationToken)
         {
             var parameters = taskConstraints;
