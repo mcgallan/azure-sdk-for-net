@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c33a8f62-19f8-4c62-b5b9-a6b3fe1ea413"
+          "877ca144-a5a1-4f08-a6e3-bed983189c8e"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11996"
         ],
         "x-ms-request-id": [
-          "adb540e1-ddef-46b2-a22f-e7080b70b91b"
+          "4b0c49b1-e38c-461c-8312-af2082909d96"
         ],
         "x-ms-correlation-request-id": [
-          "adb540e1-ddef-46b2-a22f-e7080b70b91b"
+          "4b0c49b1-e38c-461c-8312-af2082909d96"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20210721T151437Z:adb540e1-ddef-46b2-a22f-e7080b70b91b"
+          "CENTRALUSEUAP:20210721T151439Z:4b0c49b1-e38c-461c-8312-af2082909d96"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 21 Jul 2021 15:14:36 GMT"
+          "Wed, 21 Jul 2021 15:14:39 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -61,13 +61,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/providers/Microsoft.Batch/locations/East%20US/quotas?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvbG9jYXRpb25zL0Vhc3QlMjBVUy9xdW90YXM/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/providers/Microsoft.Batch/locations/East%20US/cloudServiceSkus?$filter=startswith%28familyName%2C%27basic%27%29&api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvbG9jYXRpb25zL0Vhc3QlMjBVUy9jbG91ZFNlcnZpY2VTa3VzPyRmaWx0ZXI9c3RhcnRzd2l0aCUyOGZhbWlseU5hbWUlMkMlMjdiYXNpYyUyNyUyOSZhcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "89fe92e5-184b-4c27-8bf2-4deabbd00ddf"
+          "86ea27d4-ed3b-410e-a820-10d58576d4de"
         ],
         "Accept-Language": [
           "en-US"
@@ -90,7 +90,7 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "4489b483-9b51-44f3-afed-52caca3de511"
+          "84315e37-1325-48e0-b814-fbf644f5a8d3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -102,16 +102,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "352b76a0-0622-4c4f-90fb-c4402bb58313"
+          "cf791f85-b496-470f-bb5a-f51d4cec7650"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUSEUAP:20210721T151437Z:352b76a0-0622-4c4f-90fb-c4402bb58313"
+          "CENTRALUSEUAP:20210721T151439Z:cf791f85-b496-470f-bb5a-f51d4cec7650"
         ],
         "Date": [
-          "Wed, 21 Jul 2021 15:14:37 GMT"
+          "Wed, 21 Jul 2021 15:14:38 GMT"
         ],
         "Content-Length": [
-          "21"
+          "275"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -120,7 +120,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"accountQuota\": 1000\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Basic_A1\",\r\n      \"familyName\": \"basicAFamily\",\r\n      \"capabilities\": []\r\n    },\r\n    {\r\n      \"name\": \"Basic_A2\",\r\n      \"familyName\": \"basicAFamily\",\r\n      \"capabilities\": []\r\n    },\r\n    {\r\n      \"name\": \"Basic_A3\",\r\n      \"familyName\": \"basicAFamily\",\r\n      \"capabilities\": []\r\n    },\r\n    {\r\n      \"name\": \"Basic_A4\",\r\n      \"familyName\": \"basicAFamily\",\r\n      \"capabilities\": []\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
