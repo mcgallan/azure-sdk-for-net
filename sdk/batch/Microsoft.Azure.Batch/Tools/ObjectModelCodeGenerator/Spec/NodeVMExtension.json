@@ -17,7 +17,7 @@
     {
       "Key": {
         "Type": "VMExtension",
-        "Name": "VMExtension",
+        "Name": "VmExtension",
         "SummaryComment": "The virtual machine extension",
         "RemarksComment": null,
         "BoundAccess": "read",

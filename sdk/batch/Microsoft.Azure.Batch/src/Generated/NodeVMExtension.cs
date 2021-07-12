@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Batch
         {
             public readonly PropertyAccessor<VMExtensionInstanceView> InstanceViewProperty;
             public readonly PropertyAccessor<string> ProvisioningStateProperty;
-            public readonly PropertyAccessor<VMExtension> VMExtensionProperty;
+            public readonly PropertyAccessor<VMExtension> VmExtensionProperty;
 
             public PropertyContainer() : base(BindingState.Unbound)
             {
                 this.InstanceViewProperty = this.CreatePropertyAccessor<VMExtensionInstanceView>(nameof(InstanceView), BindingAccess.Read | BindingAccess.Write);
                 this.ProvisioningStateProperty = this.CreatePropertyAccessor<string>(nameof(ProvisioningState), BindingAccess.Read | BindingAccess.Write);
-                this.VMExtensionProperty = this.CreatePropertyAccessor<VMExtension>(nameof(VMExtension), BindingAccess.Read | BindingAccess.Write);
+                this.VmExtensionProperty = this.CreatePropertyAccessor<VMExtension>(nameof(VmExtension), BindingAccess.Read | BindingAccess.Write);
             }
 
             public PropertyContainer(Models.NodeVMExtension protocolObject) : base(BindingState.Bound)
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Batch
                     protocolObject.ProvisioningState,
                     nameof(ProvisioningState),
                     BindingAccess.Read);
-                this.VMExtensionProperty = this.CreatePropertyAccessor(
+                this.VmExtensionProperty = this.CreatePropertyAccessor(
                     UtilitiesInternal.CreateObjectWithNullCheck(protocolObject.VmExtension, o => new VMExtension(o).Freeze()),
-                    nameof(VMExtension),
+                    nameof(VmExtension),
                     BindingAccess.Read);
             }
         }
@@ -94,10 +94,10 @@ namespace Microsoft.Azure.Batch
         /// <summary>
         /// Gets or sets the virtual machine extension
         /// </summary>
-        public VMExtension VMExtension
+        public VMExtension VmExtension
         {
-            get { return this.propertyContainer.VMExtensionProperty.Value; }
-            set { this.propertyContainer.VMExtensionProperty.Value = value; }
+            get { return this.propertyContainer.VmExtensionProperty.Value; }
+            set { this.propertyContainer.VmExtensionProperty.Value = value; }
         }
 
         #endregion // NodeVMExtension
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Batch
             {
                 InstanceView = UtilitiesInternal.CreateObjectWithNullCheck(this.InstanceView, (o) => o.GetTransportObject()),
                 ProvisioningState = this.ProvisioningState,
-                VmExtension = UtilitiesInternal.CreateObjectWithNullCheck(this.VMExtension, (o) => o.GetTransportObject()),
+                VmExtension = UtilitiesInternal.CreateObjectWithNullCheck(this.VmExtension, (o) => o.GetTransportObject()),
             };
 
             return result;

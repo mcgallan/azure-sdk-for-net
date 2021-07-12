@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Batch
                     nameof(Name),
                     BindingAccess.Read | BindingAccess.Write);
                 this.ProtectedSettingsProperty = this.CreatePropertyAccessor(
-                    UtilitiesInternal.CreateObjectWithNullCheck(protocolObject.ProtectedSettings, o => o),
+                    protocolObject.ProtectedSettings,
                     nameof(ProtectedSettings),
                     BindingAccess.Read | BindingAccess.Write);
                 this.ProvisionAfterExtensionsProperty = this.CreatePropertyAccessor(
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Batch
                     nameof(Publisher),
                     BindingAccess.Read | BindingAccess.Write);
                 this.SettingsProperty = this.CreatePropertyAccessor(
-                    UtilitiesInternal.CreateObjectWithNullCheck(protocolObject.Settings, o => o),
+                    protocolObject.Settings,
                     nameof(Settings),
                     BindingAccess.Read | BindingAccess.Write);
                 this.TypeProperty = this.CreatePropertyAccessor(
@@ -221,10 +221,10 @@ namespace Microsoft.Azure.Batch
             {
                 AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion,
                 Name = this.Name,
-                ProtectedSettings = UtilitiesInternal.CreateObjectWithNullCheck(this.ProtectedSettings, (o) => o),
+                ProtectedSettings = this.ProtectedSettings,
                 ProvisionAfterExtensions = this.ProvisionAfterExtensions,
                 Publisher = this.Publisher,
-                Settings = UtilitiesInternal.CreateObjectWithNullCheck(this.Settings, (o) => o),
+                Settings = this.Settings,
                 Type = this.Type,
                 TypeHandlerVersion = this.TypeHandlerVersion,
             };
