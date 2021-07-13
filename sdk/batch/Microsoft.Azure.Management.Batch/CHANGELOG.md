@@ -1,5 +1,27 @@
 # Release History
 
+## 14.0.0 (2021-06-01)
+
+### REST API version
+
+- This version targets REST API version 2021-01-01.
+
+### Features
+
+- Added two new properties on accounts which enable auto-storage to use a managed identity for authentication rather than a shared key:
+  - Setting `AutoStorageAuthenticationMode` to "BatchAccountManagedIdentity" will use the identity on the account for storage management operations such as blob container creation/deletion.
+  - Setting `IdentityReference` will specify the identity which can be used on compute nodes to access auto-storage. Note that this identity *must* be assigned to each pool individually.
+- Added `IdentityReference` property to the following models to support accessing resources via managed identity:
+  - `AzureBlobFileSystemConfiguration`
+  - `ContainerRegistry`
+  - `ResourceFile`
+- Added `AllowedAuthenticationModes` property on `BatchAccount` to list the allowed authentication modes for a given account that can be used to authenticate with the data plane. This does not affect authentication with the control plane.
+- Added new `OsDisk` property to `VirtualMachineConfiguration`, which contains settings for the operating system disk of the Virtual Machine.
+  - The `Placement` property on 'DiffDiskSettings' specifies the ephemeral disk placement for operating system disk for all VMs in the pool. Setting it to "CacheDisk" will store the ephemeral OS disk on the VM cache.
+- Added a new `ListSupportedVirtualMachineSkus` operation, which gets the list of Batch-supported Virtual Machine VM sizes available at a given location.
+- Added a new `ListOutboundNetworkDependenciesEndpoints` operation, which lists the endpoints that a Batch Compute Node under a Batch Account may call as part of Batch service administration.
+  - [https://docs.microsoft.com/en-us/azure/batch/batch-virtual-network](More information about creating a pool inside of a virtual network.)
+
 ## 13.0.0 (2021-01-01)
 
 ### REST API version
