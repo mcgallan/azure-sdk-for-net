@@ -12,7 +12,7 @@ namespace Azure.ResourceManager.Grafana.Tests
 {
     public class GrafanaTestBase : ManagementRecordedTestBase<GrafanaManagementTestEnvironment>
     {
-        protected AzureLocation DefaultLocation => AzureLocation.EastUS;
+        protected AzureLocation DefaultLocation => AzureLocation.AustraliaEast;
         protected ArmClient Client { get; private set; }
         protected SubscriptionResource DefaultSubscription { get; private set; }
 

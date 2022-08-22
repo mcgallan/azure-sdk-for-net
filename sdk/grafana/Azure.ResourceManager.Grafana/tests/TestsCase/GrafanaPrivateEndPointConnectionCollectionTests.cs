@@ -18,7 +18,7 @@ namespace Azure.ResourceManager.Grafana.Tests.TestsCase
         {
             var container = (await CreateResourceGroupAsync()).GetManagedGrafanas();
             var input = ResourceDataHelper.GetGrafanaResourceData(DefaultLocation);
-            var Grafana = await container.CreateOrUpdateAsync(WaitUntil.Completed, "sdkTestPoint", input);
+            var Grafana = await container.CreateOrUpdateAsync(WaitUntil.Completed, "testEndpoint", input);
             return Grafana.Value.GetGrafanaPrivateEndpointConnections();
         }
 
@@ -28,7 +28,7 @@ namespace Azure.ResourceManager.Grafana.Tests.TestsCase
         {
             //1.CreateOrUpdate
             var container = await GetCollectionAsync();
-            var pointName = Recording.GenerateAssetName("sdkTestPoint");
+            var pointName = Recording.GenerateAssetName("sdkTestPoint-");
             var input = ResourceDataHelper.GetPrivateEndpointConnectionData();
             var lro = await container.CreateOrUpdateAsync(WaitUntil.Completed, pointName, input);
             GrafanaPrivateEndpointConnectionResource resource1 = lro.Value;
@@ -37,8 +37,8 @@ namespace Azure.ResourceManager.Grafana.Tests.TestsCase
             GrafanaPrivateEndpointConnectionResource resource2 = await container.GetAsync(pointName);
             ResourceDataHelper.AssertPrivateEndPointConnection(resource1.Data, resource2.Data);
             //3.GetAll
-            var pointName1 = Recording.GenerateAssetName("sdkTestPoint1");
-            var pointName2 = Recording.GenerateAssetName("sdkTestPoint2");
+            var pointName1 = Recording.GenerateAssetName("sdkTestPoint1-");
+            var pointName2 = Recording.GenerateAssetName("sdkTestPoint2-");
             var input1 = ResourceDataHelper.GetPrivateEndpointConnectionData();
             var input2 = ResourceDataHelper.GetPrivateEndpointConnectionData();
             _ = await container.CreateOrUpdateAsync(WaitUntil.Completed, pointName1, input1);
