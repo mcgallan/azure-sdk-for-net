@@ -16,7 +16,7 @@ namespace Azure.ResourceManager.DataProtectionBackup.Tests.TestCase
     public class DPInstanceTests : DataProtectionBackupManagementTestBase
     {
         public DPInstanceTests(bool isAsync)
-            : base(isAsync)//, RecordedTestMode.Record)
+            : base(isAsync, RecordedTestMode.Record)
         {
         }
 
@@ -33,19 +33,18 @@ namespace Azure.ResourceManager.DataProtectionBackup.Tests.TestCase
         }
 
         [RecordedTest]
-        [Ignore("Invalid URI: The format of the URI could not be determined")]
         public async Task InstanceApiTests()
         {
             //0.prepare
             (DataProtectionBackupInstanceCollection collection, DataProtectionBackupPolicyCollection policyCollection) = await GetInstanceCollection();
-            var policyData = ResourceDataHelpers.GetDiskPolicyData();
-            var policy = (await policyCollection.CreateOrUpdateAsync(WaitUntil.Completed, "diskpolicy2", policyData)).Value;
+            var policyData = ResourceDataHelpers.GetPolicyData();
+            var policy = (await policyCollection.CreateOrUpdateAsync(WaitUntil.Completed, "retentionpolicy2", policyData)).Value;
             //1.CreateOrUpdate
             var name = Recording.GenerateAssetName("instance");
             var name2 = Recording.GenerateAssetName("instance");
             var name3 = Recording.GenerateAssetName("instance");
             var input = ResourceDataHelpers.GetInstanceData(policy.Id, name);
-            var lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, input);
+            var lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, "sdktest1598-sdktest1598-0a4802d2-b731-4eb9-a8bf-0288885f3101", input);
             DataProtectionBackupInstanceResource resource = lro.Value;
             Assert.AreEqual(name, resource.Data.Name);
             //2.Get

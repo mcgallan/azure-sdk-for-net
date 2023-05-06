@@ -138,12 +138,12 @@ namespace Azure.ResourceManager.DataProtectionBackup.Tests.Helpers
             var instanceData = new DataProtectionBackupInstanceData()
             {
                 Properties = new DataProtectionBackupInstanceProperties(
-                    new DataSourceInfo(new ResourceIdentifier("/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/deleteme0427/providers/Microsoft.Compute/disks/sdktestdisk"))
+                    new DataSourceInfo(new ResourceIdentifier("/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/sdktestrg/providers/Microsoft.Storage/storageAccounts/sdktest1598"))
                     {
-                        ResourceUriString = "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/deleteme0427/providers/Microsoft.Compute/disks/sdktestdisk",
-                        DataSourceType = "Microsoft.Compute/disks",
-                        ResourceName = "sdktestdisk",
-                        ResourceType = new ResourceType("Microsoft.Compute/disks"),
+                        ResourceUriString = "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/sdktestrg/providers/Microsoft.Storage/storageAccounts/sdktest1598",
+                        DataSourceType = "Microsoft.Storage/storageAccounts/blobServices",
+                        ResourceName = "sdktest1598",
+                        ResourceType = new ResourceType("Microsoft.Storage/storageAccounts"),
                         ResourceLocation = AzureLocation.EastUS,
                         ObjectType = "Datasource"
                     },
@@ -151,19 +151,19 @@ namespace Azure.ResourceManager.DataProtectionBackup.Tests.Helpers
                     {
                         PolicyParameters = new BackupInstancePolicySettings()
                         {
-                            BackupDataSourceParametersList = { new UnknownBackupDatasourceParameters("AzureOperationalStoreParameters") }
+                            BackupDataSourceParametersList = { new BlobBackupDataSourceSettings(new List<string> {}) }
                         }
                     },
                     "BackupInstance"
                     )
                 {
-                    FriendlyName = instanceName,
-                    DataSourceSetInfo = new DataSourceSetInfo(new ResourceIdentifier("/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/deleteme0427/providers/Microsoft.Compute/disks/sdktestdisk"))
+                    FriendlyName = "sdktest1598",
+                    DataSourceSetInfo = new DataSourceSetInfo(new ResourceIdentifier("/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/sdktestrg/providers/Microsoft.Storage/storageAccounts/sdktest1598"))
                     {
-                        ResourceUriString = "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/deleteme0427/providers/Microsoft.Compute/disks/sdktestdisk",
-                        DataSourceType = "Microsoft.Compute/disks",
-                        ResourceName = "sdktestdisk",
-                        ResourceType = new ResourceType("Microsoft.Compute/disks"),
+                        ResourceUriString = "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/sdktestrg/providers/Microsoft.Storage/storageAccounts/sdktest1598",
+                        DataSourceType = "Microsoft.Storage/storageAccounts/blobServices",
+                        ResourceName = "sdktest1598",
+                        ResourceType = new ResourceType("Microsoft.Storage/storageAccounts"),
                         ResourceLocation = AzureLocation.EastUS,
                         ObjectType = "Datasource"
                     }
