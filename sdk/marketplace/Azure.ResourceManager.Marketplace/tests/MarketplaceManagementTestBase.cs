@@ -31,6 +31,7 @@ namespace Azure.ResourceManager.Marketplace.Tests
         public async Task CreateCommonClient()
         {
             Client = GetArmClient();
+            var tenant = Client.GetPrivateStoreResource();
             DefaultSubscription = await Client.GetDefaultSubscriptionAsync().ConfigureAwait(false);
         }
 
