@@ -46,6 +46,13 @@ namespace Azure.ResourceManager.Marketplace.Tests.Helpers
             };
             return data;
         }
+         public static void AssertAdimnRequest(MarketplaceAdminApprovalRequestData data1, MarketplaceAdminApprovalRequestData data2)
+        {
+            AssertResource(data1, data2);
+            Assert.AreEqual(data1.PublisherId, data2.PublisherId);
+            Assert.AreEqual(data1.Comment , data2.Comment);
+            Assert.AreEqual(data1.Comment, data2.Comment);
+        }
         #endregion
     }
 }
