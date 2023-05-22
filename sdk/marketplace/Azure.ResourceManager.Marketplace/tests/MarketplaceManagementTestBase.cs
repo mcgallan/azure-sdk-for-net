@@ -16,7 +16,7 @@ namespace Azure.ResourceManager.Marketplace.Tests
         protected AzureLocation DefaultLocation => TestEnvironment.Location;
         protected string groupName;
         protected SubscriptionResource DefaultSubscription { get; private set; }
-
+        protected TenantCollection DefaultTenantCollection { get; private set; }
         protected MarketplaceManagementTestBase(bool isAsync, RecordedTestMode mode)
         : base(isAsync, mode)
         {
@@ -31,6 +31,7 @@ namespace Azure.ResourceManager.Marketplace.Tests
         public async Task CreateCommonClient()
         {
             Client = GetArmClient();
+            DefaultTenantCollection = Client.GetTenants();
             DefaultSubscription = await Client.GetDefaultSubscriptionAsync().ConfigureAwait(false);
         }
 
@@ -40,6 +41,22 @@ namespace Azure.ResourceManager.Marketplace.Tests
             var rgOp = await DefaultSubscription.GetResourceGroups().CreateOrUpdateAsync(
                 WaitUntil.Completed,
                 resourceGroupName,
+                new ResourceGroupData(DefaultLocation)
+                {
+                    Tags =
+                    {
+                        { "test", "env" }
+                    }
+                });
+            return rgOp.Value;
+        }
+
+        protected async Task<TenantResource> CreateTenantResourceAsync()
+        {
+            var tenantResourceName = Recording.GenerateAssetName("testTR-");
+            var trOp = await DefaultTenantCollection.CreateOrUpdateAsync(
+                WaitUntil.Completed,
+                tenantResourceName,
                 new ResourceGroupData(DefaultLocation)
                 {
                     Tags =
