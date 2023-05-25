@@ -47,6 +47,7 @@ namespace Azure.ResourceManager.KeyVault.Tests
             ArmOperation<KeyVaultResource> updateResource = await VaultCollection.CreateOrUpdateAsync(WaitUntil.Completed, vaultResource1.Data.Name, parameters).ConfigureAwait(false);
             KeyVaultResource updateVaultResource1 = resource.Value;
             Assert.GreaterOrEqual(updateVaultResource1.Data.Tags.Count, 0);
+            Assert.AreEqual(1, updateVaultResource1.Data.Properties.AccessPolicies.Count);
         }
     }
 }
