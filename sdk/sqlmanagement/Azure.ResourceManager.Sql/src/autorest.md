@@ -331,6 +331,10 @@ rename-mapping:
 
 prompted-enum-values:
   - Default
+
+models-to-treat-empty-strings-as-null:
+  - SqlMetricDefinition
+
 directive:
     - remove-operation: ManagedDatabaseMoveOperations_ListByLocation
     - remove-operation: ManagedDatabaseMoveOperations_Get
