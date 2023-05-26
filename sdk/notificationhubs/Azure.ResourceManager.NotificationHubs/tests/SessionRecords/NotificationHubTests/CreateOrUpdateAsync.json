@@ -1,35 +1,35 @@
 {
   "Entries": [
     {
-      "RequestUri": "https://management.azure.com/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-4969/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace3199?api-version=2017-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-144/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace4560?api-version=2017-04-01",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "Sanitized",
-        "traceparent": "00-afca7042e4bfbc4fb335640c5704f504-189a6452c6be6e45-00",
-        "User-Agent": "azsdk-net-ResourceManager.NotificationHubs/1.0.0-alpha.20220829.1 (.NET Core 3.1.28; Microsoft Windows 10.0.22000)",
-        "x-ms-client-request-id": "8814f946f6f0a3cfc16fc48042bb90ef",
+        "traceparent": "00-65d5a26a6b28814bbde67ada65210868-6ae92902fbe46644-00",
+        "User-Agent": "azsdk-net-ResourceManager.NotificationHubs/1.1.0-alpha.20230526.1 (.NET Framework 4.8.9139.0; Microsoft Windows 10.0.22621 )",
+        "x-ms-client-request-id": "262af87af896a9bbabae5976a4e2d763",
         "x-ms-return-client-request-id": "true"
       },
       "RequestBody": null,
       "StatusCode": 200,
       "ResponseHeaders": {
-        "api-supported-versions": "2014-09-01, 2016-03-01, 2017-04-01, 2020-01-01-preview",
+        "api-supported-versions": "2014-09-01, 2016-03-01, 2017-04-01, 2020-01-01-preview, 2023-01-01-preview",
         "Cache-Control": "no-cache",
-        "Content-Length": "616",
+        "Content-Length": "593",
         "Content-Type": "application/json; charset=utf-8",
-        "Date": "Mon, 29 Aug 2022 09:26:45 GMT",
+        "Date": "Fri, 26 May 2023 08:54:21 GMT",
         "Expires": "-1",
         "Pragma": "no-cache",
         "Server": "Kestrel",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-        "TrackingId": "6c0e9e07-8534-4b4a-a01c-9dc31162cdff",
+        "TrackingId": "3f870611-905f-4873-9630-e2489cc6f5ce",
         "X-Content-Type-Options": "nosniff",
-        "x-ms-client-request-id": "8814f946f6f0a3cfc16fc48042bb90ef",
-        "x-ms-correlation-request-id": "db27fcb0-9d05-4941-824f-e852c31fe249",
-        "x-ms-ratelimit-remaining-subscription-reads": "11898",
-        "x-ms-request-id": "db27fcb0-9d05-4941-824f-e852c31fe249",
-        "x-ms-routing-request-id": "SOUTHEASTASIA:20220829T092646Z:db27fcb0-9d05-4941-824f-e852c31fe249"
+        "x-ms-client-request-id": "262af87af896a9bbabae5976a4e2d763",
+        "x-ms-correlation-request-id": "7abd904f-8d3f-49ee-9bba-f53522a09247",
+        "x-ms-ratelimit-remaining-subscription-reads": "11998",
+        "x-ms-request-id": "7abd904f-8d3f-49ee-9bba-f53522a09247",
+        "x-ms-routing-request-id": "SOUTHEASTASIA:20230526T085421Z:7abd904f-8d3f-49ee-9bba-f53522a09247"
       },
       "ResponseBody": {
         "sku": {
@@ -38,31 +38,30 @@
         "properties": {
           "provisioningState": "Succeeded",
           "status": "Active",
-          "createdAt": "2022-08-29T09:26:45.5400000Z",
-          "updatedAt": "2022-08-29T09:26:45.5500000Z",
-          "serviceBusEndpoint": "https://azNotificationHubNamespace3199.servicebus.windows.net:443/",
+          "createdAt": "2023-05-26T08:54:11.2430000Z",
+          "updatedAt": "2023-05-26T08:54:11.2600000Z",
+          "serviceBusEndpoint": "https://azNotificationHubNamespace4560.servicebus.windows.net:443/",
           "enabled": true,
-          "critical": false,
-          "zoneRedundant": false
+          "critical": false
         },
-        "id": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-4969/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace3199",
-        "name": "azNotificationHubNamespace3199",
+        "id": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-144/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace4560",
+        "name": "azNotificationHubNamespace4560",
         "type": "Microsoft.NotificationHubs/namespaces",
         "location": "East US",
         "tags": {}
       }
     },
     {
-      "RequestUri": "https://management.azure.com/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-4969/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace3199/notificationHubs/azNotificationHub5899?api-version=2017-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-144/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace4560/notificationHubs/azNotificationHub5261?api-version=2017-04-01",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "Sanitized",
         "Content-Length": "47",
         "Content-Type": "application/json",
-        "traceparent": "00-2ae32b887ddbe04ca9bc28747165c727-b8ca85ce17afaa49-00",
-        "User-Agent": "azsdk-net-ResourceManager.NotificationHubs/1.0.0-alpha.20220829.1 (.NET Core 3.1.28; Microsoft Windows 10.0.22000)",
-        "x-ms-client-request-id": "643c4fdbb63697e8092dd9ba495dc2fe",
+        "traceparent": "00-2d34a10a13440c449a81b37afa4a4b10-4b563e68b72bbe48-00",
+        "User-Agent": "azsdk-net-ResourceManager.NotificationHubs/1.1.0-alpha.20230526.1 (.NET Framework 4.8.9139.0; Microsoft Windows 10.0.22621 )",
+        "x-ms-client-request-id": "77b4cd953ff402b12b631c2cf0bed214",
         "x-ms-return-client-request-id": "true"
       },
       "RequestBody": {
@@ -72,38 +71,38 @@
       },
       "StatusCode": 201,
       "ResponseHeaders": {
-        "api-supported-versions": "2014-09-01, 2016-03-01, 2017-04-01, 2020-01-01-preview",
+        "api-supported-versions": "2014-09-01, 2016-03-01, 2017-04-01, 2020-01-01-preview, 2023-01-01-preview",
         "Cache-Control": "no-cache",
-        "Content-Length": "419",
+        "Content-Length": "418",
         "Content-Type": "application/json; charset=utf-8",
-        "Date": "Mon, 29 Aug 2022 09:26:50 GMT",
+        "Date": "Fri, 26 May 2023 08:54:25 GMT",
         "Expires": "-1",
         "Pragma": "no-cache",
         "Server": "Kestrel",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-        "TrackingId": "3f226a55-f406-496a-adc4-51e2c3f57f76",
+        "TrackingId": "ef4018ac-b09e-47a7-a1fd-477be49f6fb5",
         "X-Content-Type-Options": "nosniff",
-        "x-ms-client-request-id": "643c4fdbb63697e8092dd9ba495dc2fe",
-        "x-ms-correlation-request-id": "cff64675-9f47-4b15-a135-daa057143a7e",
-        "x-ms-ratelimit-remaining-subscription-writes": "1143",
-        "x-ms-request-id": "cff64675-9f47-4b15-a135-daa057143a7e",
-        "x-ms-routing-request-id": "SOUTHEASTASIA:20220829T092651Z:cff64675-9f47-4b15-a135-daa057143a7e"
+        "x-ms-client-request-id": "77b4cd953ff402b12b631c2cf0bed214",
+        "x-ms-correlation-request-id": "f419dcbe-a676-49d8-a50c-83d5eb1307b0",
+        "x-ms-ratelimit-remaining-subscription-writes": "1197",
+        "x-ms-request-id": "f419dcbe-a676-49d8-a50c-83d5eb1307b0",
+        "x-ms-routing-request-id": "SOUTHEASTASIA:20230526T085426Z:f419dcbe-a676-49d8-a50c-83d5eb1307b0"
       },
       "ResponseBody": {
         "properties": {
           "registrationTtl": "10675199.02:48:05.4775807",
           "dailyMaxActiveDevices": 0
         },
-        "id": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-4969/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace3199/NotificationHubs/azNotificationHub5899",
-        "name": "azNotificationHub5899",
+        "id": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-144/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace4560/NotificationHubs/azNotificationHub5261",
+        "name": "azNotificationHub5261",
         "type": "Microsoft.NotificationHubs/namespaces/notificationHubs",
         "location": "East US"
       }
     }
   ],
   "Variables": {
-    "AZURE_AUTHORITY_HOST": "https://login.microsoftonline.com",
-    "RandomSeed": "1815944936",
+    "AZURE_AUTHORITY_HOST": "https://login.microsoftonline.com/",
+    "RandomSeed": "1128628464",
     "RESOURCE_MANAGER_URL": null,
     "SUBSCRIPTION_ID": "db1ab6f0-4769-4b27-930e-01e2ef9c123c"
   }

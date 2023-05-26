@@ -6,9 +6,9 @@
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "Sanitized",
-        "traceparent": "00-9b1fd41b588ae04dba794bac06f51c55-afb7c8118783fb44-00",
+        "traceparent": "00-12cf49d13f441e4784dc0f0b1d3293de-284afeffe957ba48-00",
         "User-Agent": "azsdk-net-ResourceManager.NotificationHubs/1.1.0-alpha.20230526.1 (.NET Framework 4.8.9139.0; Microsoft Windows 10.0.22621 )",
-        "x-ms-client-request-id": "114098b6239b350bb3e91761ad8a6492",
+        "x-ms-client-request-id": "d873413a0d52723b79ec4ee3352e9ac2",
         "x-ms-return-client-request-id": "true"
       },
       "RequestBody": null,
@@ -18,18 +18,18 @@
         "Cache-Control": "no-cache",
         "Content-Length": "594",
         "Content-Type": "application/json; charset=utf-8",
-        "Date": "Fri, 26 May 2023 08:58:04 GMT",
+        "Date": "Fri, 26 May 2023 08:57:47 GMT",
         "Expires": "-1",
         "Pragma": "no-cache",
         "Server": "Kestrel",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-        "TrackingId": "901fe6a1-5f86-4c12-bb50-f4fbf8a23432",
+        "TrackingId": "8b881c74-659c-4874-9061-bddc330e1194",
         "X-Content-Type-Options": "nosniff",
-        "x-ms-client-request-id": "114098b6239b350bb3e91761ad8a6492",
-        "x-ms-correlation-request-id": "918de959-10dc-4e16-9c68-8eae10424912",
-        "x-ms-ratelimit-remaining-subscription-reads": "11993",
-        "x-ms-request-id": "918de959-10dc-4e16-9c68-8eae10424912",
-        "x-ms-routing-request-id": "SOUTHEASTASIA:20230526T085805Z:918de959-10dc-4e16-9c68-8eae10424912"
+        "x-ms-client-request-id": "d873413a0d52723b79ec4ee3352e9ac2",
+        "x-ms-correlation-request-id": "a0bd3666-a3e7-4b35-9116-2cb7f0f0cb81",
+        "x-ms-ratelimit-remaining-subscription-reads": "11997",
+        "x-ms-request-id": "a0bd3666-a3e7-4b35-9116-2cb7f0f0cb81",
+        "x-ms-routing-request-id": "SOUTHEASTASIA:20230526T085747Z:a0bd3666-a3e7-4b35-9116-2cb7f0f0cb81"
       },
       "ResponseBody": {
         "sku": {
@@ -52,16 +52,16 @@
       }
     },
     {
-      "RequestUri": "https://management.azure.com/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-2027/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace6229/notificationHubs/azNotificationHub6984?api-version=2017-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-2027/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace6229/notificationHubs/azNotificationHub1635?api-version=2017-04-01",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "Sanitized",
         "Content-Length": "47",
         "Content-Type": "application/json",
-        "traceparent": "00-3872de04d9a4a24f9e2b3fc4f7d96470-f624fb89cec31946-00",
+        "traceparent": "00-b35977df97f86d408bf1466493e90b63-2a82faaae46a7d44-00",
         "User-Agent": "azsdk-net-ResourceManager.NotificationHubs/1.1.0-alpha.20230526.1 (.NET Framework 4.8.9139.0; Microsoft Windows 10.0.22621 )",
-        "x-ms-client-request-id": "8e7aa3841e24bd80800ca4896a3919f3",
+        "x-ms-client-request-id": "b698cf42d8c5d1286ff5a3e58a3cc59f",
         "x-ms-return-client-request-id": "true"
       },
       "RequestBody": {
@@ -75,77 +75,73 @@
         "Cache-Control": "no-cache",
         "Content-Length": "419",
         "Content-Type": "application/json; charset=utf-8",
-        "Date": "Fri, 26 May 2023 08:58:08 GMT",
+        "Date": "Fri, 26 May 2023 08:57:50 GMT",
         "Expires": "-1",
         "Pragma": "no-cache",
         "Server": "Kestrel",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-        "TrackingId": "58578e01-a109-4ae4-899a-9c99d17b56ef",
+        "TrackingId": "06357d70-c69d-4e28-97c0-dfa2d57804da",
         "X-Content-Type-Options": "nosniff",
-        "x-ms-client-request-id": "8e7aa3841e24bd80800ca4896a3919f3",
-        "x-ms-correlation-request-id": "9ad909b9-bc82-45d6-a1b2-045dee7a6794",
-        "x-ms-ratelimit-remaining-subscription-writes": "1194",
-        "x-ms-request-id": "9ad909b9-bc82-45d6-a1b2-045dee7a6794",
-        "x-ms-routing-request-id": "SOUTHEASTASIA:20230526T085809Z:9ad909b9-bc82-45d6-a1b2-045dee7a6794"
+        "x-ms-client-request-id": "b698cf42d8c5d1286ff5a3e58a3cc59f",
+        "x-ms-correlation-request-id": "b53a4fb1-4c4f-4c20-ac12-d67a7e5be6e7",
+        "x-ms-ratelimit-remaining-subscription-writes": "1196",
+        "x-ms-request-id": "b53a4fb1-4c4f-4c20-ac12-d67a7e5be6e7",
+        "x-ms-routing-request-id": "SOUTHEASTASIA:20230526T085750Z:b53a4fb1-4c4f-4c20-ac12-d67a7e5be6e7"
       },
       "ResponseBody": {
         "properties": {
           "registrationTtl": "10675199.02:48:05.4775807",
           "dailyMaxActiveDevices": 0
         },
-        "id": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-2027/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace6229/NotificationHubs/azNotificationHub6984",
-        "name": "azNotificationHub6984",
+        "id": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-2027/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace6229/NotificationHubs/azNotificationHub1635",
+        "name": "azNotificationHub1635",
         "type": "Microsoft.NotificationHubs/namespaces/notificationHubs",
         "location": "East US"
       }
     },
     {
-      "RequestUri": "https://management.azure.com/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-2027/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace6229/notificationHubs/azNotificationHub6984?api-version=2017-04-01",
-      "RequestMethod": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-2027/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace6229/notificationHubs/azNotificationHub1635/debugsend?api-version=2017-04-01",
+      "RequestMethod": "POST",
       "RequestHeaders": {
         "Accept": "application/json",
         "Authorization": "Sanitized",
-        "traceparent": "00-702d2162de1fb24793a8ed79a5b39b92-ea828e8dab903741-00",
+        "Content-Length": "0",
+        "traceparent": "00-e6c7279d2be7b24f879c16aa9ae44b5c-62cf1d11d9f28f4b-00",
         "User-Agent": "azsdk-net-ResourceManager.NotificationHubs/1.1.0-alpha.20230526.1 (.NET Framework 4.8.9139.0; Microsoft Windows 10.0.22621 )",
-        "x-ms-client-request-id": "14330f8e679a0298c73d5205099d2091",
+        "x-ms-client-request-id": "674f475e309e8362832036edab7c3b7a",
         "x-ms-return-client-request-id": "true"
       },
       "RequestBody": null,
-      "StatusCode": 200,
+      "StatusCode": 400,
       "ResponseHeaders": {
         "api-supported-versions": "2014-09-01, 2016-03-01, 2017-04-01, 2020-01-01-preview, 2023-01-01-preview",
         "Cache-Control": "no-cache",
-        "Content-Length": "443",
+        "Content-Length": "305",
         "Content-Type": "application/json; charset=utf-8",
-        "Date": "Fri, 26 May 2023 08:58:09 GMT",
+        "Date": "Fri, 26 May 2023 08:57:51 GMT",
         "Expires": "-1",
         "Pragma": "no-cache",
         "Server": "Kestrel",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-        "TrackingId": "98a3067c-a008-4cba-9bb4-d3aab8bc2baa",
+        "TrackingId": "d9367d3c-fde3-421a-a88e-2ebc5c900151",
         "X-Content-Type-Options": "nosniff",
-        "x-ms-client-request-id": "14330f8e679a0298c73d5205099d2091",
-        "x-ms-correlation-request-id": "a45e0bcc-db8a-4a24-b161-06553177ce8a",
-        "x-ms-ratelimit-remaining-subscription-reads": "11992",
-        "x-ms-request-id": "a45e0bcc-db8a-4a24-b161-06553177ce8a",
-        "x-ms-routing-request-id": "SOUTHEASTASIA:20230526T085810Z:a45e0bcc-db8a-4a24-b161-06553177ce8a"
+        "x-ms-client-request-id": "674f475e309e8362832036edab7c3b7a",
+        "x-ms-correlation-request-id": "b2655bfa-6106-4317-a93c-7ed39ddf3d6b",
+        "x-ms-ratelimit-remaining-subscription-writes": "1199",
+        "x-ms-request-id": "b2655bfa-6106-4317-a93c-7ed39ddf3d6b",
+        "x-ms-routing-request-id": "SOUTHEASTASIA:20230526T085751Z:b2655bfa-6106-4317-a93c-7ed39ddf3d6b"
       },
       "ResponseBody": {
-        "properties": {
-          "registrationTtl": "10675199.02:48:05.4775807",
-          "authorizationRules": [],
-          "dailyMaxActiveDevices": 0
-        },
-        "id": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/NotificationHubRG-2027/providers/Microsoft.NotificationHubs/namespaces/azNotificationHubNamespace6229/NotificationHubs/azNotificationHub6984",
-        "name": "azNotificationHub6984",
-        "type": "Microsoft.NotificationHubs/namespaces/notificationHubs",
-        "location": "East US"
+        "error": {
+          "code": "BadRequest",
+          "message": "The notification has no target applications. The notification format is template. Review the credentials specified in the notification hub description and the notification format..TrackingId:674f475e309e8362832036edab7c3b7a,TimeStamp:5/26/2023 8:57:51 AM \u002B00:00"
+        }
       }
     }
   ],
   "Variables": {
     "AZURE_AUTHORITY_HOST": "https://login.microsoftonline.com/",
-    "RandomSeed": "1873193607",
+    "RandomSeed": "1228621343",
     "RESOURCE_MANAGER_URL": null,
     "SUBSCRIPTION_ID": "db1ab6f0-4769-4b27-930e-01e2ef9c123c"
   }

@@ -21,7 +21,7 @@ namespace Azure.ResourceManager.NotificationHubs.Tests
 
         private NotificationHubCollection _notificationHubCollection => _notificationHubNamespaceResource.GetNotificationHubs();
 
-        public NotificationHubTests(bool isAsync) : base(isAsync)
+        public NotificationHubTests(bool isAsync) : base(isAsync, RecordedTestMode.Record)
         {
         }
 
@@ -97,6 +97,14 @@ namespace Azure.ResourceManager.NotificationHubs.Tests
             var notificationHub = await CreateNotificationHub(_notificationHubNamespaceResource, notificationHubName);
             var pnsCredential = await notificationHub.GetPnsCredentialsAsync();
             Assert.IsNotNull(pnsCredential);
+        }
+
+        [RecordedTest]
+        public async Task DebugSend()
+        {
+            string notificationHubName = Recording.GenerateAssetName("azNotificationHub");
+            var notificationHub = await CreateNotificationHub(_notificationHubNamespaceResource, notificationHubName);
+            var result = notificationHub.DebugSendAsync();
         }
     }
 }
