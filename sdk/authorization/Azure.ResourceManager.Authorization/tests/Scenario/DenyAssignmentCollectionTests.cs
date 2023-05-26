@@ -29,6 +29,7 @@ namespace Azure.ResourceManager.Authorization.Tests.Scenario
         public async Task DenyAssignmentTests()
         {
             var resourceGroup = await CreateResourceGroupAsync();
+            var assignments = Client.GetDenyAssignments(new Core.ResourceIdentifier("/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}"));
             AsyncPageable<GenericResource> resources = resourceGroup.GetGenericResourcesAsync();
             //var lro = resources.
             await foreach (GenericResource resource in resources)
