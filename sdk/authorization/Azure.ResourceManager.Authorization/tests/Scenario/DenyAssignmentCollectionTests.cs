@@ -33,13 +33,17 @@ namespace Azure.ResourceManager.Authorization.Tests.Scenario
             //var lro = resources.
             await foreach (GenericResource resource in resources)
             {
+                var genericResourceData = resource.Data;
                 Pageable<DenyAssignmentResource>  denyAssignments = GetDenyAssignmentResource(resource);
                 int count = 0;
                 foreach (DenyAssignmentResource assignment in denyAssignments)
                 {
                     var denyResource = await assignment.GetAsync();
+                    var denyType = denyResource.GetType;
                     count++;
                     var type = denyResource.Value.Data.ResourceType;
+                    Assert.IsNotNull(type);
+                    Assert.AreEqual(denyType, type);
                     Assert.AreEqual(typeof(DenyAssignmentResource), type);
                 }
                 Assert.GreaterOrEqual(count, 1);
