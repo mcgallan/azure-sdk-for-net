@@ -104,7 +104,8 @@ namespace Azure.ResourceManager.NotificationHubs.Tests
         {
             string notificationHubName = Recording.GenerateAssetName("azNotificationHub");
             var notificationHub = await CreateNotificationHub(_notificationHubNamespaceResource, notificationHubName);
-            var result = notificationHub.DebugSendAsync();
+            var result = await notificationHub.DebugSendAsync();
+            Assert.IsNotNull(result);
         }
     }
 }
