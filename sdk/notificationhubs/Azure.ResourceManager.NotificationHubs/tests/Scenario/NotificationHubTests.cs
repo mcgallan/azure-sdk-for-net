@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -104,8 +105,19 @@ namespace Azure.ResourceManager.NotificationHubs.Tests
         {
             string notificationHubName = Recording.GenerateAssetName("azNotificationHub");
             var notificationHub = await CreateNotificationHub(_notificationHubNamespaceResource, notificationHubName);
-            var result = await notificationHub.DebugSendAsync();
-            Assert.IsNotNull(result);
+            var hubResource = await _notificationHubNamespaceResource.GetNotificationHubAsync(notificationHubName);
+            BinaryData targetObject = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+            {
+                ["data"] = new Dictionary<string, object>()
+                {
+                    ["message"] = "Hello"
+                }
+            });
+            var testResult = await hubResource.Value.DebugSendAsync(targetObject);
+            var resultValue = testResult.Value;
+            Assert.IsNotNull(resultValue);
+            //var result = await notificationHub.DebugSendAsync();
+            //Assert.IsNotNull(result);
         }
     }
 }
