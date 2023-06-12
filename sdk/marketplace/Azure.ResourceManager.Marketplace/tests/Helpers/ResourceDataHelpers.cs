@@ -42,7 +42,7 @@ namespace Azure.ResourceManager.Marketplace.Tests.Helpers
         {
             var data = new MarketplaceAdminApprovalRequestData()
             {
-                PublisherId = "data3-limited-1019419"
+                PublisherId = "data3-limited-1019419",
             };
             return data;
         }
@@ -52,6 +52,46 @@ namespace Azure.ResourceManager.Marketplace.Tests.Helpers
             Assert.AreEqual(data1.PublisherId, data2.PublisherId);
             Assert.AreEqual(data1.Comment , data2.Comment);
             Assert.AreEqual(data1.Comment, data2.Comment);
+        }
+        #endregion
+
+        #region PrivateStore
+        public static PrivateStoreData GetPrivateStoreData()
+        {
+            var data = new PrivateStoreData()
+            {
+                Availability = PrivateStoreAvailability.Enabled,
+            };
+            return data;
+        }
+
+        public static void AssertPrivateStore(PrivateStoreData data1, PrivateStoreData data2)
+        {
+            AssertResource(data1, data2);
+            Assert.AreEqual(data1.Availability, data2.Availability);
+            Assert.AreEqual(data1.IsGov, data2.IsGov);
+            Assert.AreEqual(data1.CollectionIds, data2.CollectionIds);
+        }
+        #endregion
+
+        #region MarketplaceApprovalRequestData
+        public static MarketplaceApprovalRequestData GetMarketplaceApprovalRequestData()
+        {
+            var data = new MarketplaceApprovalRequestData()
+            {
+                PublisherId = "data3-limited-1019419",
+                PlansDetails =
+                {
+                    new PrivateStorePlanDetails()
+                    {
+                        PlanId = "d3-azure-health-check",
+                        Justification = "because ...",
+                        SubscriptionId = "db1ab6f0-4769-4b27-930e-01e2ef9c123c",
+                        SubscriptionName = ".NET Mgmt SDK Test with TTL = 1 Day"
+                    }
+                }
+            };
+            return data;
         }
         #endregion
     }

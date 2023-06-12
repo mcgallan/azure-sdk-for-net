@@ -17,6 +17,7 @@ namespace Azure.ResourceManager.Marketplace.Tests
         protected string groupName;
         protected SubscriptionResource DefaultSubscription { get; private set; }
         protected TenantCollection DefaultTenantCollection { get; private set; }
+        protected TenantResource DefaultTenantResource { get; private set; }
         protected MarketplaceManagementTestBase(bool isAsync, RecordedTestMode mode)
         : base(isAsync, mode)
         {
@@ -51,20 +52,14 @@ namespace Azure.ResourceManager.Marketplace.Tests
             return rgOp.Value;
         }
 
-        protected async Task<TenantResource> CreateTenantResourceAsync()
+        protected async void CreateTenantResourceAsync()
         {
             var tenantResourceName = Recording.GenerateAssetName("testTR-");
-            var trOp = await DefaultTenantCollection.CreateOrUpdateAsync(
-                WaitUntil.Completed,
-                tenantResourceName,
-                new ResourceGroupData(DefaultLocation)
-                {
-                    Tags =
-                    {
-                        { "test", "env" }
-                    }
-                });
-            return rgOp.Value;
+            AsyncPageable<TenantResource> tenantResources = DefaultTenantCollection.GetAllAsync();
+            await foreach (var tenantResource in tenantResources)
+            {
+                DefaultTenantResource = tenantResource;
+            }
         }
     }
 }
