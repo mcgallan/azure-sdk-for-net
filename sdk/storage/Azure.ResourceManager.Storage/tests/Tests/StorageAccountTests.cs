@@ -22,7 +22,7 @@ namespace Azure.ResourceManager.Storage.Tests
         private ResourceGroupResource _resourceGroup;
         private const string namePrefix = "teststoragemgmt";
         public StorageAccountTests(bool isAsync)
-            : base(isAsync) //, RecordedTestMode.Record)
+            : base(isAsync, RecordedTestMode.Record)
         {
         }
 
@@ -1728,12 +1728,12 @@ namespace Azure.ResourceManager.Storage.Tests
                         new StorageAccountResourceAccessRule()
                         {
                             TenantId = Guid.Parse("72f988bf-86f1-41af-91ab-2d7cd011db47"),
-                            ResourceId = new ResourceIdentifier("/subscriptions/subID/resourceGroups/RGName/providers/Microsoft.Storage/storageAccounts/testaccount1")
+                            ResourceId = new ResourceIdentifier("/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/deleteme0417/providers/Microsoft.Storage/storageAccounts/networkruletest1")
                         },
                         new StorageAccountResourceAccessRule()
                         {
                             TenantId = Guid.Parse("72f988bf-86f1-41af-91ab-2d7cd011db47"),
-                            ResourceId = new ResourceIdentifier("/subscriptions/subID/resourceGroups/RGName/providers/Microsoft.Storage/storageAccounts/testaccount2")
+                            ResourceId = new ResourceIdentifier("/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/deleteme0417/providers/Microsoft.Storage/storageAccounts/networkruletest2")
                         },
                     }
                 }
