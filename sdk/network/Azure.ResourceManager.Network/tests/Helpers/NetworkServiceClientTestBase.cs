@@ -68,7 +68,7 @@ namespace Azure.ResourceManager.Network.Tests.Helpers
         protected async Task<ResourceGroupResource> CreateResourceGroup(string name)
         {
             SubscriptionResource subscription = await ArmClient.GetDefaultSubscriptionAsync();
-            return (await subscription.GetResourceGroups().CreateOrUpdateAsync(WaitUntil.Completed, name, new ResourceGroupData(TestEnvironment.Location))).Value;
+            return (await subscription.GetResourceGroups().CreateOrUpdateAsync(WaitUntil.Completed, name, new ResourceGroupData(AzureLocation.EastUS))).Value;
         }
         protected async Task<ResourceGroupResource> CreateResourceGroup(string name, string location)
         {

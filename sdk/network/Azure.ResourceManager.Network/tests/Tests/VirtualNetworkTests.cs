@@ -17,7 +17,7 @@ namespace Azure.ResourceManager.Network.Tests
     {
         private SubscriptionResource _subscription;
 
-        public VirtualNetworkTests(bool isAsync) : base(isAsync)
+        public VirtualNetworkTests(bool isAsync) : base(isAsync, RecordedTestMode.Record)
         {
         }
 
@@ -37,7 +37,6 @@ namespace Azure.ResourceManager.Network.Tests
         {
             string resourceGroupName = Recording.GenerateAssetName("csmrg");
 
-            string location = TestEnvironment.Location;
             var resourceGroup = await CreateResourceGroup(resourceGroupName);
 
             string vnetName = Recording.GenerateAssetName("azsmnet");
@@ -46,7 +45,7 @@ namespace Azure.ResourceManager.Network.Tests
 
             var vnet = new VirtualNetworkData()
             {
-                Location = location,
+                Location = Core.AzureLocation.EastUS,
                 AddressSpace = new AddressSpace()
                 {
                     AddressPrefixes = { "10.0.0.0/16", }
@@ -90,8 +89,8 @@ namespace Azure.ResourceManager.Network.Tests
             Assert.IsNotEmpty(getAllVnetInSubscription);
 
             // Delete Vnet
-            var deleteOperation = await getVnetResponse.Value.DeleteAsync(WaitUntil.Completed);
-            await deleteOperation.WaitForCompletionResponseAsync();;
+            //var deleteOperation = await getVnetResponse.Value.DeleteAsync(WaitUntil.Completed);
+            //await deleteOperation.WaitForCompletionResponseAsync();;
 
             // Get all Vnets
             getAllVnetsAP = virtualNetworkCollection.GetAllAsync();
