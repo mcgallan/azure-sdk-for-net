@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Azure.Core.TestFramework;
@@ -56,28 +57,72 @@ namespace Azure.ResourceManager.Tests
             var mockSubscriptionResource = new Mock<SubscriptionResource>();
             mockSubscriptionResource.SetupGet(s => s.Data.SubscriptionId).Returns("mock-subscription-id");
             mockSubscriptionResource.SetupGet(s => s.Data.DisplayName).Returns("mock-subscription-name");
-            // Arrange
-            var mockSubscriptionCollection = new Mock<SubscriptionCollection>();
-            var list = new[] { mockSubscriptionResource.Object };
-            mockSubscriptionCollection
-                 .Setup(m => m.GetAllAsync(It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new[] { new Mock<SubscriptionResource>().Object }.ToAsyncEnumerable());
 
-            var clientMock = new Mock<ArmClient>();
-            clientMock
+            var subscriptionResources = new[] { mockSubscriptionResource.Object };
+            var asyncPageable = new CustomAsyncPageable<SubscriptionResource>(subscriptionResources);
+
+            var mockSubscriptionCollection = new Mock<SubscriptionCollection>();
+            mockSubscriptionCollection
+                .Setup(m => m.GetAllAsync(It.IsAny<CancellationToken>()))
+                .Returns(asyncPageable);
+
+            var mockArmClient = new Mock<ArmClient>();
+            mockArmClient
                 .Setup(c => c.GetSubscriptions())
                 .Returns(mockSubscriptionCollection.Object);
 
-            int count = 0;
+            var mockMapper = new Mock<IMapper>();
+            mockMapper
+                .Setup(m => m.Map<Subscription>(It.IsAny<SubscriptionData>()))
+                .Returns((SubscriptionData data) => new Subscription { Id = data.SubscriptionId, Name = data.DisplayName });
 
-            // Act
-            await foreach (var rg in clientMock.Object.GetSubscriptions().GetAllAsync())
+            var result = await ListSubscriptionsAsync(mockArmClient.Object, mockMapper.Object);
+
+            Assert.AreEqual(1, result.Count);
+            Assert.AreEqual("mock-subscription-id", result[0].Id);
+            Assert.AreEqual("mock-subscription-name", result[0].Name);
+        }
+
+        public async Task<List<Subscription>> ListSubscriptionsAsync(ArmClient armClient, IMapper mapper)
+        {
+            AsyncPageable<SubscriptionResource> subscriptions = armClient
+                .GetSubscriptions()
+                .GetAllAsync();
+            List<Subscription> subscriptionDataList = new List<Subscription>();
+
+            await foreach (SubscriptionResource subscriptionResource in subscriptions)
             {
-                count++;
+                subscriptionDataList.Add(mapper.Map<Subscription>(subscriptionResource.Data));
             }
 
-            // Assert
-            Assert.GreaterOrEqual(count, 1);
+            return subscriptionDataList;
+        }
+
+        public class CustomAsyncPageable<T> : AsyncPageable<T>
+        {
+            private readonly IEnumerable<T> _items;
+
+            public CustomAsyncPageable(IEnumerable<T> items)
+            {
+                _items = items;
+            }
+
+            public override async IAsyncEnumerable<Page<T>> AsPages(string continuationToken = null, int? pageSizeHint = null)
+            {
+                yield return Page<T>.FromValues(_items, null, null);
+                await Task.CompletedTask;
+            }
+        }
+
+        public class Subscription
+        {
+            public string Id { get; set; }
+            public string Name { get; set; }
+        }
+
+        public interface IMapper
+        {
+            T Map<T>(object source);
         }
     }
 }
