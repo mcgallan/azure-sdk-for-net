@@ -13,7 +13,7 @@ namespace Azure.ResourceManager.AppService.Tests.TestsCase
     public class SiteSourceControlCollectionTests : AppServiceTestBase
     {
         public SiteSourceControlCollectionTests(bool isAsync)
-           : base(isAsync)
+           : base(isAsync, RecordedTestMode.Record)
         {
         }
 

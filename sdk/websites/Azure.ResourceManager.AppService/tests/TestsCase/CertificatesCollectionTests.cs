@@ -4,9 +4,11 @@
 using System;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Azure.Core;
 using Azure.Core.TestFramework;
 using Azure.ResourceManager.AppService.Tests.Helpers;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Authorization;
 using NUnit.Framework;
 
 namespace Azure.ResourceManager.AppService.Tests.TestsCase
@@ -14,7 +16,7 @@ namespace Azure.ResourceManager.AppService.Tests.TestsCase
     public class CertificatesCollectionTests : AppServiceTestBase
     {
         public CertificatesCollectionTests(bool isAsync)
-           : base(isAsync)
+           : base(isAsync, RecordedTestMode.Record)
         {
         }
 
@@ -42,18 +44,27 @@ namespace Azure.ResourceManager.AppService.Tests.TestsCase
         public async Task CreateOrUpdateWithNullKeyVaultId()
         {
             // Call CreateOrUpdate on an existing certificate which returns empty string for keyVaultId
-            var name = "aeronline.net-myfirstapp0102-null";
-            var data = new AppCertificateData(DefaultLocation)
+            var name = "aeronline.net#myfirstapp0102-null";
+            var data = new AppCertificateData(AzureLocation.EastUS2)
             {
-                ServerFarmId = new Core.ResourceIdentifier("/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/testRG-666/providers/Microsoft.Web/serverfarms/ASP-testRG666-b64f"),
-                CanonicalName = "aeronline.net",
-                KeyVaultId = null // Test to see that if service works fine when we set KeyVaultId to null.
+                ServerFarmId = new Core.ResourceIdentifier("/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/v-xinnitong-sdktest3668/providers/Microsoft.Web/serverfarms/appServicePlan-xinni"),
+                CanonicalName = "webapp-xinni-3668.azurewebsites.net",
             };
-            var collection = Client.GetResourceGroupResource(ResourceGroupResource.CreateResourceIdentifier("db1ab6f0-4769-4b27-930e-01e2ef9c123c", "testRG-666")).GetAppCertificates();
+            var collection = Client.GetResourceGroupResource(ResourceGroupResource.CreateResourceIdentifier("4d042dc6-fe17-4698-a23f-ec6a8d1e98f4", "v-xinnitong-sdktest3668")).GetAppCertificates();
             var lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
             var certificate = lro.Value;
             Assert.AreEqual(name, certificate.Data.Name);
             Assert.IsNull(certificate.Data.KeyVaultId);
+        }
+
+        [Test]
+        [RecordedTest]
+        public async Task CertificatesRoleAssignment()
+        {
+            var collection = Client.GetResourceGroupResource(ResourceGroupResource.CreateResourceIdentifier("4d042dc6-fe17-4698-a23f-ec6a8d1e98f4", "v-xinnitong-sdktest3668")).GetAppCertificates();
+            var lro = await collection.GetAsync("aeronline.net#myfirstapp0102-null");
+            var certificate = lro.Value;
+            var roleAssignmentCollection = certificate.GetRoleAssignments();
         }
 
         [TestCase]
