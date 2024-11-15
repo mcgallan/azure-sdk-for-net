@@ -4,7 +4,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Azure.Core;
 using Azure.Core.TestFramework;
+using Azure.ResourceManager.AppService.Models;
 using Azure.ResourceManager.AppService.Tests.Helpers;
 using NUnit.Framework;
 
@@ -13,7 +15,7 @@ namespace Azure.ResourceManager.AppService.Tests.TestsCase
     public class SiteCollectionTests : AppServiceTestBase
     {
         public SiteCollectionTests(bool isAsync)
-           : base(isAsync)
+           : base(isAsync, RecordedTestMode.Record)
         {
         }
 
@@ -33,6 +35,36 @@ namespace Azure.ResourceManager.AppService.Tests.TestsCase
             var lro = await container.CreateOrUpdateAsync(WaitUntil.Completed, name, input);
             var site = lro.Value;
             Assert.AreEqual(name, site.Data.Name);
+        }
+
+        [TestCase]
+        [RecordedTest]
+        public async Task FunctionStagingSlot()
+        {
+            var collection = await GetSiteCollectionAsync();
+            var name = Recording.GenerateAssetName("testSite");
+            var input = ResourceDataHelper.GetBasicSiteData(DefaultLocation);
+            var lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, input);
+            var site = lro.Value;
+            var slotCollection =site.GetWebSiteSlots();
+            var slot = (await slotCollection.CreateOrUpdateAsync(WaitUntil.Completed, "staging", input)).Value;
+            //var publishCreds = await site.GetPublishingProfileXmlWithSecretsAsync(new CsmPublishingProfile());
+            var slotPublishCreds = await slot.GetPublishingProfileXmlWithSecretsSlotAsync(new CsmPublishingProfile());
+        }
+
+        [TestCase]
+        [RecordedTest]
+        public async Task SlotCredentialTest()
+        {
+            var resourcegroup = Client.GetResourceGroupResource(new Core.ResourceIdentifier("/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/deleteme1114"));
+            var collection = resourcegroup.GetWebSites();
+            var input = ResourceDataHelper.GetBasicSiteData(AzureLocation.EastUS2);
+            var lro = await collection.GetAsync("slotcredential1114");
+            var site = lro.Value;
+            var slotCollection = site.GetWebSiteSlots();
+            var slot = (await slotCollection.CreateOrUpdateAsync(WaitUntil.Completed, "staging", input)).Value;
+            //var publishCreds = await site.GetPublishingProfileXmlWithSecretsAsync(new CsmPublishingProfile());
+            var slotPublishCreds = await slot.GetPublishingProfileXmlWithSecretsSlotAsync(new CsmPublishingProfile());
         }
 
         [TestCase]
