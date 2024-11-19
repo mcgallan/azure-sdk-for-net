@@ -46,10 +46,7 @@ namespace Azure.ResourceManager.AppService.Tests.TestsCase
             var input = ResourceDataHelper.GetBasicSiteData(DefaultLocation);
             var lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, input);
             var site = lro.Value;
-            var slotCollection =site.GetWebSiteSlots();
-            var slot = (await slotCollection.CreateOrUpdateAsync(WaitUntil.Completed, "staging", input)).Value;
-            //var publishCreds = await site.GetPublishingProfileXmlWithSecretsAsync(new CsmPublishingProfile());
-            var slotPublishCreds = await slot.GetPublishingProfileXmlWithSecretsSlotAsync(new CsmPublishingProfile());
+            var PublishCreds = await site.GetPublishingProfileXmlWithSecretsAsync(new CsmPublishingProfile());
         }
 
         [TestCase]
@@ -63,7 +60,6 @@ namespace Azure.ResourceManager.AppService.Tests.TestsCase
             var site = lro.Value;
             var slotCollection = site.GetWebSiteSlots();
             var slot = (await slotCollection.CreateOrUpdateAsync(WaitUntil.Completed, "staging", input)).Value;
-            //var publishCreds = await site.GetPublishingProfileXmlWithSecretsAsync(new CsmPublishingProfile());
             var slotPublishCreds = await slot.GetPublishingProfileXmlWithSecretsSlotAsync(new CsmPublishingProfile());
         }
 
