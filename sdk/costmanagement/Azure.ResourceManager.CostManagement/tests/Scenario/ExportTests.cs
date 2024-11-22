@@ -20,7 +20,7 @@ namespace Azure.ResourceManager.CostManagement.Tests
         private CostManagementExportCollection _exportCollection;
         private ResourceGroupResource _resourceGroup;
 
-        public ExportTests(bool isAsync) : base(isAsync)//, RecordedTestMode.Record)
+        public ExportTests(bool isAsync) : base(isAsync, RecordedTestMode.Record)
         {
         }
 
@@ -49,7 +49,6 @@ namespace Azure.ResourceManager.CostManagement.Tests
         }
 
         [RecordedTest]
-        //[Ignore("Linked issue: https://github.com/Azure/azure-rest-api-specs/issues/23704")] //customization as the temporary workaround
         public async Task CreateOrUpdateExistGetGetAllDelete()
         {
             // create a storage account
