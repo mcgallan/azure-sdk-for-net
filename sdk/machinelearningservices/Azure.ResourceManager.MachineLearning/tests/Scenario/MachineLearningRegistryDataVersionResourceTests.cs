@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Core.TestFramework;
+using Azure.ResourceManager.TestFramework;
 using Azure.ResourceManager.Compute;
 using Azure.ResourceManager.Compute.Models;
 using Azure.ResourceManager.KeyVault;
@@ -24,24 +25,28 @@ namespace Azure.ResourceManager.MachineLearning.Tests
     public class MachineLearningRegistryDataVersionResourceTests : MachineLearningTestBase
     {
         public MachineLearningRegistryDataVersionResourceTests(bool isAsync)
-        : base(isAsync, RecordedTestMode.Record)
-        {}
+            : base(isAsync, RecordedTestMode.Record)
+        {
+        }
 
-        [Test]
+        [TestCase]
+        [RecordedTest]
         public async Task GetVersionResource()
         {
             var subscriptionId = "4d042dc6-fe17-4698-a23f-ec6a8d1e98f4";
             var resourceGroupName = "deleteme1125";
             var registryName = "registrytest1125";
-            var dataName = "datatest";
+            var dataFileName = "datatestfile";
+            //var getdataName = "datatest";
             var machineLearningRegistryResourceId =
             MachineLearningRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
             var machineLearningRegistry = Client.GetMachineLearningRegistryResource(machineLearningRegistryResourceId);
 
             var dataCollection = machineLearningRegistry.GetMachineLearningRegistryDataContainers();
-            var property = new MachineLearningDataContainerProperties(MachineLearningDataType.UriFolder);
+            var property = new MachineLearningDataContainerProperties(MachineLearningDataType.UriFile);
             var datainput = new MachineLearningDataContainerData(property);
-            var dataResource = await dataCollection.CreateOrUpdateAsync(WaitUntil.Completed, dataName, datainput);
+            var dataResource = await dataCollection.CreateOrUpdateAsync(WaitUntil.Completed, dataFileName, datainput);
+            //var dataResource = await dataCollection.GetAsync(getdataName);
 
             var versions = dataResource.Value.GetMachineLearningRegistryDataVersions();
             var versionproperties = new MachineLearningDataVersionProperties(new Uri("data"));
