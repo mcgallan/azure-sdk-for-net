@@ -34,19 +34,17 @@ namespace Azure.ResourceManager.MachineLearning.Tests
         public async Task GetVersionResource()
         {
             var subscriptionId = "4d042dc6-fe17-4698-a23f-ec6a8d1e98f4";
-            var resourceGroupName = "deleteme1125";
-            var registryName = "registrytest1125";
-            var dataFileName = "datatestfile";
-            //var getdataName = "datatest";
+            var resourceGroupName = "deleteme1126";
+            var registryName = "mlregistry1126";
+            var dataMlName = Recording.GenerateAssetName("datatestml");
             var machineLearningRegistryResourceId =
             MachineLearningRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
             var machineLearningRegistry = Client.GetMachineLearningRegistryResource(machineLearningRegistryResourceId);
 
             var dataCollection = machineLearningRegistry.GetMachineLearningRegistryDataContainers();
-            var property = new MachineLearningDataContainerProperties(MachineLearningDataType.UriFile);
+            var property = new MachineLearningDataContainerProperties(MachineLearningDataType.Mltable);
             var datainput = new MachineLearningDataContainerData(property);
-            var dataResource = await dataCollection.CreateOrUpdateAsync(WaitUntil.Completed, dataFileName, datainput);
-            //var dataResource = await dataCollection.GetAsync(getdataName);
+            var dataResource = await dataCollection.CreateOrUpdateAsync(WaitUntil.Completed, dataMlName, datainput);
 
             var versions = dataResource.Value.GetMachineLearningRegistryDataVersions();
             var versionproperties = new MachineLearningDataVersionProperties(new Uri("data"));
