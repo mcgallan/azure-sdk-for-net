@@ -133,41 +133,23 @@ namespace Azure.ResourceManager.DataProtectionBackup.Tests.Helpers
         #endregion
 
         #region Instance
-        public static DataProtectionBackupInstanceData GetInstanceData(ResourceIdentifier policyId, String instanceName)
+        public static DataProtectionBackupInstanceData GetInstanceData(ResourceIdentifier policyId, ResourceIdentifier resourceId, String instanceName)
         {
             var instanceData = new DataProtectionBackupInstanceData()
             {
                 Properties = new DataProtectionBackupInstanceProperties(
-                    new DataSourceInfo(new ResourceIdentifier("/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/deleteme0427/providers/Microsoft.Compute/disks/sdktestdisk"))
+                    new DataSourceInfo(resourceId)
                     {
-                        ResourceUriString = "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/deleteme0427/providers/Microsoft.Compute/disks/sdktestdisk",
+                        ResourceUriString = resourceId.ToString(),
                         DataSourceType = "Microsoft.Compute/disks",
-                        ResourceName = "sdktestdisk",
+                        ResourceName = resourceId.Name,
                         ResourceType = new ResourceType("Microsoft.Compute/disks"),
                         ResourceLocation = AzureLocation.EastUS,
                         ObjectType = "Datasource"
                     },
-                    new BackupInstancePolicyInfo(policyId)
-                    {
-                        PolicyParameters = new BackupInstancePolicySettings()
-                        {
-                            BackupDataSourceParametersList = { new UnknownBackupDatasourceParameters("AzureOperationalStoreParameters" ,null) }
-                        }
-                    },
+                    new BackupInstancePolicyInfo(policyId),
                     "BackupInstance"
                     )
-                {
-                    FriendlyName = instanceName,
-                    DataSourceSetInfo = new DataSourceSetInfo(new ResourceIdentifier("/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/deleteme0427/providers/Microsoft.Compute/disks/sdktestdisk"))
-                    {
-                        ResourceUriString = "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/deleteme0427/providers/Microsoft.Compute/disks/sdktestdisk",
-                        DataSourceType = "Microsoft.Compute/disks",
-                        ResourceName = "sdktestdisk",
-                        ResourceType = new ResourceType("Microsoft.Compute/disks"),
-                        ResourceLocation = AzureLocation.EastUS,
-                        ObjectType = "Datasource"
-                    }
-                }
             };
             return instanceData;
         }
@@ -184,7 +166,8 @@ namespace Azure.ResourceManager.DataProtectionBackup.Tests.Helpers
         #region Vault
         public static DataProtectionBackupVaultData GetVaultData()
         {
-            IEnumerable<DataProtectionBackupStorageSetting> setting = new List<DataProtectionBackupStorageSetting>() { new DataProtectionBackupStorageSetting()
+            IEnumerable<DataProtectionBackupStorageSetting> setting = new List<DataProtectionBackupStorageSetting>() {
+            new DataProtectionBackupStorageSetting()
             {
                 DataStoreType = StorageSettingStoreType.VaultStore,
                 StorageSettingType = StorageSettingType.ZoneRedundant

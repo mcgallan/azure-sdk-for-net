@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Core.TestFramework;
+using Azure.ResourceManager.Compute;
+using Azure.ResourceManager.Compute.Models;
 using Azure.ResourceManager.DataProtectionBackup.Models;
 using Azure.ResourceManager.DataProtectionBackup.Tests;
 using Azure.ResourceManager.DataProtectionBackup.Tests.Helpers;
@@ -20,7 +22,7 @@ namespace Azure.ResourceManager.DataProtectionBackup.Tests.TestCase
         {
         }
 
-        private async Task<(DataProtectionBackupInstanceCollection InstanceCollection, DataProtectionBackupPolicyCollection PolicyCollection)> GetInstanceCollection()
+        private async Task<(DataProtectionBackupInstanceCollection InstanceCollection, DataProtectionBackupPolicyCollection PolicyCollection, ManagedDiskCollection DiskCollection)> GetInstanceCollection()
         {
             var resourceGroup = await CreateResourceGroupAsync();
             var vaultCollection = resourceGroup.GetDataProtectionBackupVaults();
@@ -29,22 +31,39 @@ namespace Azure.ResourceManager.DataProtectionBackup.Tests.TestCase
             var lro = await vaultCollection.CreateOrUpdateAsync(WaitUntil.Completed, name, input);
             DataProtectionBackupVaultResource resource = lro.Value;
 
-            return (resource.GetDataProtectionBackupInstances(), resource.GetDataProtectionBackupPolicies());
+            return (resource.GetDataProtectionBackupInstances(), resource.GetDataProtectionBackupPolicies() , resourceGroup.GetManagedDisks());
+        }
+
+        private static ManagedDiskData GetEmptyDiskData(AzureLocation location, IDictionary<string, string> tags = null)
+        {
+            return new ManagedDiskData(location)
+            {
+                Sku = new DiskSku()
+                {
+                    Name = DiskStorageAccountType.StandardLrs
+                },
+                CreationData = new DiskCreationData(DiskCreateOption.Empty),
+                DiskSizeGB = 1,
+            };
         }
 
         [RecordedTest]
-        [Ignore("Invalid URI: The format of the URI could not be determined")]
+        [Ignore("Microsoft Azure Backup encountered an internal error.")]
         public async Task InstanceApiTests()
         {
             //0.prepare
-            (DataProtectionBackupInstanceCollection collection, DataProtectionBackupPolicyCollection policyCollection) = await GetInstanceCollection();
+            (DataProtectionBackupInstanceCollection collection, DataProtectionBackupPolicyCollection policyCollection, ManagedDiskCollection diskCollection) = await GetInstanceCollection();
             var policyData = ResourceDataHelpers.GetDiskPolicyData();
             var policy = (await policyCollection.CreateOrUpdateAsync(WaitUntil.Completed, "diskpolicy2", policyData)).Value;
+            var diskName = Recording.GenerateAssetName("testDisk-");
+            var diskinput = GetEmptyDiskData(DefaultLocation);
+            var disklro = await diskCollection.CreateOrUpdateAsync(WaitUntil.Completed, diskName, diskinput);
+            var disk = disklro.Value;
             //1.CreateOrUpdate
             var name = Recording.GenerateAssetName("instance");
             var name2 = Recording.GenerateAssetName("instance");
             var name3 = Recording.GenerateAssetName("instance");
-            var input = ResourceDataHelpers.GetInstanceData(policy.Id, name);
+            var input = ResourceDataHelpers.GetInstanceData(policy.Id, disk.Id, name);
             var lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, input);
             DataProtectionBackupInstanceResource resource = lro.Value;
             Assert.AreEqual(name, resource.Data.Name);
