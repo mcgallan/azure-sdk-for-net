@@ -34,8 +34,8 @@ namespace Azure.ResourceManager.MachineLearning.Tests
         public async Task GetVersionResource()
         {
             var subscriptionId = "4d042dc6-fe17-4698-a23f-ec6a8d1e98f4";
-            var resourceGroupName = "deleteme1126";
-            var registryName = "mlregistry1126";
+            var resourceGroupName = "v-zihewangMLTest";
+            var registryName = "mlregistry1213";
             var dataMlName = Recording.GenerateAssetName("datatestml");
             var machineLearningRegistryResourceId =
             MachineLearningRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);

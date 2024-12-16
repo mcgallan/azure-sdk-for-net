@@ -82,12 +82,6 @@ namespace Azure.ResourceManager.MachineLearning
             }
         }
 
-        internal static void ValidateResourceId(ResourceIdentifier id)
-        {
-            if (id.ResourceType != ResourceType)
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "Invalid resource type {0} expected {1}", id.ResourceType, ResourceType), nameof(id));
-        }
-
         /// <summary> Gets a collection of MachineLearningRegistryDataVersionResources in the MachineLearningRegistryDataContainer. </summary>
         /// <returns> An object representing collection of MachineLearningRegistryDataVersionResources and their operations over a MachineLearningRegistryDataVersionResource. </returns>
         public virtual MachineLearningRegistryDataVersionCollection GetMachineLearningRegistryDataVersions()
