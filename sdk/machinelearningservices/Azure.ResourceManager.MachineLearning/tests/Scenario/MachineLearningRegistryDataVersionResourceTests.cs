@@ -47,7 +47,7 @@ namespace Azure.ResourceManager.MachineLearning.Tests
             var dataResource = await dataCollection.CreateOrUpdateAsync(WaitUntil.Completed, dataMlName, datainput);
 
             var versions = dataResource.Value.GetMachineLearningRegistryDataVersions();
-            var versionproperties = new MachineLearningDataVersionProperties(new Uri("data"));
+            var versionproperties = new MachineLearningDataVersionProperties(new Uri("https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/data/titanic.csv"));
             var versiondata = new MachineLearningDataVersionData(versionproperties);
             var latestVersion = await versions.CreateOrUpdateAsync(WaitUntil.Completed, "v11.25", versiondata);
         }
