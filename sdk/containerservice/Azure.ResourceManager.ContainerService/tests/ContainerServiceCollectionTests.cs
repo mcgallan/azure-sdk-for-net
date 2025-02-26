@@ -13,14 +13,14 @@ namespace Azure.ResourceManager.ContainerService.Tests
     public class ContainerServiceCollectionTests : ContainerServiceManagementTestBase
     {
         public ContainerServiceCollectionTests(bool isAsync)
-            : base(isAsync)
+            : base(isAsync, RecordedTestMode.Record)
         {
         }
 
         [RecordedTest]
         public async Task CreateListGetDelete()
         {
-            ResourceGroupResource rg = await CreateResourceGroupAsync(Subscription, "testaksrg", AzureLocation.EastUS);
+            ResourceGroupResource rg = await CreateResourceGroupAsync(Subscription, "testaksrg", AzureLocation.EastUS2);
             var clusterCollection = rg.GetContainerServiceManagedClusters();
             string clusterName = Recording.GenerateAssetName("akscluster");
             // Create

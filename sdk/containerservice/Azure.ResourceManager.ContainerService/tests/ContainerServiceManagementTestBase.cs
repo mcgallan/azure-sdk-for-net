@@ -9,6 +9,7 @@ using Azure.Core.Pipeline;
 using Azure.Core.TestFramework;
 using Azure.ResourceManager.ContainerService.Models;
 using Azure.ResourceManager.Models;
+using Azure.ResourceManager.ManagedServiceIdentities;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.TestFramework;
 using NUnit.Framework;
@@ -41,6 +42,15 @@ namespace Azure.ResourceManager.ContainerService.Tests
             Subscription = await Client.GetDefaultSubscriptionAsync();
         }
 
+        public async Task<UserAssignedIdentityResource> CreateIdentityAsync(ResourceGroupResource resourceGroup, string input, AzureLocation location)
+        {
+            string miName = Recording.GenerateAssetName("AGICtest");
+            var collection = resourceGroup.GetUserAssignedIdentities();
+            var data = new UserAssignedIdentityData(location);
+            var lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, miName, data);
+            return lro.Value;
+        }
+
         protected async Task<ResourceGroupResource> CreateResourceGroupAsync(SubscriptionResource subscription, string rgNamePrefix, AzureLocation location)
         {
             string rgName = Recording.GenerateAssetName(rgNamePrefix);
@@ -51,6 +61,7 @@ namespace Azure.ResourceManager.ContainerService.Tests
 
         protected async Task<ContainerServiceManagedClusterResource> CreateContainerServiceAsync(ResourceGroupResource resourceGroup, string clusterName, AzureLocation? location = null)
         {
+            var kubernetId = await CreateIdentityAsync(resourceGroup, "test", location.Value);
             var clusterData = new ContainerServiceManagedClusterData(location == null ? resourceGroup.Data.Location : location.Value)
             {
                 AgentPoolProfiles =
@@ -59,11 +70,30 @@ namespace Azure.ResourceManager.ContainerService.Tests
                     {
                         VmSize = VmSize,
                         Count = 1,
-                        Mode = AgentPoolMode.System
+                        Mode = AgentPoolMode.System,
+                        VnetSubnetId = new ResourceIdentifier("/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/deleteme0225/providers/Microsoft.Network/virtualNetworks/testnet/subnets/aks-net")
                     }
                 },
                 DnsPrefix = DnsPrefix,
                 Identity = new ManagedServiceIdentity(ManagedServiceIdentityType.SystemAssigned),
+                NetworkProfile = new ContainerServiceNetworkProfile
+                {
+                    ServiceCidr = "10.1.0.0/16",
+                    DnsServiceIP = "10.1.0.10",
+                    DockerBridgeCidr = "172.17.0.1/16"
+                },
+                AddonProfiles =
+                {
+                    { "IngressApplicationGateway", new ManagedClusterAddonProfile(isEnabled: true)
+                    {
+                        Config =
+                        {
+                            {"applicationGatewayId", "/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/deleteme0225/providers/Microsoft.Network/applicationGateways/AGICTest" },
+                            {"userAssignedIdentities", kubernetId.Id }
+                        }
+                    }
+                    }
+                },
             };
             var lro = await resourceGroup.GetContainerServiceManagedClusters().CreateOrUpdateAsync(WaitUntil.Completed, clusterName, clusterData);
             return lro.Value;
