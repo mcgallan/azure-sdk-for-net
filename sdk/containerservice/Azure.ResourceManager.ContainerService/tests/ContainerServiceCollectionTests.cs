@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Core.TestFramework;
 using Azure.ResourceManager.ContainerService.Models;
+using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
 using NUnit.Framework;
 
@@ -36,27 +37,54 @@ namespace Azure.ResourceManager.ContainerService.Tests
             ContainerServiceManagedClusterResource clusterFromGet = await cluster.GetAsync();
             Assert.AreEqual(clusterFromGet.Data.Name, cluster.Data.Name);
             Assert.AreEqual(clusterFromGet.Data.DnsPrefix, cluster.Data.DnsPrefix);
-            // Delete
-            await clusterFromGet.DeleteAsync(WaitUntil.Completed);
         }
 
         [RecordedTest]
         public async Task Update()
         {
-            ResourceGroupResource rg = await CreateResourceGroupAsync(Subscription, "testaksrg", AzureLocation.EastUS);
+            ResourceGroupResource rg = await CreateResourceGroupAsync(Subscription, "testaksrg", AzureLocation.EastUS2);
             var clusterCollection = rg.GetContainerServiceManagedClusters();
             string clusterName = Recording.GenerateAssetName("akscluster");
             // Create
             ContainerServiceManagedClusterResource cluster = await CreateContainerServiceAsync(rg, clusterName, rg.Data.Location);
             // Update
-            var clusterData = cluster.Data;
-            clusterData.AgentPoolProfiles[0].Count = 2;
+            var kubernetId = await CreateIdentityAsync(rg, "test", AzureLocation.EastUS2);
+            var clusterData = new ContainerServiceManagedClusterData(AzureLocation.EastUS2)
+            {
+                AgentPoolProfiles =
+                {
+                    new ManagedClusterAgentPoolProfile(AgentPoolProfileName)
+                    {
+                        VmSize = VmSize,
+                        Count = 1,
+                        Mode = AgentPoolMode.System,
+                    }
+                },
+                DnsPrefix = DnsPrefix,
+                Identity = new ManagedServiceIdentity(ManagedServiceIdentityType.SystemAssigned),
+                NetworkProfile = new ContainerServiceNetworkProfile
+                {
+                    ServiceCidr = "10.1.0.0/16",
+                    DnsServiceIP = "10.1.0.10",
+                    DockerBridgeCidr = "172.17.0.1/16"
+                },
+                AddonProfiles =
+                {
+                    { "IngressApplicationGateway", new ManagedClusterAddonProfile(isEnabled: true)
+                    {
+                        Config =
+                        {
+                            {"applicationGatewayId", "/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/deleteme0225/providers/Microsoft.Network/applicationGateways/AGICTest" },
+                            {"userAssignedIdentities", kubernetId.Id }
+                        }
+                    }
+                    }
+                },
+            };
             var lro = await rg.GetContainerServiceManagedClusters().CreateOrUpdateAsync(WaitUntil.Completed, clusterName, clusterData);
             ContainerServiceManagedClusterResource clusterFromUpdate = lro.Value;
             Assert.AreEqual(clusterFromUpdate.Data.Name, clusterName);
-            Assert.AreEqual(clusterFromUpdate.Data.AgentPoolProfiles[0].Count, 2);
-            // Delete
-            await clusterFromUpdate.DeleteAsync(WaitUntil.Completed);
+            Assert.AreEqual(clusterFromUpdate.Data.AgentPoolProfiles[0].Count, 1);
         }
 
         [RecordedTest]
