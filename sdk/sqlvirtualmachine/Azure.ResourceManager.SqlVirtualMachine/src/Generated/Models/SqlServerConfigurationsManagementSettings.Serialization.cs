@@ -59,6 +59,11 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Models
                 writer.WritePropertyName("sqlInstanceSettings"u8);
                 writer.WriteObjectValue(SqlInstanceSettings, options);
             }
+            if (Optional.IsDefined(AzureAdAuthenticationSettings))
+            {
+                writer.WritePropertyName("azureAdAuthenticationSettings"u8);
+                writer.WriteObjectValue(AzureAdAuthenticationSettings, options);
+            }
             if (options.Format != "W" && _serializedAdditionalRawData != null)
             {
                 foreach (var item in _serializedAdditionalRawData)
@@ -101,6 +106,7 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Models
             SqlStorageUpdateSettings sqlStorageUpdateSettings = default;
             AdditionalFeaturesServerConfigurations additionalFeaturesServerConfigurations = default;
             SqlInstanceSettings sqlInstanceSettings = default;
+            AADAuthenticationSettings azureAdAuthenticationSettings = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -150,6 +156,15 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Models
                     sqlInstanceSettings = SqlInstanceSettings.DeserializeSqlInstanceSettings(property.Value, options);
                     continue;
                 }
+                if (property.NameEquals("azureAdAuthenticationSettings"u8))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    azureAdAuthenticationSettings = AADAuthenticationSettings.DeserializeAADAuthenticationSettings(property.Value, options);
+                    continue;
+                }
                 if (options.Format != "W")
                 {
                     rawDataDictionary.Add(property.Name, BinaryData.FromString(property.Value.GetRawText()));
@@ -162,6 +177,7 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Models
                 sqlStorageUpdateSettings,
                 additionalFeaturesServerConfigurations,
                 sqlInstanceSettings,
+                azureAdAuthenticationSettings,
                 serializedAdditionalRawData);
         }
 

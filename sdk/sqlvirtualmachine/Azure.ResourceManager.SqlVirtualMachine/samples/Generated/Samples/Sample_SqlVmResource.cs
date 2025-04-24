@@ -20,7 +20,7 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Samples
         [Ignore("Only validating compilation of examples")]
         public async Task Get_GetsASQLVirtualMachine()
         {
-            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/GetSqlVirtualMachine.json
+            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2023-10-01/examples/GetSqlVirtualMachine.json
             // this example is just showing the usage of "SqlVirtualMachines_Get" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
@@ -50,7 +50,7 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Samples
         [Ignore("Only validating compilation of examples")]
         public async Task Delete_DeletesASQLVirtualMachine()
         {
-            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/DeleteSqlVirtualMachine.json
+            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2023-10-01/examples/DeleteSqlVirtualMachine.json
             // this example is just showing the usage of "SqlVirtualMachines_Delete" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
@@ -76,7 +76,7 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Samples
         [Ignore("Only validating compilation of examples")]
         public async Task Update_UpdatesASQLVirtualMachineTags()
         {
-            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/UpdateSqlVirtualMachine.json
+            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2023-10-01/examples/UpdateSqlVirtualMachine.json
             // this example is just showing the usage of "SqlVirtualMachines_Update" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
@@ -112,9 +112,65 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task Redeploy_UninstallsAndReinstallsTheSQLIaasExtension()
+        public async Task StartAssessment_StartsSQLBestPracticesAssessmentOnSQLVirtualMachine()
         {
-            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/RedeploySqlVirtualMachine.json
+            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2023-10-01/examples/StartAssessmentOnSqlVirtualMachine.json
+            // this example is just showing the usage of "SqlVirtualMachines_StartAssessment" operation, for the dependent resources, they will have to be created separately.
+
+            // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+            TokenCredential cred = new DefaultAzureCredential();
+            // authenticate your client
+            ArmClient client = new ArmClient(cred);
+
+            // this example assumes you already have this SqlVmResource created on azure
+            // for more information of creating SqlVmResource, please refer to the document of SqlVmResource
+            string subscriptionId = "00000000-1111-2222-3333-444444444444";
+            string resourceGroupName = "testrg";
+            string sqlVmName = "testvm";
+            ResourceIdentifier sqlVmResourceId = SqlVmResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sqlVmName);
+            SqlVmResource sqlVm = client.GetSqlVmResource(sqlVmResourceId);
+
+            // invoke the operation
+            await sqlVm.StartAssessmentAsync(WaitUntil.Completed);
+
+            Console.WriteLine("Succeeded");
+        }
+
+        [Test]
+        [Ignore("Only validating compilation of examples")]
+        public async Task FetchDCAssessment_StartsSQLBestPracticesAssessmentWithDiskConfigRulesOnSQLVirtualMachine()
+        {
+            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2023-10-01/examples/StartDiskConfigAssessmentOnSqlVirtualMachine.json
+            // this example is just showing the usage of "SqlVirtualMachines_FetchDCAssessment" operation, for the dependent resources, they will have to be created separately.
+
+            // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+            TokenCredential cred = new DefaultAzureCredential();
+            // authenticate your client
+            ArmClient client = new ArmClient(cred);
+
+            // this example assumes you already have this SqlVmResource created on azure
+            // for more information of creating SqlVmResource, please refer to the document of SqlVmResource
+            string subscriptionId = "00000000-1111-2222-3333-444444444444";
+            string resourceGroupName = "testrg";
+            string sqlVmName = "testvm";
+            ResourceIdentifier sqlVmResourceId = SqlVmResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sqlVmName);
+            SqlVmResource sqlVm = client.GetSqlVmResource(sqlVmResourceId);
+
+            // invoke the operation
+            DiskConfigAssessmentContent content = new DiskConfigAssessmentContent
+            {
+                RunDiskConfigRules = false,
+            };
+            await sqlVm.FetchDCAssessmentAsync(WaitUntil.Completed, content);
+
+            Console.WriteLine("Succeeded");
+        }
+
+        [Test]
+        [Ignore("Only validating compilation of examples")]
+        public async Task Redeploy_UninstallsAndReinstallsTheSQLIaaSExtension()
+        {
+            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2023-10-01/examples/RedeploySqlVirtualMachine.json
             // this example is just showing the usage of "SqlVirtualMachines_Redeploy" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
@@ -138,10 +194,10 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task StartAssessment_StartsAssessmentOnSQLVirtualMachine()
+        public async Task TroubleshootSqlVirtualMachineTroubleshoot_StartSQLVirtualMachineTroubleshootingOperation()
         {
-            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/StartAssessmentOnSqlVirtualMachine.json
-            // this example is just showing the usage of "SqlVirtualMachines_StartAssessment" operation, for the dependent resources, they will have to be created separately.
+            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2023-10-01/examples/TroubleshootSqlVirtualMachine.json
+            // this example is just showing the usage of "SqlVirtualMachineTroubleshoot_Troubleshoot" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
             TokenCredential cred = new DefaultAzureCredential();
@@ -157,9 +213,17 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Samples
             SqlVmResource sqlVm = client.GetSqlVmResource(sqlVmResourceId);
 
             // invoke the operation
-            await sqlVm.StartAssessmentAsync(WaitUntil.Completed);
+            SqlVmTroubleshooting sqlVmTroubleshooting = new SqlVmTroubleshooting
+            {
+                StartTimeUtc = DateTimeOffset.Parse("2023-07-09T17:10:00Z"),
+                EndTimeUtc = DateTimeOffset.Parse("2023-07-09T22:10:00Z"),
+                TroubleshootingScenario = TroubleshootingScenario.UnhealthyReplica,
+                UnhealthyReplicaInfoAvailabilityGroupName = "AG1",
+            };
+            ArmOperation<SqlVmTroubleshooting> lro = await sqlVm.TroubleshootSqlVirtualMachineTroubleshootAsync(WaitUntil.Completed, sqlVmTroubleshooting);
+            SqlVmTroubleshooting result = lro.Value;
 
-            Console.WriteLine("Succeeded");
+            Console.WriteLine($"Succeeded: {result}");
         }
     }
 }

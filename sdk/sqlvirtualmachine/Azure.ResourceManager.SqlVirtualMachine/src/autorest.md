@@ -8,7 +8,7 @@ azure-arm: true
 csharp: true
 library-name: SqlVirtualMachine
 namespace: Azure.ResourceManager.SqlVirtualMachine
-require: https://github.com/Azure/azure-rest-api-specs/blob/bab2f4389eb5ca73cdf366ec0a4af3f3eb6e1f6d/specification/sqlvirtualmachine/resource-manager/readme.md
+require: https://github.com/Azure/azure-rest-api-specs/blob/29bc17223449e7a865a6f38552eacfd213d812fd/specification/sqlvirtualmachine/resource-manager/readme.md
 output-folder: $(this-folder)/Generated
 clear-output-folder: true
 sample-gen:

@@ -41,7 +41,8 @@ namespace Azure.ResourceManager.SqlVirtualMachine
             if (Optional.IsDefined(Identity))
             {
                 writer.WritePropertyName("identity"u8);
-                JsonSerializer.Serialize(writer, Identity);
+                var serializeOptions = new JsonSerializerOptions { Converters = { new ManagedServiceIdentityTypeV3Converter() } };
+                JsonSerializer.Serialize(writer, Identity, serializeOptions);
             }
             writer.WritePropertyName("properties"u8);
             writer.WriteStartObject();
@@ -69,6 +70,11 @@ namespace Azure.ResourceManager.SqlVirtualMachine
             {
                 writer.WritePropertyName("sqlManagement"u8);
                 writer.WriteStringValue(SqlManagement.Value.ToString());
+            }
+            if (Optional.IsDefined(LeastPrivilegeMode))
+            {
+                writer.WritePropertyName("leastPrivilegeMode"u8);
+                writer.WriteStringValue(LeastPrivilegeMode.Value.ToString());
             }
             if (Optional.IsDefined(SqlImageSku))
             {
@@ -115,10 +121,35 @@ namespace Azure.ResourceManager.SqlVirtualMachine
                 writer.WritePropertyName("storageConfigurationSettings"u8);
                 writer.WriteObjectValue(StorageConfigurationSettings, options);
             }
+            if (options.Format != "W" && Optional.IsDefined(TroubleshootingStatus))
+            {
+                writer.WritePropertyName("troubleshootingStatus"u8);
+                writer.WriteObjectValue(TroubleshootingStatus, options);
+            }
             if (Optional.IsDefined(AssessmentSettings))
             {
                 writer.WritePropertyName("assessmentSettings"u8);
                 writer.WriteObjectValue(AssessmentSettings, options);
+            }
+            if (Optional.IsDefined(EnableAutomaticUpgrade))
+            {
+                writer.WritePropertyName("enableAutomaticUpgrade"u8);
+                writer.WriteBooleanValue(EnableAutomaticUpgrade.Value);
+            }
+            if (options.Format != "W" && Optional.IsDefined(AdditionalVmPatch))
+            {
+                writer.WritePropertyName("additionalVmPatch"u8);
+                writer.WriteStringValue(AdditionalVmPatch.Value.ToString());
+            }
+            if (Optional.IsDefined(VirtualMachineIdentitySettings))
+            {
+                writer.WritePropertyName("virtualMachineIdentitySettings"u8);
+                writer.WriteObjectValue(VirtualMachineIdentitySettings, options);
+            }
+            if (options.Format != "W" && Optional.IsDefined(OSType))
+            {
+                writer.WritePropertyName("osType"u8);
+                writer.WriteStringValue(OSType.Value.ToSerialString());
             }
             writer.WriteEndObject();
         }
@@ -155,6 +186,7 @@ namespace Azure.ResourceManager.SqlVirtualMachine
             string sqlImageOffer = default;
             SqlServerLicenseType? sqlServerLicenseType = default;
             SqlManagementMode? sqlManagement = default;
+            LeastPrivilegeMode? leastPrivilegeMode = default;
             SqlImageSku? sqlImageSku = default;
             ResourceIdentifier sqlVmGroupResourceId = default;
             WindowsServerFailoverClusterDomainCredentials windowsServerFailoverClusterDomainCredentials = default;
@@ -164,7 +196,12 @@ namespace Azure.ResourceManager.SqlVirtualMachine
             SqlVmKeyVaultCredentialSettings keyVaultCredentialSettings = default;
             SqlServerConfigurationsManagementSettings serverConfigurationsManagementSettings = default;
             SqlVmStorageConfigurationSettings storageConfigurationSettings = default;
+            TroubleshootingStatus troubleshootingStatus = default;
             SqlVmAssessmentSettings assessmentSettings = default;
+            bool? enableAutomaticUpgrade = default;
+            AdditionalOSPatch? additionalVmPatch = default;
+            VirtualMachineIdentity virtualMachineIdentitySettings = default;
+            OSType? osType = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -175,7 +212,8 @@ namespace Azure.ResourceManager.SqlVirtualMachine
                     {
                         continue;
                     }
-                    identity = JsonSerializer.Deserialize<ManagedServiceIdentity>(property.Value.GetRawText());
+                    var serializeOptions = new JsonSerializerOptions { Converters = { new ManagedServiceIdentityTypeV3Converter() } };
+                    identity = JsonSerializer.Deserialize<ManagedServiceIdentity>(property.Value.GetRawText(), serializeOptions);
                     continue;
                 }
                 if (property.NameEquals("tags"u8))
@@ -267,6 +305,15 @@ namespace Azure.ResourceManager.SqlVirtualMachine
                             sqlManagement = new SqlManagementMode(property0.Value.GetString());
                             continue;
                         }
+                        if (property0.NameEquals("leastPrivilegeMode"u8))
+                        {
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                continue;
+                            }
+                            leastPrivilegeMode = new LeastPrivilegeMode(property0.Value.GetString());
+                            continue;
+                        }
                         if (property0.NameEquals("sqlImageSku"u8))
                         {
                             if (property0.Value.ValueKind == JsonValueKind.Null)
@@ -348,6 +395,15 @@ namespace Azure.ResourceManager.SqlVirtualMachine
                             storageConfigurationSettings = SqlVmStorageConfigurationSettings.DeserializeSqlVmStorageConfigurationSettings(property0.Value, options);
                             continue;
                         }
+                        if (property0.NameEquals("troubleshootingStatus"u8))
+                        {
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                continue;
+                            }
+                            troubleshootingStatus = TroubleshootingStatus.DeserializeTroubleshootingStatus(property0.Value, options);
+                            continue;
+                        }
                         if (property0.NameEquals("assessmentSettings"u8))
                         {
                             if (property0.Value.ValueKind == JsonValueKind.Null)
@@ -355,6 +411,42 @@ namespace Azure.ResourceManager.SqlVirtualMachine
                                 continue;
                             }
                             assessmentSettings = SqlVmAssessmentSettings.DeserializeSqlVmAssessmentSettings(property0.Value, options);
+                            continue;
+                        }
+                        if (property0.NameEquals("enableAutomaticUpgrade"u8))
+                        {
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                continue;
+                            }
+                            enableAutomaticUpgrade = property0.Value.GetBoolean();
+                            continue;
+                        }
+                        if (property0.NameEquals("additionalVmPatch"u8))
+                        {
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                continue;
+                            }
+                            additionalVmPatch = new AdditionalOSPatch(property0.Value.GetString());
+                            continue;
+                        }
+                        if (property0.NameEquals("virtualMachineIdentitySettings"u8))
+                        {
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                continue;
+                            }
+                            virtualMachineIdentitySettings = VirtualMachineIdentity.DeserializeVirtualMachineIdentity(property0.Value, options);
+                            continue;
+                        }
+                        if (property0.NameEquals("osType"u8))
+                        {
+                            if (property0.Value.ValueKind == JsonValueKind.Null)
+                            {
+                                continue;
+                            }
+                            osType = property0.Value.GetString().ToOSType();
                             continue;
                         }
                     }
@@ -379,6 +471,7 @@ namespace Azure.ResourceManager.SqlVirtualMachine
                 sqlImageOffer,
                 sqlServerLicenseType,
                 sqlManagement,
+                leastPrivilegeMode,
                 sqlImageSku,
                 sqlVmGroupResourceId,
                 windowsServerFailoverClusterDomainCredentials,
@@ -388,7 +481,12 @@ namespace Azure.ResourceManager.SqlVirtualMachine
                 keyVaultCredentialSettings,
                 serverConfigurationsManagementSettings,
                 storageConfigurationSettings,
+                troubleshootingStatus,
                 assessmentSettings,
+                enableAutomaticUpgrade,
+                additionalVmPatch,
+                virtualMachineIdentitySettings,
+                osType,
                 serializedAdditionalRawData);
         }
 

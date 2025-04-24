@@ -20,7 +20,7 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Samples
         [Ignore("Only validating compilation of examples")]
         public async Task GetSqlVmGroups_GetsAllSQLVirtualMachineGroupsInASubscription()
         {
-            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/ListSubscriptionSqlVirtualMachineGroup.json
+            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2023-10-01/examples/ListSubscriptionSqlVirtualMachineGroup.json
             // this example is just showing the usage of "SqlVirtualMachineGroups_List" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
@@ -51,7 +51,7 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Samples
         [Ignore("Only validating compilation of examples")]
         public async Task GetSqlVms_GetsAllSQLVirtualMachinesInASubscription()
         {
-            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2022-02-01/examples/ListSubscriptionSqlVirtualMachine.json
+            // Generated from example definition: specification/sqlvirtualmachine/resource-manager/Microsoft.SqlVirtualMachine/stable/2023-10-01/examples/ListSubscriptionSqlVirtualMachine.json
             // this example is just showing the usage of "SqlVirtualMachines_List" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line

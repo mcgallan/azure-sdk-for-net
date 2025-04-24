@@ -54,6 +54,11 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Models
                 writer.WritePropertyName("maintenanceWindowDuration"u8);
                 writer.WriteNumberValue(MaintenanceWindowDurationInMinutes.Value);
             }
+            if (Optional.IsDefined(AdditionalVmPatch))
+            {
+                writer.WritePropertyName("additionalVmPatch"u8);
+                writer.WriteStringValue(AdditionalVmPatch.Value.ToString());
+            }
             if (options.Format != "W" && _serializedAdditionalRawData != null)
             {
                 foreach (var item in _serializedAdditionalRawData)
@@ -95,6 +100,7 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Models
             SqlVmAutoPatchingDayOfWeek? dayOfWeek = default;
             int? maintenanceWindowStartingHour = default;
             int? maintenanceWindowDuration = default;
+            AdditionalVmPatch? additionalVmPatch = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -135,13 +141,28 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Models
                     maintenanceWindowDuration = property.Value.GetInt32();
                     continue;
                 }
+                if (property.NameEquals("additionalVmPatch"u8))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    additionalVmPatch = new AdditionalVmPatch(property.Value.GetString());
+                    continue;
+                }
                 if (options.Format != "W")
                 {
                     rawDataDictionary.Add(property.Name, BinaryData.FromString(property.Value.GetRawText()));
                 }
             }
             serializedAdditionalRawData = rawDataDictionary;
-            return new SqlVmAutoPatchingSettings(enable, dayOfWeek, maintenanceWindowStartingHour, maintenanceWindowDuration, serializedAdditionalRawData);
+            return new SqlVmAutoPatchingSettings(
+                enable,
+                dayOfWeek,
+                maintenanceWindowStartingHour,
+                maintenanceWindowDuration,
+                additionalVmPatch,
+                serializedAdditionalRawData);
         }
 
         BinaryData IPersistableModel<SqlVmAutoPatchingSettings>.Write(ModelReaderWriterOptions options)
