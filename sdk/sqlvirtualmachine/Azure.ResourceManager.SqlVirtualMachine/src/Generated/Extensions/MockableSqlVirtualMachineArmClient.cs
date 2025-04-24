@@ -35,18 +35,6 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Mocking
         }
 
         /// <summary>
-        /// Gets an object representing an <see cref="AvailabilityGroupListenerResource"/> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="AvailabilityGroupListenerResource.CreateResourceIdentifier" /> to create an <see cref="AvailabilityGroupListenerResource"/> <see cref="ResourceIdentifier"/> from its components.
-        /// </summary>
-        /// <param name="id"> The resource ID of the resource to get. </param>
-        /// <returns> Returns a <see cref="AvailabilityGroupListenerResource"/> object. </returns>
-        public virtual AvailabilityGroupListenerResource GetAvailabilityGroupListenerResource(ResourceIdentifier id)
-        {
-            AvailabilityGroupListenerResource.ValidateResourceId(id);
-            return new AvailabilityGroupListenerResource(Client, id);
-        }
-
-        /// <summary>
         /// Gets an object representing a <see cref="SqlVmGroupResource"/> along with the instance operations that can be performed on it but with no data.
         /// You can use <see cref="SqlVmGroupResource.CreateResourceIdentifier" /> to create a <see cref="SqlVmGroupResource"/> <see cref="ResourceIdentifier"/> from its components.
         /// </summary>
@@ -68,6 +56,18 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Mocking
         {
             SqlVmResource.ValidateResourceId(id);
             return new SqlVmResource(Client, id);
+        }
+
+        /// <summary>
+        /// Gets an object representing an <see cref="AvailabilityGroupListenerResource"/> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="AvailabilityGroupListenerResource.CreateResourceIdentifier" /> to create an <see cref="AvailabilityGroupListenerResource"/> <see cref="ResourceIdentifier"/> from its components.
+        /// </summary>
+        /// <param name="id"> The resource ID of the resource to get. </param>
+        /// <returns> Returns a <see cref="AvailabilityGroupListenerResource"/> object. </returns>
+        public virtual AvailabilityGroupListenerResource GetAvailabilityGroupListenerResource(ResourceIdentifier id)
+        {
+            AvailabilityGroupListenerResource.ValidateResourceId(id);
+            return new AvailabilityGroupListenerResource(Client, id);
         }
     }
 }

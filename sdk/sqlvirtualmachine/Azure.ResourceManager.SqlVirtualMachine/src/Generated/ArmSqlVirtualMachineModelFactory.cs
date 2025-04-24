@@ -18,40 +18,6 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Models
     /// <summary> Model factory for models. </summary>
     public static partial class ArmSqlVirtualMachineModelFactory
     {
-        /// <summary> Initializes a new instance of <see cref="SqlVirtualMachine.AvailabilityGroupListenerData"/>. </summary>
-        /// <param name="id"> The id. </param>
-        /// <param name="name"> The name. </param>
-        /// <param name="resourceType"> The resourceType. </param>
-        /// <param name="systemData"> The systemData. </param>
-        /// <param name="provisioningState"> Provisioning state to track the async operation status. </param>
-        /// <param name="availabilityGroupName"> Name of the availability group. </param>
-        /// <param name="loadBalancerConfigurations"> List of load balancer configurations for an availability group listener. </param>
-        /// <param name="multiSubnetIPConfigurations"> List of multi subnet IP configurations for an AG listener. </param>
-        /// <param name="createDefaultAvailabilityGroupIfNotExist"> Create a default availability group if it does not exist. </param>
-        /// <param name="port"> Listener port. </param>
-        /// <param name="availabilityGroupReplicas"> Availability Group configuration. </param>
-        /// <returns> A new <see cref="SqlVirtualMachine.AvailabilityGroupListenerData"/> instance for mocking. </returns>
-        public static AvailabilityGroupListenerData AvailabilityGroupListenerData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, string provisioningState = null, string availabilityGroupName = null, IEnumerable<AvailabilityGroupListenerLoadBalancerConfiguration> loadBalancerConfigurations = null, IEnumerable<MultiSubnetIPConfiguration> multiSubnetIPConfigurations = null, bool? createDefaultAvailabilityGroupIfNotExist = null, int? port = null, IEnumerable<AvailabilityGroupReplica> availabilityGroupReplicas = null)
-        {
-            loadBalancerConfigurations ??= new List<AvailabilityGroupListenerLoadBalancerConfiguration>();
-            multiSubnetIPConfigurations ??= new List<MultiSubnetIPConfiguration>();
-            availabilityGroupReplicas ??= new List<AvailabilityGroupReplica>();
-
-            return new AvailabilityGroupListenerData(
-                id,
-                name,
-                resourceType,
-                systemData,
-                provisioningState,
-                availabilityGroupName,
-                loadBalancerConfigurations?.ToList(),
-                multiSubnetIPConfigurations?.ToList(),
-                createDefaultAvailabilityGroupIfNotExist,
-                port,
-                availabilityGroupReplicas != null ? new AvailabilityGroupConfiguration(availabilityGroupReplicas?.ToList(), serializedAdditionalRawData: null) : null,
-                serializedAdditionalRawData: null);
-        }
-
         /// <summary> Initializes a new instance of <see cref="SqlVirtualMachine.SqlVmGroupData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
@@ -171,6 +137,40 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Models
                 endTimeUtc,
                 troubleshootingScenario,
                 unhealthyReplicaInfoAvailabilityGroupName != null ? new TroubleshootingAdditionalProperties(new UnhealthyReplicaInfo(unhealthyReplicaInfoAvailabilityGroupName, serializedAdditionalRawData: null), serializedAdditionalRawData: null) : null,
+                serializedAdditionalRawData: null);
+        }
+
+        /// <summary> Initializes a new instance of <see cref="SqlVirtualMachine.AvailabilityGroupListenerData"/>. </summary>
+        /// <param name="id"> The id. </param>
+        /// <param name="name"> The name. </param>
+        /// <param name="resourceType"> The resourceType. </param>
+        /// <param name="systemData"> The systemData. </param>
+        /// <param name="provisioningState"> Provisioning state to track the async operation status. </param>
+        /// <param name="availabilityGroupName"> Name of the availability group. </param>
+        /// <param name="loadBalancerConfigurations"> List of load balancer configurations for an availability group listener. </param>
+        /// <param name="multiSubnetIPConfigurations"> List of multi subnet IP configurations for an AG listener. </param>
+        /// <param name="createDefaultAvailabilityGroupIfNotExist"> Create a default availability group if it does not exist. </param>
+        /// <param name="port"> Listener port. </param>
+        /// <param name="availabilityGroupReplicas"> Availability Group configuration. </param>
+        /// <returns> A new <see cref="SqlVirtualMachine.AvailabilityGroupListenerData"/> instance for mocking. </returns>
+        public static AvailabilityGroupListenerData AvailabilityGroupListenerData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, string provisioningState = null, string availabilityGroupName = null, IEnumerable<AvailabilityGroupListenerLoadBalancerConfiguration> loadBalancerConfigurations = null, IEnumerable<MultiSubnetIPConfiguration> multiSubnetIPConfigurations = null, bool? createDefaultAvailabilityGroupIfNotExist = null, int? port = null, IEnumerable<AvailabilityGroupReplica> availabilityGroupReplicas = null)
+        {
+            loadBalancerConfigurations ??= new List<AvailabilityGroupListenerLoadBalancerConfiguration>();
+            multiSubnetIPConfigurations ??= new List<MultiSubnetIPConfiguration>();
+            availabilityGroupReplicas ??= new List<AvailabilityGroupReplica>();
+
+            return new AvailabilityGroupListenerData(
+                id,
+                name,
+                resourceType,
+                systemData,
+                provisioningState,
+                availabilityGroupName,
+                loadBalancerConfigurations?.ToList(),
+                multiSubnetIPConfigurations?.ToList(),
+                createDefaultAvailabilityGroupIfNotExist,
+                port,
+                availabilityGroupReplicas != null ? new AvailabilityGroupConfiguration(availabilityGroupReplicas?.ToList(), serializedAdditionalRawData: null) : null,
                 serializedAdditionalRawData: null);
         }
 
