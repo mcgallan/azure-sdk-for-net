@@ -76,8 +76,8 @@ namespace Azure.ResourceManager.SqlVirtualMachine
         }
 
         /// <summary> Starts SQL virtual machine troubleshooting. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
-        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="subscriptionId"> Subscription ID that identifies an Azure subscription. </param>
+        /// <param name="resourceGroupName"> Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. </param>
         /// <param name="sqlVmName"> Name of the SQL virtual machine. </param>
         /// <param name="sqlVmTroubleshooting"> The SQL virtual machine troubleshooting entity. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
@@ -103,8 +103,8 @@ namespace Azure.ResourceManager.SqlVirtualMachine
         }
 
         /// <summary> Starts SQL virtual machine troubleshooting. </summary>
-        /// <param name="subscriptionId"> The ID of the target subscription. </param>
-        /// <param name="resourceGroupName"> The name of the resource group. The name is case insensitive. </param>
+        /// <param name="subscriptionId"> Subscription ID that identifies an Azure subscription. </param>
+        /// <param name="resourceGroupName"> Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. </param>
         /// <param name="sqlVmName"> Name of the SQL virtual machine. </param>
         /// <param name="sqlVmTroubleshooting"> The SQL virtual machine troubleshooting entity. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>

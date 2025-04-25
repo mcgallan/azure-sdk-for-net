@@ -7,11 +7,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Azure.ResourceManager.SqlVirtualMachine.Models
 {
-    /// <summary> The response of a AvailabilityGroupListener list operation. </summary>
+    /// <summary> A list of availability group listeners. </summary>
     internal partial class AvailabilityGroupListenerListResult
     {
         /// <summary>
@@ -47,34 +46,25 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Models
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
         /// <summary> Initializes a new instance of <see cref="AvailabilityGroupListenerListResult"/>. </summary>
-        /// <param name="value"> The AvailabilityGroupListener items on this page. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="value"/> is null. </exception>
-        internal AvailabilityGroupListenerListResult(IEnumerable<AvailabilityGroupListenerData> value)
+        internal AvailabilityGroupListenerListResult()
         {
-            Argument.AssertNotNull(value, nameof(value));
-
-            Value = value.ToList();
+            Value = new ChangeTrackingList<AvailabilityGroupListenerData>();
         }
 
         /// <summary> Initializes a new instance of <see cref="AvailabilityGroupListenerListResult"/>. </summary>
-        /// <param name="value"> The AvailabilityGroupListener items on this page. </param>
-        /// <param name="nextLink"> The link to the next page of items. </param>
+        /// <param name="value"> Array of results. </param>
+        /// <param name="nextLink"> Link to retrieve next page of results. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal AvailabilityGroupListenerListResult(IReadOnlyList<AvailabilityGroupListenerData> value, Uri nextLink, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal AvailabilityGroupListenerListResult(IReadOnlyList<AvailabilityGroupListenerData> value, string nextLink, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             Value = value;
             NextLink = nextLink;
             _serializedAdditionalRawData = serializedAdditionalRawData;
         }
 
-        /// <summary> Initializes a new instance of <see cref="AvailabilityGroupListenerListResult"/> for deserialization. </summary>
-        internal AvailabilityGroupListenerListResult()
-        {
-        }
-
-        /// <summary> The AvailabilityGroupListener items on this page. </summary>
+        /// <summary> Array of results. </summary>
         public IReadOnlyList<AvailabilityGroupListenerData> Value { get; }
-        /// <summary> The link to the next page of items. </summary>
-        public Uri NextLink { get; }
+        /// <summary> Link to retrieve next page of results. </summary>
+        public string NextLink { get; }
     }
 }
