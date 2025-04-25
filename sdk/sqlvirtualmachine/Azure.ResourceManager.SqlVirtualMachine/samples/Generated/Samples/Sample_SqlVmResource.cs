@@ -100,7 +100,8 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Samples
 ["mytag"] = "myval"
 },
             };
-            SqlVmResource result = await sqlVm.UpdateAsync(patch);
+            ArmOperation<SqlVmResource> lro = await sqlVm.UpdateAsync(WaitUntil.Completed, patch);
+            SqlVmResource result = lro.Value;
 
             // the variable result is a resource, you could call other operations on this instance as well
             // but just for demo, we get its data from this resource instance
