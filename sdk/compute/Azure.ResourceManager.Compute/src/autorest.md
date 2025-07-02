@@ -15,7 +15,7 @@ require: https://github.com/Azure/azure-rest-api-specs/blob/883abbe08d313739069c
 output-folder: $(this-folder)/Generated
 clear-output-folder: true
 sample-gen:
-  output-folder: $(this-folder)/../samples/Generated
+  output-folder: $(this-folder)/../tests/Generated
   clear-output-folder: true
 skip-csproj: true
 modelerfour:
@@ -306,7 +306,7 @@ rename-mapping:
   Modes: HostEndpointSettingsMode
   Expand: GetVirtualMachineImagesWithPropertiesExpand
   RebalanceBehavior: VmssRebalanceBehavior
-  RebalanceStrategy: VmssRebalanceStrategy 
+  RebalanceStrategy: VmssRebalanceStrategy
 
 directive:
 # copy the systemData from common-types here so that it will be automatically replaced
@@ -424,6 +424,8 @@ directive:
       $.VirtualMachineScaleSetProperties.additionalProperties = true;
       $.VirtualMachineScaleSet.properties.properties["x-ms-client-flatten"] = false;
       $.VirtualMachineScaleSetUpdate.properties.properties["x-ms-client-flatten"] = false;
+      $.VirtualMachineScaleSetVM.properties.properties["x-ms-client-flatten"] = false;
+      $.VirtualMachineScaleSetVMProperties.additionalProperties = true;
       $.UpgradePolicy.additionalProperties = true;
   - from: computeRPCommon.json
     where: $.definitions.VMSizeProperties

@@ -1,5 +1,11 @@
 namespace Azure.Data.Tables
 {
+    public partial class AzureDataTablesContext : System.ClientModel.Primitives.ModelReaderWriterContext
+    {
+        internal AzureDataTablesContext() { }
+        public static Azure.Data.Tables.AzureDataTablesContext Default { get { throw null; } }
+        protected override bool TryGetTypeBuilderCore(System.Type type, out System.ClientModel.Primitives.ModelReaderWriterTypeBuilder builder) { throw null; }
+    }
     public partial interface ITableEntity
     {
         Azure.ETag ETag { get; set; }
@@ -303,8 +309,12 @@ namespace Azure.Data.Tables.Models
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         public override int GetHashCode() { throw null; }
         public static bool operator ==(Azure.Data.Tables.Models.TableErrorCode left, Azure.Data.Tables.Models.TableErrorCode right) { throw null; }
+        public static bool operator ==(Azure.Data.Tables.Models.TableErrorCode code, string value) { throw null; }
+        public static bool operator ==(string value, Azure.Data.Tables.Models.TableErrorCode code) { throw null; }
         public static implicit operator Azure.Data.Tables.Models.TableErrorCode (string value) { throw null; }
         public static bool operator !=(Azure.Data.Tables.Models.TableErrorCode left, Azure.Data.Tables.Models.TableErrorCode right) { throw null; }
+        public static bool operator !=(Azure.Data.Tables.Models.TableErrorCode code, string value) { throw null; }
+        public static bool operator !=(string value, Azure.Data.Tables.Models.TableErrorCode code) { throw null; }
         public override string ToString() { throw null; }
     }
     public partial class TableGeoReplicationInfo

@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
 using Azure.Core.Pipeline;
+using Parameters.BodyOptionality;
 
-namespace Parameters.BodyOptionality
+namespace Parameters.BodyOptionality._OptionalExplicit
 {
     public partial class OptionalExplicit
     {
         protected OptionalExplicit() => throw null;
 
-        public HttpPipeline Pipeline => throw null;
+        public virtual HttpPipeline Pipeline => throw null;
 
         public virtual Response Set(RequestContent content, RequestContext context = null) => throw null;
 

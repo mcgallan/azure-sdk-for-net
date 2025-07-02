@@ -18,6 +18,7 @@ using Azure.Core.Pipeline;
 using Azure.Core.TestFramework;
 using Azure.Identity.Tests.Mock;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Identity.Client;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 
@@ -211,7 +212,7 @@ namespace Azure.Identity.Tests
             Assert.AreEqual(request.Uri.Path, "/metadata/identity/oauth2/token");
             Assert.IsTrue(query.Contains("api-version=2018-02-01"));
             Assert.IsTrue(query.Contains($"resource={ScopeUtilities.ScopesToResource(MockScopes.Default)}"));
-            Assert.That(Uri.UnescapeDataString(query), Does.Contain($"{Constants.ManagedIdentityResourceId}={_expectedResourceId}"));
+            Assert.That(Uri.UnescapeDataString(query), Does.Contain($"_res_id={_expectedResourceId}"));
         }
 
         [NonParallelizable]
@@ -449,16 +450,11 @@ namespace Azure.Identity.Tests
             var options = new TokenCredentialOptions() { Transport = mockTransport, IsChainedCredential = true };
             var pipeline = CredentialPipeline.GetInstance(options);
 
-            ManagedIdentityCredential credential = InstrumentClient(new ManagedIdentityCredential("mock-client-id", pipeline, options));
-            if (content != null)
-            {
-                var ex = Assert.ThrowsAsync<CredentialUnavailableException>(async () => await credential.GetTokenAsync(new TokenRequestContext(MockScopes.Default)));
-                Assert.That(ex.Message, Does.Contain(ImdsManagedIdentityProbeSource.IdentityUnavailableError));
-            }
-            else
-            {
-                var ex = Assert.ThrowsAsync<AuthenticationFailedException>(async () => await credential.GetTokenAsync(new TokenRequestContext(MockScopes.Default)));
-            }
+            ManagedIdentityCredential credential = InstrumentClient(new ManagedIdentityCredential(
+                new ManagedIdentityClient(
+                    new ManagedIdentityClientOptions() { Pipeline = pipeline, ManagedIdentityId = ManagedIdentityId.FromUserAssignedClientId("mock-client-id"), IsForceRefreshEnabled = true, Options = options })));
+            var ex = Assert.ThrowsAsync<CredentialUnavailableException>(async () => await credential.GetTokenAsync(new TokenRequestContext(MockScopes.Default)));
+            Assert.That(ex.Message, Does.Contain(ImdsManagedIdentityProbeSource.IdentityUnavailableError));
         }
 
         [NonParallelizable]
@@ -584,7 +580,7 @@ namespace Azure.Identity.Tests
 
             Assert.That(query, Does.Contain("api-version=2018-02-01"));
             Assert.That(query, Does.Contain($"resource={ScopeUtilities.ScopesToResource(MockScopes.Default)}"));
-            Assert.That(Uri.UnescapeDataString(query), Does.Contain($"{Constants.ManagedIdentityResourceId}={_expectedResourceId}"));
+            Assert.That(Uri.UnescapeDataString(query), Does.Contain($"_res_id={_expectedResourceId}"));
         }
 
         [NonParallelizable]
@@ -708,7 +704,7 @@ namespace Azure.Identity.Tests
 
             Assert.IsTrue(query.Contains("api-version=2019-08-01"));
             Assert.IsTrue(query.Contains($"resource={ScopeUtilities.ScopesToResource(MockScopes.Default)}"));
-            Assert.That(query, Does.Contain($"{Constants.ManagedIdentityResourceId}={resourceId}"));
+            Assert.That(query, Does.Contain($"_res_id={resourceId}"));
             Assert.IsTrue(request.Headers.TryGetValue("X-IDENTITY-HEADER", out string identityHeader));
             Assert.AreEqual(EnvironmentVariables.IdentityHeader, identityHeader);
         }
@@ -842,6 +838,30 @@ namespace Azure.Identity.Tests
             var ex = Assert.ThrowsAsync<CredentialUnavailableException>(async () => await credential.GetTokenAsync(new TokenRequestContext(MockScopes.Default)));
 
             Assert.That(ex.Message, Does.Contain(ImdsManagedIdentityProbeSource.NoResponseError));
+
+            await Task.CompletedTask;
+        }
+
+        [NonParallelizable]
+        [Test]
+        public async Task ThrowsCredentialUnavailableWhenIMDSTimesOut()
+        {
+            using var environment = new TestEnvVar(new() { { "MSI_ENDPOINT", null }, { "MSI_SECRET", null }, { "IDENTITY_ENDPOINT", null }, { "IDENTITY_HEADER", null }, { "AZURE_POD_IDENTITY_AUTHORITY_HOST", null } });
+
+            var mockTransport = new MockTransport(req =>
+            {
+                throw new MsalServiceException(MsalError.ManagedIdentityRequestFailed, "Retry failed", new RequestFailedException("Operation timed out (169.254.169.254:80"));
+            });
+            var options = new TokenCredentialOptions() { IsChainedCredential = false, Transport = mockTransport };
+
+            ManagedIdentityCredential credential = InstrumentClient(new ManagedIdentityCredential(
+                new ManagedIdentityClient(
+                    new ManagedIdentityClientOptions() { IsForceRefreshEnabled = true, Options = options, Pipeline = CredentialPipeline.GetInstance(options, IsManagedIdentityCredential: true) })
+            ));
+
+            var ex = Assert.ThrowsAsync<CredentialUnavailableException>(async () => await credential.GetTokenAsync(new TokenRequestContext(MockScopes.Default)));
+
+            Assert.That(ex.Message, Does.Contain(ManagedIdentityClient.MsiUnavailableError));
 
             await Task.CompletedTask;
         }
@@ -1000,6 +1020,32 @@ namespace Azure.Identity.Tests
             Assert.That(tryCount, Is.EqualTo(6));
 
             await Task.CompletedTask;
+        }
+
+        [Test]
+        public void VerifyImdsRetryDelayStrategyFor410Response()
+        {
+            // Arrange
+            var delayStrategy = new ImdsRetryDelayStrategy();
+            var mockResponse410 = new MockResponse(410);
+            var mockResponse404 = new MockResponse(404);
+            TimeSpan totalDelay410 = TimeSpan.Zero;
+            TimeSpan totalDelay404 = TimeSpan.Zero;
+
+            // Act - simulate the 5 retries with both status codes
+            for (int retry = 1; retry <= 5; retry++)
+            {
+                var delay410 = delayStrategy.GetNextDelay(mockResponse410, retry);
+                var delay404 = delayStrategy.GetNextDelay(mockResponse404, retry);
+                totalDelay410 = totalDelay410.Add(delay410);
+                totalDelay404 = totalDelay404.Add(delay404);
+            }
+
+            // Assert - 410 should have at least 70 seconds total, 404 should be standard exponential backoff with 5 retries
+            Assert.That(totalDelay410.TotalSeconds, Is.GreaterThanOrEqualTo(70),
+                "410 responses should have at least 70 seconds total retry duration");
+            Assert.That(totalDelay404.TotalSeconds, Is.LessThan(30),
+                "404 responses should use standard exponential backoff with 5 retries (~24.8 seconds)");
         }
 
         [Test]

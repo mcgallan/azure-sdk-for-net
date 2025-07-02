@@ -138,11 +138,14 @@ namespace Azure.ResourceManager.ContainerRegistry.Models
 
             builder.AppendLine("{");
 
-            hasPropertyOverride = hasObjectOverride && propertyOverrides.TryGetValue(nameof(SourceRegistry), out propertyOverride);
+            hasPropertyOverride = hasObjectOverride && propertyOverrides.TryGetValue("SourceRegistryLoginMode", out propertyOverride);
             if (hasPropertyOverride)
             {
                 builder.Append("  sourceRegistry: ");
+                builder.AppendLine("{");
+                builder.Append("    loginMode: ");
                 builder.AppendLine(propertyOverride);
+                builder.AppendLine("  }");
             }
             else
             {
@@ -188,7 +191,7 @@ namespace Azure.ResourceManager.ContainerRegistry.Models
             switch (format)
             {
                 case "J":
-                    return ModelReaderWriter.Write(this, options);
+                    return ModelReaderWriter.Write(this, options, AzureResourceManagerContainerRegistryContext.Default);
                 case "bicep":
                     return SerializeBicep(options);
                 default:

@@ -1,14 +1,16 @@
 # Release History
 
-## 1.5.0-beta.1 (Unreleased)
+## 1.4.3 (2025-06-24)
 
 ### Features Added
 
+- Updated per swagger change for StorageAction GA
+
+## 1.4.2 (2025-04-25)
+
 ### Breaking Changes
 
-### Bugs Fixed
-
-### Other Changes
+- Fixed issue https://github.com/Azure/azure-sdk-for-net/issues/49612.
 
 ## 1.4.1 (2025-04-24)
 
