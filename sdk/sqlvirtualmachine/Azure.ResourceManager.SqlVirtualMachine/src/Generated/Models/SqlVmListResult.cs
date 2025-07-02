@@ -7,10 +7,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Azure.ResourceManager.SqlVirtualMachine.Models
 {
-    /// <summary> A list of SQL virtual machines. </summary>
+    /// <summary> The response of a SqlVirtualMachine list operation. </summary>
     internal partial class SqlVmListResult
     {
         /// <summary>
@@ -46,25 +47,31 @@ namespace Azure.ResourceManager.SqlVirtualMachine.Models
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
         /// <summary> Initializes a new instance of <see cref="SqlVmListResult"/>. </summary>
-        internal SqlVmListResult()
+        /// <param name="value"> The SqlVirtualMachine items on this page. </param>
+        internal SqlVmListResult(IEnumerable<SqlVmData> value)
         {
-            Value = new ChangeTrackingList<SqlVmData>();
+            Value = value.ToList();
         }
 
         /// <summary> Initializes a new instance of <see cref="SqlVmListResult"/>. </summary>
-        /// <param name="value"> Array of results. </param>
-        /// <param name="nextLink"> Link to retrieve next page of results. </param>
+        /// <param name="value"> The SqlVirtualMachine items on this page. </param>
+        /// <param name="nextLink"> The link to the next page of items. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal SqlVmListResult(IReadOnlyList<SqlVmData> value, string nextLink, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal SqlVmListResult(IReadOnlyList<SqlVmData> value, Uri nextLink, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             Value = value;
             NextLink = nextLink;
             _serializedAdditionalRawData = serializedAdditionalRawData;
         }
 
-        /// <summary> Array of results. </summary>
+        /// <summary> Initializes a new instance of <see cref="SqlVmListResult"/> for deserialization. </summary>
+        internal SqlVmListResult()
+        {
+        }
+
+        /// <summary> The SqlVirtualMachine items on this page. </summary>
         public IReadOnlyList<SqlVmData> Value { get; }
-        /// <summary> Link to retrieve next page of results. </summary>
-        public string NextLink { get; }
+        /// <summary> The link to the next page of items. </summary>
+        public Uri NextLink { get; }
     }
 }
