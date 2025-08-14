@@ -16,7 +16,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Initializes a new instance of <see cref="ResourcePoolInventoryItem"/>. </summary>
         public ResourcePoolInventoryItem()
         {
-            InventoryType = InventoryType.ResourcePool;
+            InventoryType = VCenterInventoryType.ResourcePool;
         }
 
         /// <summary> Initializes a new instance of <see cref="ResourcePoolInventoryItem"/>. </summary>
@@ -27,7 +27,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
         /// <param name="parent"> Parent resourcePool inventory resource details. </param>
-        internal ResourcePoolInventoryItem(InventoryType inventoryType, string managedResourceId, string moRefId, string moName, ProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData, InventoryItemDetails parent) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
+        internal ResourcePoolInventoryItem(VCenterInventoryType inventoryType, string managedResourceId, string moRefId, string moName, VMwareResourceProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData, InventoryItemDetails parent) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
         {
             Parent = parent;
             InventoryType = inventoryType;

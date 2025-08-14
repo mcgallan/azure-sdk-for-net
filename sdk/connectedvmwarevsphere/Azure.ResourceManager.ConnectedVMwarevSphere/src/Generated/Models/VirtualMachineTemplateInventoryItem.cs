@@ -16,7 +16,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Initializes a new instance of <see cref="VirtualMachineTemplateInventoryItem"/>. </summary>
         public VirtualMachineTemplateInventoryItem()
         {
-            InventoryType = InventoryType.VirtualMachineTemplate;
+            InventoryType = VCenterInventoryType.VirtualMachineTemplate;
         }
 
         /// <summary> Initializes a new instance of <see cref="VirtualMachineTemplateInventoryItem"/>. </summary>
@@ -37,7 +37,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="toolsVersionStatus"> Gets or sets the current version status of VMware Tools installed in the guest operating system. </param>
         /// <param name="toolsVersion"> Gets or sets the current version of VMware Tools. </param>
         /// <param name="folderPath"> Gets or sets the folder path of the template. </param>
-        internal VirtualMachineTemplateInventoryItem(InventoryType inventoryType, string managedResourceId, string moRefId, string moName, ProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData, int? memorySizeMB, int? numCpus, int? numCoresPerSocket, OSType? osType, string osName, string toolsVersionStatus, string toolsVersion, string folderPath) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
+        internal VirtualMachineTemplateInventoryItem(VCenterInventoryType inventoryType, string managedResourceId, string moRefId, string moName, VMwareResourceProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData, int? memorySizeMB, int? numCpus, int? numCoresPerSocket, VMwareOSType? osType, string osName, string toolsVersionStatus, string toolsVersion, string folderPath) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
         {
             MemorySizeMB = memorySizeMB;
             NumCpus = numCpus;
@@ -60,7 +60,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// </summary>
         public int? NumCoresPerSocket { get; set; }
         /// <summary> Gets or sets the type of the os. </summary>
-        public OSType? OSType { get; set; }
+        public VMwareOSType? OSType { get; set; }
         /// <summary> Gets or sets os name. </summary>
         public string OSName { get; set; }
         /// <summary> Gets or sets the current version status of VMware Tools installed in the guest operating system. </summary>

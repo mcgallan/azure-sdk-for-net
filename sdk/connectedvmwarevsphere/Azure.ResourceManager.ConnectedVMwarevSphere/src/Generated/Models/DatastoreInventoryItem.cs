@@ -16,7 +16,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Initializes a new instance of <see cref="DatastoreInventoryItem"/>. </summary>
         public DatastoreInventoryItem()
         {
-            InventoryType = InventoryType.Datastore;
+            InventoryType = VCenterInventoryType.Datastore;
         }
 
         /// <summary> Initializes a new instance of <see cref="DatastoreInventoryItem"/>. </summary>
@@ -28,7 +28,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
         /// <param name="capacityGB"> Gets or sets Maximum capacity of this datastore, in GBs. </param>
         /// <param name="freeSpaceGB"> Gets or sets Available space of this datastore, in GBs. </param>
-        internal DatastoreInventoryItem(InventoryType inventoryType, string managedResourceId, string moRefId, string moName, ProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData, long? capacityGB, long? freeSpaceGB) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
+        internal DatastoreInventoryItem(VCenterInventoryType inventoryType, string managedResourceId, string moRefId, string moName, VMwareResourceProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData, long? capacityGB, long? freeSpaceGB) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
         {
             CapacityGB = capacityGB;
             FreeSpaceGB = freeSpaceGB;

@@ -48,19 +48,19 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Initializes a new instance of <see cref="StorageProfileUpdate"/>. </summary>
         public StorageProfileUpdate()
         {
-            Disks = new ChangeTrackingList<VirtualDiskUpdate>();
+            Disks = new ChangeTrackingList<VMwareVirtualDiskUpdate>();
         }
 
         /// <summary> Initializes a new instance of <see cref="StorageProfileUpdate"/>. </summary>
         /// <param name="disks"> Gets or sets the list of virtual disks associated with the virtual machine. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal StorageProfileUpdate(IList<VirtualDiskUpdate> disks, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal StorageProfileUpdate(IList<VMwareVirtualDiskUpdate> disks, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             Disks = disks;
             _serializedAdditionalRawData = serializedAdditionalRawData;
         }
 
         /// <summary> Gets or sets the list of virtual disks associated with the virtual machine. </summary>
-        public IList<VirtualDiskUpdate> Disks { get; }
+        public IList<VMwareVirtualDiskUpdate> Disks { get; }
     }
 }

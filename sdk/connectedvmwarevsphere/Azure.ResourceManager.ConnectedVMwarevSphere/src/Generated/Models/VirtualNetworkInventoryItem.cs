@@ -16,7 +16,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Initializes a new instance of <see cref="VirtualNetworkInventoryItem"/>. </summary>
         public VirtualNetworkInventoryItem()
         {
-            InventoryType = InventoryType.VirtualNetwork;
+            InventoryType = VCenterInventoryType.VirtualNetwork;
         }
 
         /// <summary> Initializes a new instance of <see cref="VirtualNetworkInventoryItem"/>. </summary>
@@ -26,7 +26,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="moName"> Gets or sets the vCenter Managed Object name for the inventory item. </param>
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal VirtualNetworkInventoryItem(InventoryType inventoryType, string managedResourceId, string moRefId, string moName, ProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
+        internal VirtualNetworkInventoryItem(VCenterInventoryType inventoryType, string managedResourceId, string moRefId, string moName, VMwareResourceProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
         {
             InventoryType = inventoryType;
         }

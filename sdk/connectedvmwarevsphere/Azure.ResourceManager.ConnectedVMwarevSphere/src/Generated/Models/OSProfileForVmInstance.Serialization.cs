@@ -125,12 +125,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
             string adminUsername = default;
             string adminPassword = default;
             string guestId = default;
-            OSType? osType = default;
+            VMwareOSType? osType = default;
             string osSku = default;
             string toolsRunningStatus = default;
             string toolsVersionStatus = default;
             string toolsVersion = default;
-            WindowsConfiguration windowsConfiguration = default;
+            VMwareVmWindowsConfiguration windowsConfiguration = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -161,7 +161,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                     {
                         continue;
                     }
-                    osType = new OSType(property.Value.GetString());
+                    osType = new VMwareOSType(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("osSku"u8))
@@ -190,7 +190,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                     {
                         continue;
                     }
-                    windowsConfiguration = WindowsConfiguration.DeserializeWindowsConfiguration(property.Value, options);
+                    windowsConfiguration = VMwareVmWindowsConfiguration.DeserializeVMwareVmWindowsConfiguration(property.Value, options);
                     continue;
                 }
                 if (options.Format != "W")

@@ -66,7 +66,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="controllerType"> Gets or sets the controller type. </param>
         /// <param name="uuid"> Gets or sets a unique identifier for this resource. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal VirtualDiskInventory(string diskName, string label, int? diskSizeGB, int? deviceKey, DiskMode? diskMode, int? controllerKey, int? unitNumber, string deviceName, string fileName, DiskType? diskType, bool? eagerlyScrub, bool? thinProvisioned, string controllerType, string uuid, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal VirtualDiskInventory(string diskName, string label, int? diskSizeGB, int? deviceKey, VMwareDiskMode? diskMode, int? controllerKey, int? unitNumber, string deviceName, string fileName, VMwareDiskType? diskType, bool? eagerlyScrub, bool? thinProvisioned, string controllerType, string uuid, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             DiskName = diskName;
             Label = label;
@@ -94,7 +94,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Gets or sets the device key value. </summary>
         public int? DeviceKey { get; }
         /// <summary> Gets or sets the disk mode. </summary>
-        public DiskMode? DiskMode { get; }
+        public VMwareDiskMode? DiskMode { get; }
         /// <summary> Gets or sets the controller id. </summary>
         public int? ControllerKey { get; }
         /// <summary> Gets or sets the unit number of the disk on the controller. </summary>
@@ -104,7 +104,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Gets or sets the disk file name. </summary>
         public string FileName { get; }
         /// <summary> Gets or sets the disk backing type. </summary>
-        public DiskType? DiskType { get; }
+        public VMwareDiskType? DiskType { get; }
         /// <summary> Gets or sets the eagerly scrub property of disk. </summary>
         public bool? EagerlyScrub { get; }
         /// <summary> Gets or sets the thin provisioning property of disk. </summary>

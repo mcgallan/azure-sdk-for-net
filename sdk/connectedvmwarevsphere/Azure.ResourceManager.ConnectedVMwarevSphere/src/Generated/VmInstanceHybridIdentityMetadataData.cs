@@ -65,7 +65,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <param name="publicKey"> Gets or sets the Public Key. </param>
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal VmInstanceHybridIdentityMetadataData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, string resourceUid, string publicKey, ProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(id, name, resourceType, systemData)
+        internal VmInstanceHybridIdentityMetadataData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, string resourceUid, string publicKey, VMwareResourceProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(id, name, resourceType, systemData)
         {
             ResourceUid = resourceUid;
             PublicKey = publicKey;
@@ -78,6 +78,6 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <summary> Gets or sets the Public Key. </summary>
         public string PublicKey { get; }
         /// <summary> Gets the provisioning state. </summary>
-        public ProvisioningState? ProvisioningState { get; }
+        public VMwareResourceProvisioningState? ProvisioningState { get; }
     }
 }

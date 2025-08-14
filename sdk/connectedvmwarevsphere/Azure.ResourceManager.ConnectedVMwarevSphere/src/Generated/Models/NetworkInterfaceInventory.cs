@@ -63,7 +63,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="networkMoName"> Gets or sets the name of the virtual network in vCenter that the nic is connected to. </param>
         /// <param name="deviceKey"> Gets or sets the device key value. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal NetworkInterfaceInventory(string label, IReadOnlyList<string> ipAddresses, string macAddress, NICType? nicType, string networkMoRefId, string networkMoName, int? deviceKey, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal NetworkInterfaceInventory(string label, IReadOnlyList<string> ipAddresses, string macAddress, VMwareNicType? nicType, string networkMoRefId, string networkMoName, int? deviceKey, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             Label = label;
             IPAddresses = ipAddresses;
@@ -82,7 +82,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Gets or sets the NIC MAC address. </summary>
         public string MacAddress { get; }
         /// <summary> NIC type. </summary>
-        public NICType? NicType { get; }
+        public VMwareNicType? NicType { get; }
         /// <summary>
         /// Gets or sets the vCenter MoRef (Managed Object Reference) ID of the virtual network
         /// that the nic is connected to.

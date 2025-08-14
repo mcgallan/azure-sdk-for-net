@@ -16,7 +16,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Initializes a new instance of <see cref="HostInventoryItem"/>. </summary>
         public HostInventoryItem()
         {
-            InventoryType = InventoryType.Host;
+            InventoryType = VCenterInventoryType.Host;
         }
 
         /// <summary> Initializes a new instance of <see cref="HostInventoryItem"/>. </summary>
@@ -33,7 +33,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="cpuModel"> Gets or sets the cpu model of the host. </param>
         /// <param name="memorySizeGB"> Gets the total amount of physical memory on the host in GB. </param>
         /// <param name="powerState"> Gets or sets the power state of the host. </param>
-        internal HostInventoryItem(InventoryType inventoryType, string managedResourceId, string moRefId, string moName, ProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData, InventoryItemDetails parent, int? numCoresPerSocket, int? numSockets, string version, string cpuModel, long? memorySizeGB, string powerState) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
+        internal HostInventoryItem(VCenterInventoryType inventoryType, string managedResourceId, string moRefId, string moName, VMwareResourceProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData, InventoryItemDetails parent, int? numCoresPerSocket, int? numSockets, string version, string cpuModel, long? memorySizeGB, string powerState) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
         {
             Parent = parent;
             NumCoresPerSocket = numCoresPerSocket;

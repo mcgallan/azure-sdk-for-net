@@ -84,7 +84,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
             SystemData systemData = default;
             string resourceUid = default;
             string publicKey = default;
-            ProvisioningState? provisioningState = default;
+            VMwareResourceProvisioningState? provisioningState = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -138,7 +138,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
                             {
                                 continue;
                             }
-                            provisioningState = new ProvisioningState(property0.Value.GetString());
+                            provisioningState = new VMwareResourceProvisioningState(property0.Value.GetString());
                             continue;
                         }
                     }

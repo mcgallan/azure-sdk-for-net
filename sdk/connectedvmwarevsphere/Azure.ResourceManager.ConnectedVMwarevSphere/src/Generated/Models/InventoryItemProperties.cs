@@ -61,7 +61,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="moName"> Gets or sets the vCenter Managed Object name for the inventory item. </param>
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal InventoryItemProperties(InventoryType inventoryType, string managedResourceId, string moRefId, string moName, ProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal InventoryItemProperties(VCenterInventoryType inventoryType, string managedResourceId, string moRefId, string moName, VMwareResourceProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             InventoryType = inventoryType;
             ManagedResourceId = managedResourceId;
@@ -72,7 +72,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         }
 
         /// <summary> They inventory type. </summary>
-        internal InventoryType InventoryType { get; set; }
+        internal VCenterInventoryType InventoryType { get; set; }
         /// <summary> Gets or sets the tracked resource id corresponding to the inventory resource. </summary>
         public string ManagedResourceId { get; set; }
         /// <summary> Gets or sets the MoRef (Managed Object Reference) ID for the inventory item. </summary>
@@ -80,6 +80,6 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Gets or sets the vCenter Managed Object name for the inventory item. </summary>
         public string MoName { get; set; }
         /// <summary> Gets the provisioning state. </summary>
-        public ProvisioningState? ProvisioningState { get; }
+        public VMwareResourceProvisioningState? ProvisioningState { get; }
     }
 }

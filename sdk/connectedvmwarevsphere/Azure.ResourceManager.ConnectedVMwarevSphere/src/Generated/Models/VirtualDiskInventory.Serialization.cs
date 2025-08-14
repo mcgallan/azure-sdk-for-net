@@ -145,12 +145,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
             string label = default;
             int? diskSizeGB = default;
             int? deviceKey = default;
-            DiskMode? diskMode = default;
+            VMwareDiskMode? diskMode = default;
             int? controllerKey = default;
             int? unitNumber = default;
             string deviceName = default;
             string fileName = default;
-            DiskType? diskType = default;
+            VMwareDiskType? diskType = default;
             bool? eagerlyScrub = default;
             bool? thinProvisioned = default;
             string controllerType = default;
@@ -193,7 +193,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                     {
                         continue;
                     }
-                    diskMode = new DiskMode(property.Value.GetString());
+                    diskMode = new VMwareDiskMode(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("controllerKey"u8))
@@ -230,7 +230,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                     {
                         continue;
                     }
-                    diskType = new DiskType(property.Value.GetString());
+                    diskType = new VMwareDiskType(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("eagerlyScrub"u8))

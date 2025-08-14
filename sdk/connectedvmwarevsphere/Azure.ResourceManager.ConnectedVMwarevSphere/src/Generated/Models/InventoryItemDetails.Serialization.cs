@@ -88,7 +88,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
             }
             string inventoryItemId = default;
             string moName = default;
-            InventoryType? inventoryType = default;
+            VCenterInventoryType? inventoryType = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -109,7 +109,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                     {
                         continue;
                     }
-                    inventoryType = new InventoryType(property.Value.GetString());
+                    inventoryType = new VCenterInventoryType(property.Value.GetString());
                     continue;
                 }
                 if (options.Format != "W")

@@ -57,18 +57,18 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
             {
                 return null;
             }
-            InventoryType inventoryType = default;
+            VCenterInventoryType inventoryType = default;
             string managedResourceId = default;
             string moRefId = default;
             string moName = default;
-            ProvisioningState? provisioningState = default;
+            VMwareResourceProvisioningState? provisioningState = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
             {
                 if (property.NameEquals("inventoryType"u8))
                 {
-                    inventoryType = new InventoryType(property.Value.GetString());
+                    inventoryType = new VCenterInventoryType(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("managedResourceId"u8))
@@ -92,7 +92,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                     {
                         continue;
                     }
-                    provisioningState = new ProvisioningState(property.Value.GetString());
+                    provisioningState = new VMwareResourceProvisioningState(property.Value.GetString());
                     continue;
                 }
                 if (options.Format != "W")

@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Azure.Core;
 using Azure.ResourceManager.Models;
@@ -16,7 +17,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
     /// <summary> Model factory for models. </summary>
     public static partial class ArmConnectedVMwarevSphereModelFactory
     {
-        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.ResourcePoolData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VMwareResourcePoolData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
@@ -63,15 +64,15 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="extendedLocation"> Gets or sets the extended location. </param>
         /// <param name="kind"> Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value. </param>
-        /// <returns> A new <see cref="ConnectedVMwarevSphere.ResourcePoolData"/> instance for mocking. </returns>
-        public static ResourcePoolData ResourcePoolData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, string cpuSharesLevel = null, long? cpuReservationMHz = null, long? cpuLimitMHz = null, string memSharesLevel = null, long? memReservationMB = null, long? memLimitMB = null, long? memOverallUsageGB = null, long? memCapacityGB = null, long? cpuOverallUsageMHz = null, long? cpuCapacityMHz = null, string customResourceName = null, IEnumerable<string> datastoreIds = null, IEnumerable<string> networkIds = null, IEnumerable<ResourceStatus> statuses = null, ProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
+        /// <returns> A new <see cref="ConnectedVMwarevSphere.VMwareResourcePoolData"/> instance for mocking. </returns>
+        public static VMwareResourcePoolData VMwareResourcePoolData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, string cpuSharesLevel = null, long? cpuReservationMHz = null, long? cpuLimitMHz = null, string memSharesLevel = null, long? memReservationMB = null, long? memLimitMB = null, long? memOverallUsageGB = null, long? memCapacityGB = null, long? cpuOverallUsageMHz = null, long? cpuCapacityMHz = null, string customResourceName = null, IEnumerable<string> datastoreIds = null, IEnumerable<string> networkIds = null, IEnumerable<VMwareResourceStatus> statuses = null, VMwareResourceProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
         {
             tags ??= new Dictionary<string, string>();
             datastoreIds ??= new List<string>();
             networkIds ??= new List<string>();
-            statuses ??= new List<ResourceStatus>();
+            statuses ??= new List<VMwareResourceStatus>();
 
-            return new ResourcePoolData(
+            return new VMwareResourcePoolData(
                 id,
                 name,
                 resourceType,
@@ -103,17 +104,17 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="Models.ResourceStatus"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="Models.VMwareResourceStatus"/>. </summary>
         /// <param name="type"> The type of the condition. </param>
         /// <param name="status"> Status of the condition. </param>
         /// <param name="reason"> The reason for the condition's status. </param>
         /// <param name="message"> A human readable message indicating details about the status. </param>
         /// <param name="severity"> Severity with which to treat failures of this type of condition. </param>
         /// <param name="lastUpdatedOn"> The last update time for this condition. </param>
-        /// <returns> A new <see cref="Models.ResourceStatus"/> instance for mocking. </returns>
-        public static ResourceStatus ResourceStatus(string type = null, string status = null, string reason = null, string message = null, string severity = null, DateTimeOffset? lastUpdatedOn = null)
+        /// <returns> A new <see cref="Models.VMwareResourceStatus"/> instance for mocking. </returns>
+        public static VMwareResourceStatus VMwareResourceStatus(string type = null, string status = null, string reason = null, string message = null, string severity = null, DateTimeOffset? lastUpdatedOn = null)
         {
-            return new ResourceStatus(
+            return new VMwareResourceStatus(
                 type,
                 status,
                 reason,
@@ -123,7 +124,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.ClusterData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VMwareClusterData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
@@ -146,15 +147,15 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="extendedLocation"> Gets or sets the extended location. </param>
         /// <param name="kind"> Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value. </param>
-        /// <returns> A new <see cref="ConnectedVMwarevSphere.ClusterData"/> instance for mocking. </returns>
-        public static ClusterData ClusterData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, IEnumerable<ResourceStatus> statuses = null, string customResourceName = null, long? usedMemoryGB = null, long? totalMemoryGB = null, long? usedCpuMHz = null, long? totalCpuMHz = null, IEnumerable<string> datastoreIds = null, IEnumerable<string> networkIds = null, ProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
+        /// <returns> A new <see cref="ConnectedVMwarevSphere.VMwareClusterData"/> instance for mocking. </returns>
+        public static VMwareClusterData VMwareClusterData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, IEnumerable<VMwareResourceStatus> statuses = null, string customResourceName = null, long? usedMemoryGB = null, long? totalMemoryGB = null, long? usedCpuMHz = null, long? totalCpuMHz = null, IEnumerable<string> datastoreIds = null, IEnumerable<string> networkIds = null, VMwareResourceProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
         {
             tags ??= new Dictionary<string, string>();
-            statuses ??= new List<ResourceStatus>();
+            statuses ??= new List<VMwareResourceStatus>();
             datastoreIds ??= new List<string>();
             networkIds ??= new List<string>();
 
-            return new ClusterData(
+            return new VMwareClusterData(
                 id,
                 name,
                 resourceType,
@@ -180,7 +181,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.HostData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VMwareHostData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
@@ -203,15 +204,15 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="extendedLocation"> Gets or sets the extended location. </param>
         /// <param name="kind"> Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value. </param>
-        /// <returns> A new <see cref="ConnectedVMwarevSphere.HostData"/> instance for mocking. </returns>
-        public static HostData HostData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, IEnumerable<ResourceStatus> statuses = null, string customResourceName = null, long? overallMemoryUsageGB = null, long? memorySizeGB = null, long? overallCpuUsageMHz = null, long? cpuMhz = null, IEnumerable<string> datastoreIds = null, IEnumerable<string> networkIds = null, ProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
+        /// <returns> A new <see cref="ConnectedVMwarevSphere.VMwareHostData"/> instance for mocking. </returns>
+        public static VMwareHostData VMwareHostData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, IEnumerable<VMwareResourceStatus> statuses = null, string customResourceName = null, long? overallMemoryUsageGB = null, long? memorySizeGB = null, long? overallCpuUsageMHz = null, long? cpuMhz = null, IEnumerable<string> datastoreIds = null, IEnumerable<string> networkIds = null, VMwareResourceProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
         {
             tags ??= new Dictionary<string, string>();
-            statuses ??= new List<ResourceStatus>();
+            statuses ??= new List<VMwareResourceStatus>();
             datastoreIds ??= new List<string>();
             networkIds ??= new List<string>();
 
-            return new HostData(
+            return new VMwareHostData(
                 id,
                 name,
                 resourceType,
@@ -237,7 +238,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.DatastoreData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VMwareDatastoreData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
@@ -256,13 +257,13 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="provisioningState"> Provisioning state of the resource. </param>
         /// <param name="extendedLocation"> Gets or sets the extended location. </param>
         /// <param name="kind"> Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value. </param>
-        /// <returns> A new <see cref="ConnectedVMwarevSphere.DatastoreData"/> instance for mocking. </returns>
-        public static DatastoreData DatastoreData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, IEnumerable<ResourceStatus> statuses = null, string customResourceName = null, long? capacityGB = null, long? freeSpaceGB = null, ProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
+        /// <returns> A new <see cref="ConnectedVMwarevSphere.VMwareDatastoreData"/> instance for mocking. </returns>
+        public static VMwareDatastoreData VMwareDatastoreData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, IEnumerable<VMwareResourceStatus> statuses = null, string customResourceName = null, long? capacityGB = null, long? freeSpaceGB = null, VMwareResourceProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
         {
             tags ??= new Dictionary<string, string>();
-            statuses ??= new List<ResourceStatus>();
+            statuses ??= new List<VMwareResourceStatus>();
 
-            return new DatastoreData(
+            return new VMwareDatastoreData(
                 id,
                 name,
                 resourceType,
@@ -284,7 +285,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VCenterData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VMwareVCenterData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
@@ -303,13 +304,13 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="extendedLocation"> Gets or sets the extended location. </param>
         /// <param name="kind"> Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value. </param>
-        /// <returns> A new <see cref="ConnectedVMwarevSphere.VCenterData"/> instance for mocking. </returns>
-        public static VCenterData VCenterData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string fqdn = null, int? port = null, string version = null, string instanceUuid = null, string connectionStatus = null, string customResourceName = null, VICredential credentials = null, IEnumerable<ResourceStatus> statuses = null, ProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
+        /// <returns> A new <see cref="ConnectedVMwarevSphere.VMwareVCenterData"/> instance for mocking. </returns>
+        public static VMwareVCenterData VMwareVCenterData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string fqdn = null, int? port = null, string version = null, string instanceUuid = null, string connectionStatus = null, string customResourceName = null, VICredential credentials = null, IEnumerable<VMwareResourceStatus> statuses = null, VMwareResourceProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
         {
             tags ??= new Dictionary<string, string>();
-            statuses ??= new List<ResourceStatus>();
+            statuses ??= new List<VMwareResourceStatus>();
 
-            return new VCenterData(
+            return new VMwareVCenterData(
                 id,
                 name,
                 resourceType,
@@ -331,7 +332,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VirtualMachineTemplateData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VMwareVmTemplateData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
@@ -365,15 +366,15 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="extendedLocation"> Gets or sets the extended location. </param>
         /// <param name="kind"> Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value. </param>
-        /// <returns> A new <see cref="ConnectedVMwarevSphere.VirtualMachineTemplateData"/> instance for mocking. </returns>
-        public static VirtualMachineTemplateData VirtualMachineTemplateData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, int? memorySizeMB = null, int? numCpus = null, int? numCoresPerSocket = null, OSType? osType = null, string osName = null, string folderPath = null, IEnumerable<NetworkInterface> networkInterfaces = null, IEnumerable<VirtualDisk> disks = null, string customResourceName = null, string toolsVersionStatus = null, string toolsVersion = null, FirmwareType? firmwareType = null, IEnumerable<ResourceStatus> statuses = null, ProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
+        /// <returns> A new <see cref="ConnectedVMwarevSphere.VMwareVmTemplateData"/> instance for mocking. </returns>
+        public static VMwareVmTemplateData VMwareVmTemplateData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, int? memorySizeMB = null, int? numCpus = null, int? numCoresPerSocket = null, VMwareOSType? osType = null, string osName = null, string folderPath = null, IEnumerable<VMwareNetworkInterface> networkInterfaces = null, IEnumerable<VMwareVirtualDisk> disks = null, string customResourceName = null, string toolsVersionStatus = null, string toolsVersion = null, VMwareFirmwareType? firmwareType = null, IEnumerable<VMwareResourceStatus> statuses = null, VMwareResourceProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
         {
             tags ??= new Dictionary<string, string>();
-            networkInterfaces ??= new List<NetworkInterface>();
-            disks ??= new List<VirtualDisk>();
-            statuses ??= new List<ResourceStatus>();
+            networkInterfaces ??= new List<VMwareNetworkInterface>();
+            disks ??= new List<VMwareVirtualDisk>();
+            statuses ??= new List<VMwareResourceStatus>();
 
-            return new VirtualMachineTemplateData(
+            return new VMwareVmTemplateData(
                 id,
                 name,
                 resourceType,
@@ -404,7 +405,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="Models.NetworkInterface"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="Models.VMwareNetworkInterface"/>. </summary>
         /// <param name="name"> Gets or sets the name of the network interface. </param>
         /// <param name="label"> Gets or sets the label of the virtual network in vCenter that the nic is connected to. </param>
         /// <param name="ipAddresses"> Gets or sets the nic ip addresses. </param>
@@ -419,12 +420,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="networkMoName"> Gets or sets the name of the virtual network in vCenter that the nic is connected to. </param>
         /// <param name="deviceKey"> Gets or sets the device key value. </param>
         /// <param name="ipSettings"> Gets or sets the ipsettings. </param>
-        /// <returns> A new <see cref="Models.NetworkInterface"/> instance for mocking. </returns>
-        public static NetworkInterface NetworkInterface(string name = null, string label = null, IEnumerable<string> ipAddresses = null, string macAddress = null, string networkId = null, NICType? nicType = null, PowerOnBootOption? powerOnBoot = null, string networkMoRefId = null, string networkMoName = null, int? deviceKey = null, NicIPSettings ipSettings = null)
+        /// <returns> A new <see cref="Models.VMwareNetworkInterface"/> instance for mocking. </returns>
+        public static VMwareNetworkInterface VMwareNetworkInterface(string name = null, string label = null, IEnumerable<string> ipAddresses = null, string macAddress = null, string networkId = null, VMwareNicType? nicType = null, PowerOnBootOption? powerOnBoot = null, string networkMoRefId = null, string networkMoName = null, int? deviceKey = null, NicIPSettings ipSettings = null)
         {
             ipAddresses ??= new List<string>();
 
-            return new NetworkInterface(
+            return new VMwareNetworkInterface(
                 name,
                 label,
                 ipAddresses?.ToList(),
@@ -477,7 +478,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
             return new NicIPAddressSettings(allocationMethod, ipAddress, subnetMask, serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="Models.VirtualDisk"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="Models.VMwareVirtualDisk"/>. </summary>
         /// <param name="name"> Gets or sets the name of the virtual disk. </param>
         /// <param name="label"> Gets or sets the label of the virtual disk in vCenter. </param>
         /// <param name="diskObjectId"> Gets or sets the disk object id. </param>
@@ -488,10 +489,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="unitNumber"> Gets or sets the unit number of the disk on the controller. </param>
         /// <param name="deviceName"> Gets or sets the device name. </param>
         /// <param name="diskType"> Gets or sets the disk backing type. </param>
-        /// <returns> A new <see cref="Models.VirtualDisk"/> instance for mocking. </returns>
-        public static VirtualDisk VirtualDisk(string name = null, string label = null, string diskObjectId = null, int? diskSizeGB = null, int? deviceKey = null, DiskMode? diskMode = null, int? controllerKey = null, int? unitNumber = null, string deviceName = null, DiskType? diskType = null)
+        /// <returns> A new <see cref="Models.VMwareVirtualDisk"/> instance for mocking. </returns>
+        public static VMwareVirtualDisk VMwareVirtualDisk(string name = null, string label = null, string diskObjectId = null, int? diskSizeGB = null, int? deviceKey = null, VMwareDiskMode? diskMode = null, int? controllerKey = null, int? unitNumber = null, string deviceName = null, VMwareDiskType? diskType = null)
         {
-            return new VirtualDisk(
+            return new VMwareVirtualDisk(
                 name,
                 label,
                 diskObjectId,
@@ -505,7 +506,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VirtualNetworkData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VMwareVirtualNetworkData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
@@ -522,13 +523,13 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="extendedLocation"> Gets or sets the extended location. </param>
         /// <param name="kind"> Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value. </param>
-        /// <returns> A new <see cref="ConnectedVMwarevSphere.VirtualNetworkData"/> instance for mocking. </returns>
-        public static VirtualNetworkData VirtualNetworkData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, string customResourceName = null, IEnumerable<ResourceStatus> statuses = null, ProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
+        /// <returns> A new <see cref="ConnectedVMwarevSphere.VMwareVirtualNetworkData"/> instance for mocking. </returns>
+        public static VMwareVirtualNetworkData VMwareVirtualNetworkData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, IDictionary<string, string> tags = null, AzureLocation location = default, string uuid = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, string customResourceName = null, IEnumerable<VMwareResourceStatus> statuses = null, VMwareResourceProvisioningState? provisioningState = null, ExtendedLocation extendedLocation = null, string kind = null)
         {
             tags ??= new Dictionary<string, string>();
-            statuses ??= new List<ResourceStatus>();
+            statuses ??= new List<VMwareResourceStatus>();
 
-            return new VirtualNetworkData(
+            return new VMwareVirtualNetworkData(
                 id,
                 name,
                 resourceType,
@@ -548,7 +549,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.InventoryItemData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VCenterInventoryItemData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
@@ -559,10 +560,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// The available derived classes include <see cref="Models.ClusterInventoryItem"/>, <see cref="Models.DatastoreInventoryItem"/>, <see cref="Models.HostInventoryItem"/>, <see cref="Models.ResourcePoolInventoryItem"/>, <see cref="Models.VirtualMachineInventoryItem"/>, <see cref="Models.VirtualMachineTemplateInventoryItem"/> and <see cref="Models.VirtualNetworkInventoryItem"/>.
         /// </param>
         /// <param name="kind"> Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value. </param>
-        /// <returns> A new <see cref="ConnectedVMwarevSphere.InventoryItemData"/> instance for mocking. </returns>
-        public static InventoryItemData InventoryItemData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, InventoryItemProperties properties = null, string kind = null)
+        /// <returns> A new <see cref="ConnectedVMwarevSphere.VCenterInventoryItemData"/> instance for mocking. </returns>
+        public static VCenterInventoryItemData VCenterInventoryItemData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, InventoryItemProperties properties = null, string kind = null)
         {
-            return new InventoryItemData(
+            return new VCenterInventoryItemData(
                 id,
                 name,
                 resourceType,
@@ -579,10 +580,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="moName"> Gets or sets the vCenter Managed Object name for the inventory item. </param>
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <returns> A new <see cref="Models.InventoryItemProperties"/> instance for mocking. </returns>
-        public static InventoryItemProperties InventoryItemProperties(string inventoryType = null, string managedResourceId = null, string moRefId = null, string moName = null, ProvisioningState? provisioningState = null)
+        public static InventoryItemProperties InventoryItemProperties(string inventoryType = null, string managedResourceId = null, string moRefId = null, string moName = null, VMwareResourceProvisioningState? provisioningState = null)
         {
             return new UnknownInventoryItemProperties(
-                inventoryType == null ? default : new InventoryType(inventoryType),
+                inventoryType == null ? default : new VCenterInventoryType(inventoryType),
                 managedResourceId,
                 moRefId,
                 moName,
@@ -597,10 +598,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="parent"> Parent resourcePool inventory resource details. </param>
         /// <returns> A new <see cref="Models.ResourcePoolInventoryItem"/> instance for mocking. </returns>
-        public static ResourcePoolInventoryItem ResourcePoolInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, ProvisioningState? provisioningState = null, InventoryItemDetails parent = null)
+        public static ResourcePoolInventoryItem ResourcePoolInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, VMwareResourceProvisioningState? provisioningState = null, InventoryItemDetails parent = null)
         {
             return new ResourcePoolInventoryItem(
-                InventoryType.ResourcePool,
+                VCenterInventoryType.ResourcePool,
                 managedResourceId,
                 moRefId,
                 moName,
@@ -639,14 +640,14 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="storageDisks"> Storage properties. </param>
         /// <param name="networkInterfaces"> Network properties. </param>
         /// <returns> A new <see cref="Models.VirtualMachineInventoryItem"/> instance for mocking. </returns>
-        public static VirtualMachineInventoryItem VirtualMachineInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, ProvisioningState? provisioningState = null, OSType? osType = null, string osName = null, IEnumerable<string> ipAddresses = null, string folderPath = null, InventoryItemDetails host = null, InventoryItemDetails resourcePool = null, InventoryItemDetails cluster = null, string instanceUuid = null, string smbiosUuid = null, string powerState = null, string toolsRunningStatus = null, string toolsVersionStatus = null, string toolsVersion = null, FirmwareType? firmwareType = null, bool? changeTrackingSupported = null, bool? changeTrackingEnabled = null, int? maxSnapshots = null, int? numberOfSnapshots = null, string diskEnabledUuid = null, string computerName = null, int? memorySizeMB = null, int? numCpus = null, IEnumerable<VirtualDiskInventory> storageDisks = null, IEnumerable<NetworkInterfaceInventory> networkInterfaces = null)
+        public static VirtualMachineInventoryItem VirtualMachineInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, VMwareResourceProvisioningState? provisioningState = null, VMwareOSType? osType = null, string osName = null, IEnumerable<string> ipAddresses = null, string folderPath = null, InventoryItemDetails host = null, InventoryItemDetails resourcePool = null, InventoryItemDetails cluster = null, string instanceUuid = null, string smbiosUuid = null, string powerState = null, string toolsRunningStatus = null, string toolsVersionStatus = null, string toolsVersion = null, VMwareFirmwareType? firmwareType = null, bool? changeTrackingSupported = null, bool? changeTrackingEnabled = null, int? maxSnapshots = null, int? numberOfSnapshots = null, string diskEnabledUuid = null, string computerName = null, int? memorySizeMB = null, int? numCpus = null, IEnumerable<VirtualDiskInventory> storageDisks = null, IEnumerable<NetworkInterfaceInventory> networkInterfaces = null)
         {
             ipAddresses ??= new List<string>();
             storageDisks ??= new List<VirtualDiskInventory>();
             networkInterfaces ??= new List<NetworkInterfaceInventory>();
 
             return new VirtualMachineInventoryItem(
-                InventoryType.VirtualMachine,
+                VCenterInventoryType.VirtualMachine,
                 managedResourceId,
                 moRefId,
                 moName,
@@ -694,7 +695,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="controllerType"> Gets or sets the controller type. </param>
         /// <param name="uuid"> Gets or sets a unique identifier for this resource. </param>
         /// <returns> A new <see cref="Models.VirtualDiskInventory"/> instance for mocking. </returns>
-        public static VirtualDiskInventory VirtualDiskInventory(string diskName = null, string label = null, int? diskSizeGB = null, int? deviceKey = null, DiskMode? diskMode = null, int? controllerKey = null, int? unitNumber = null, string deviceName = null, string fileName = null, DiskType? diskType = null, bool? eagerlyScrub = null, bool? thinProvisioned = null, string controllerType = null, string uuid = null)
+        public static VirtualDiskInventory VirtualDiskInventory(string diskName = null, string label = null, int? diskSizeGB = null, int? deviceKey = null, VMwareDiskMode? diskMode = null, int? controllerKey = null, int? unitNumber = null, string deviceName = null, string fileName = null, VMwareDiskType? diskType = null, bool? eagerlyScrub = null, bool? thinProvisioned = null, string controllerType = null, string uuid = null)
         {
             return new VirtualDiskInventory(
                 diskName,
@@ -726,7 +727,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="networkMoName"> Gets or sets the name of the virtual network in vCenter that the nic is connected to. </param>
         /// <param name="deviceKey"> Gets or sets the device key value. </param>
         /// <returns> A new <see cref="Models.NetworkInterfaceInventory"/> instance for mocking. </returns>
-        public static NetworkInterfaceInventory NetworkInterfaceInventory(string label = null, IEnumerable<string> ipAddresses = null, string macAddress = null, NICType? nicType = null, string networkMoRefId = null, string networkMoName = null, int? deviceKey = null)
+        public static NetworkInterfaceInventory NetworkInterfaceInventory(string label = null, IEnumerable<string> ipAddresses = null, string macAddress = null, VMwareNicType? nicType = null, string networkMoRefId = null, string networkMoName = null, int? deviceKey = null)
         {
             ipAddresses ??= new List<string>();
 
@@ -758,10 +759,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="toolsVersion"> Gets or sets the current version of VMware Tools. </param>
         /// <param name="folderPath"> Gets or sets the folder path of the template. </param>
         /// <returns> A new <see cref="Models.VirtualMachineTemplateInventoryItem"/> instance for mocking. </returns>
-        public static VirtualMachineTemplateInventoryItem VirtualMachineTemplateInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, ProvisioningState? provisioningState = null, int? memorySizeMB = null, int? numCpus = null, int? numCoresPerSocket = null, OSType? osType = null, string osName = null, string toolsVersionStatus = null, string toolsVersion = null, string folderPath = null)
+        public static VirtualMachineTemplateInventoryItem VirtualMachineTemplateInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, VMwareResourceProvisioningState? provisioningState = null, int? memorySizeMB = null, int? numCpus = null, int? numCoresPerSocket = null, VMwareOSType? osType = null, string osName = null, string toolsVersionStatus = null, string toolsVersion = null, string folderPath = null)
         {
             return new VirtualMachineTemplateInventoryItem(
-                InventoryType.VirtualMachineTemplate,
+                VCenterInventoryType.VirtualMachineTemplate,
                 managedResourceId,
                 moRefId,
                 moName,
@@ -783,10 +784,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="moName"> Gets or sets the vCenter Managed Object name for the inventory item. </param>
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <returns> A new <see cref="Models.VirtualNetworkInventoryItem"/> instance for mocking. </returns>
-        public static VirtualNetworkInventoryItem VirtualNetworkInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, ProvisioningState? provisioningState = null)
+        public static VirtualNetworkInventoryItem VirtualNetworkInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, VMwareResourceProvisioningState? provisioningState = null)
         {
             return new VirtualNetworkInventoryItem(
-                InventoryType.VirtualNetwork,
+                VCenterInventoryType.VirtualNetwork,
                 managedResourceId,
                 moRefId,
                 moName,
@@ -800,10 +801,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="moName"> Gets or sets the vCenter Managed Object name for the inventory item. </param>
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <returns> A new <see cref="Models.ClusterInventoryItem"/> instance for mocking. </returns>
-        public static ClusterInventoryItem ClusterInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, ProvisioningState? provisioningState = null)
+        public static ClusterInventoryItem ClusterInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, VMwareResourceProvisioningState? provisioningState = null)
         {
             return new ClusterInventoryItem(
-                InventoryType.Cluster,
+                VCenterInventoryType.Cluster,
                 managedResourceId,
                 moRefId,
                 moName,
@@ -819,10 +820,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="capacityGB"> Gets or sets Maximum capacity of this datastore, in GBs. </param>
         /// <param name="freeSpaceGB"> Gets or sets Available space of this datastore, in GBs. </param>
         /// <returns> A new <see cref="Models.DatastoreInventoryItem"/> instance for mocking. </returns>
-        public static DatastoreInventoryItem DatastoreInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, ProvisioningState? provisioningState = null, long? capacityGB = null, long? freeSpaceGB = null)
+        public static DatastoreInventoryItem DatastoreInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, VMwareResourceProvisioningState? provisioningState = null, long? capacityGB = null, long? freeSpaceGB = null)
         {
             return new DatastoreInventoryItem(
-                InventoryType.Datastore,
+                VCenterInventoryType.Datastore,
                 managedResourceId,
                 moRefId,
                 moName,
@@ -845,10 +846,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="memorySizeGB"> Gets the total amount of physical memory on the host in GB. </param>
         /// <param name="powerState"> Gets or sets the power state of the host. </param>
         /// <returns> A new <see cref="Models.HostInventoryItem"/> instance for mocking. </returns>
-        public static HostInventoryItem HostInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, ProvisioningState? provisioningState = null, InventoryItemDetails parent = null, int? numCoresPerSocket = null, int? numSockets = null, string version = null, string cpuModel = null, long? memorySizeGB = null, string powerState = null)
+        public static HostInventoryItem HostInventoryItem(string managedResourceId = null, string moRefId = null, string moName = null, VMwareResourceProvisioningState? provisioningState = null, InventoryItemDetails parent = null, int? numCoresPerSocket = null, int? numSockets = null, string version = null, string cpuModel = null, long? memorySizeGB = null, string powerState = null)
         {
             return new HostInventoryItem(
-                InventoryType.Host,
+                VCenterInventoryType.Host,
                 managedResourceId,
                 moRefId,
                 moName,
@@ -863,7 +864,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 powerState);
         }
 
-        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VirtualMachineInstanceData"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VMwareVmInstanceData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
@@ -880,13 +881,13 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="resourceUid"> Gets or sets a unique identifier for the vm resource. </param>
         /// <param name="extendedLocation"> Gets or sets the extended location. </param>
-        /// <returns> A new <see cref="ConnectedVMwarevSphere.VirtualMachineInstanceData"/> instance for mocking. </returns>
-        public static VirtualMachineInstanceData VirtualMachineInstanceData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, PlacementProfile placementProfile = null, OSProfileForVmInstance osProfile = null, HardwareProfile hardwareProfile = null, IEnumerable<NetworkInterface> networkInterfaces = null, StorageProfile storageProfile = null, bool? secureBootEnabled = null, InfrastructureProfile infrastructureProfile = null, string powerState = null, IEnumerable<ResourceStatus> statuses = null, ProvisioningState? provisioningState = null, string resourceUid = null, ExtendedLocation extendedLocation = null)
+        /// <returns> A new <see cref="ConnectedVMwarevSphere.VMwareVmInstanceData"/> instance for mocking. </returns>
+        public static VMwareVmInstanceData VMwareVmInstanceData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, PlacementProfile placementProfile = null, OSProfileForVmInstance osProfile = null, VmInstanceHardwareProfile hardwareProfile = null, IEnumerable<VMwareNetworkInterface> networkInterfaces = null, VMwareStorageProfile storageProfile = null, bool? secureBootEnabled = null, VCenterInfrastructureProfile infrastructureProfile = null, string powerState = null, IEnumerable<VMwareResourceStatus> statuses = null, VMwareResourceProvisioningState? provisioningState = null, string resourceUid = null, ExtendedLocation extendedLocation = null)
         {
-            networkInterfaces ??= new List<NetworkInterface>();
-            statuses ??= new List<ResourceStatus>();
+            networkInterfaces ??= new List<VMwareNetworkInterface>();
+            statuses ??= new List<VMwareResourceStatus>();
 
-            return new VirtualMachineInstanceData(
+            return new VMwareVmInstanceData(
                 id,
                 name,
                 resourceType,
@@ -894,7 +895,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 placementProfile,
                 osProfile,
                 hardwareProfile,
-                networkInterfaces != null ? new NetworkProfile(networkInterfaces?.ToList(), serializedAdditionalRawData: null) : null,
+                networkInterfaces != null ? new VMwareNetworkProfile(networkInterfaces?.ToList(), serializedAdditionalRawData: null) : null,
                 storageProfile,
                 secureBootEnabled != null ? new SecurityProfile(new UefiSettings(secureBootEnabled, serializedAdditionalRawData: null), serializedAdditionalRawData: null) : null,
                 infrastructureProfile,
@@ -918,7 +919,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="toolsVersion"> Gets or sets the current version of VMware Tools. </param>
         /// <param name="windowsConfiguration"> Windows Configuration. </param>
         /// <returns> A new <see cref="Models.OSProfileForVmInstance"/> instance for mocking. </returns>
-        public static OSProfileForVmInstance OSProfileForVmInstance(string computerName = null, string adminUsername = null, string adminPassword = null, string guestId = null, OSType? osType = null, string osSku = null, string toolsRunningStatus = null, string toolsVersionStatus = null, string toolsVersion = null, WindowsConfiguration windowsConfiguration = null)
+        public static OSProfileForVmInstance OSProfileForVmInstance(string computerName = null, string adminUsername = null, string adminPassword = null, string guestId = null, VMwareOSType? osType = null, string osSku = null, string toolsRunningStatus = null, string toolsVersionStatus = null, string toolsVersion = null, VMwareVmWindowsConfiguration windowsConfiguration = null)
         {
             return new OSProfileForVmInstance(
                 computerName,
@@ -934,17 +935,17 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="Models.HardwareProfile"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="Models.VmInstanceHardwareProfile"/>. </summary>
         /// <param name="memorySizeMB"> Gets or sets memory size in MBs for the vm. </param>
         /// <param name="numCpus"> Gets or sets the number of vCPUs for the vm. </param>
         /// <param name="numCoresPerSocket"> Gets or sets the number of cores per socket for the vm. Defaults to 1 if unspecified. </param>
         /// <param name="cpuHotAddEnabled"> Gets or sets a value indicating whether virtual processors can be added while this virtual machine is running. </param>
         /// <param name="cpuHotRemoveEnabled"> Gets or sets a value indicating whether virtual processors can be removed while this virtual machine is running. </param>
         /// <param name="memoryHotAddEnabled"> Gets or sets a value indicating whether memory can be added while this virtual machine is running. </param>
-        /// <returns> A new <see cref="Models.HardwareProfile"/> instance for mocking. </returns>
-        public static HardwareProfile HardwareProfile(int? memorySizeMB = null, int? numCpus = null, int? numCoresPerSocket = null, bool? cpuHotAddEnabled = null, bool? cpuHotRemoveEnabled = null, bool? memoryHotAddEnabled = null)
+        /// <returns> A new <see cref="Models.VmInstanceHardwareProfile"/> instance for mocking. </returns>
+        public static VmInstanceHardwareProfile VmInstanceHardwareProfile(int? memorySizeMB = null, int? numCpus = null, int? numCoresPerSocket = null, bool? cpuHotAddEnabled = null, bool? cpuHotRemoveEnabled = null, bool? memoryHotAddEnabled = null)
         {
-            return new HardwareProfile(
+            return new VmInstanceHardwareProfile(
                 memorySizeMB,
                 numCpus,
                 numCoresPerSocket,
@@ -954,16 +955,16 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="Models.StorageProfile"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="Models.VMwareStorageProfile"/>. </summary>
         /// <param name="disks"> Gets or sets the list of virtual disks associated with the virtual machine. </param>
         /// <param name="scsiControllers"> Gets or sets the list of virtual SCSI controllers associated with the virtual machine. </param>
-        /// <returns> A new <see cref="Models.StorageProfile"/> instance for mocking. </returns>
-        public static StorageProfile StorageProfile(IEnumerable<VirtualDisk> disks = null, IEnumerable<VirtualSCSIController> scsiControllers = null)
+        /// <returns> A new <see cref="Models.VMwareStorageProfile"/> instance for mocking. </returns>
+        public static VMwareStorageProfile VMwareStorageProfile(IEnumerable<VMwareVirtualDisk> disks = null, IEnumerable<VirtualSCSIController> scsiControllers = null)
         {
-            disks ??= new List<VirtualDisk>();
+            disks ??= new List<VMwareVirtualDisk>();
             scsiControllers ??= new List<VirtualSCSIController>();
 
-            return new StorageProfile(disks?.ToList(), scsiControllers?.ToList(), serializedAdditionalRawData: null);
+            return new VMwareStorageProfile(disks?.ToList(), scsiControllers?.ToList(), serializedAdditionalRawData: null);
         }
 
         /// <summary> Initializes a new instance of <see cref="Models.VirtualSCSIController"/>. </summary>
@@ -984,7 +985,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="Models.InfrastructureProfile"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="Models.VCenterInfrastructureProfile"/>. </summary>
         /// <param name="templateId"> Gets or sets the ARM Id of the template resource to deploy the virtual machine. </param>
         /// <param name="vCenterId"> Gets or sets the ARM Id of the vCenter resource in which this resource pool resides. </param>
         /// <param name="moRefId"> Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine. </param>
@@ -995,10 +996,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="smbiosUuid"> Gets or sets the SMBIOS UUID of the vm. </param>
         /// <param name="firmwareType"> Firmware type. </param>
         /// <param name="customResourceName"> Gets the name of the corresponding resource in Kubernetes. </param>
-        /// <returns> A new <see cref="Models.InfrastructureProfile"/> instance for mocking. </returns>
-        public static InfrastructureProfile InfrastructureProfile(string templateId = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, string folderPath = null, string instanceUuid = null, string smbiosUuid = null, FirmwareType? firmwareType = null, string customResourceName = null)
+        /// <returns> A new <see cref="Models.VCenterInfrastructureProfile"/> instance for mocking. </returns>
+        public static VCenterInfrastructureProfile VCenterInfrastructureProfile(string templateId = null, string vCenterId = null, string moRefId = null, string inventoryItemId = null, string moName = null, string folderPath = null, string instanceUuid = null, string smbiosUuid = null, VMwareFirmwareType? firmwareType = null, string customResourceName = null)
         {
-            return new InfrastructureProfile(
+            return new VCenterInfrastructureProfile(
                 templateId,
                 vCenterId,
                 moRefId,
@@ -1021,7 +1022,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="publicKey"> Gets or sets the Public Key. </param>
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <returns> A new <see cref="ConnectedVMwarevSphere.VmInstanceHybridIdentityMetadataData"/> instance for mocking. </returns>
-        public static VmInstanceHybridIdentityMetadataData VmInstanceHybridIdentityMetadataData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, string resourceUid = null, string publicKey = null, ProvisioningState? provisioningState = null)
+        public static VmInstanceHybridIdentityMetadataData VmInstanceHybridIdentityMetadataData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, string resourceUid = null, string publicKey = null, VMwareResourceProvisioningState? provisioningState = null)
         {
             return new VmInstanceHybridIdentityMetadataData(
                 id,
@@ -1034,7 +1035,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 serializedAdditionalRawData: null);
         }
 
-        /// <summary> Initializes a new instance of <see cref="Models.GuestAgent"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="ConnectedVMwarevSphere.VmInstanceGuestAgentData"/>. </summary>
         /// <param name="id"> The id. </param>
         /// <param name="name"> The name. </param>
         /// <param name="resourceType"> The resourceType. </param>
@@ -1048,12 +1049,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="customResourceName"> Gets the name of the corresponding resource in Kubernetes. </param>
         /// <param name="statuses"> The resource status information. </param>
         /// <param name="provisioningState"> Gets the provisioning state. </param>
-        /// <returns> A new <see cref="Models.GuestAgent"/> instance for mocking. </returns>
-        public static GuestAgent GuestAgent(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, string uuid = null, GuestCredential credentials = null, ResourceIdentifier privateLinkScopeResourceId = null, string httpsProxy = null, ProvisioningAction? provisioningAction = null, string status = null, string customResourceName = null, IEnumerable<ResourceStatus> statuses = null, ProvisioningState? provisioningState = null)
+        /// <returns> A new <see cref="ConnectedVMwarevSphere.VmInstanceGuestAgentData"/> instance for mocking. </returns>
+        public static VmInstanceGuestAgentData VmInstanceGuestAgentData(ResourceIdentifier id = null, string name = null, ResourceType resourceType = default, SystemData systemData = null, string uuid = null, VmInstanceGuestCredential credentials = null, ResourceIdentifier privateLinkScopeResourceId = null, string httpsProxy = null, GuestAgentProvisioningAction? provisioningAction = null, string status = null, string customResourceName = null, IEnumerable<VMwareResourceStatus> statuses = null, VMwareResourceProvisioningState? provisioningState = null)
         {
-            statuses ??= new List<ResourceStatus>();
+            statuses ??= new List<VMwareResourceStatus>();
 
-            return new GuestAgent(
+            return new VmInstanceGuestAgentData(
                 id,
                 name,
                 resourceType,
@@ -1068,6 +1069,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 statuses?.ToList(),
                 provisioningState,
                 serializedAdditionalRawData: null);
+        }
+
+        /// <summary> Initializes a new instance of OSProfileForVmInstance. </summary>
+        /// <param name="computerName"> Gets or sets computer name. </param>
+        /// <param name="adminUsername"> Gets or sets administrator username. </param>
+        /// <param name="adminPassword"> Sets administrator password. </param>
+        /// <param name="guestId"> Gets or sets the guestId. </param>
+        /// <param name="osType"> Gets or sets the type of the os. </param>
+        /// <param name="osSku"> Gets or sets os sku. </param>
+        /// <param name="toolsRunningStatus"> Gets or sets the current running status of VMware Tools running in the guest operating system. </param>
+        /// <param name="toolsVersionStatus"> Gets or sets the current version status of VMware Tools installed in the guest operating system. </param>
+        /// <param name="toolsVersion"> Gets or sets the current version of VMware Tools. </param>
+        /// <returns> A new <see cref="T:Azure.ResourceManager.ConnectedVMwarevSphere.Models.OSProfileForVmInstance" /> instance for mocking. </returns>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static OSProfileForVmInstance OSProfileForVmInstance(string computerName, string adminUsername, string adminPassword, string guestId, VMwareOSType? osType, string osSku, string toolsRunningStatus, string toolsVersionStatus, string toolsVersion)
+        {
+            return OSProfileForVmInstance(computerName: computerName, adminUsername: adminUsername, adminPassword: adminPassword, guestId: guestId, osType: osType, osSku: osSku, toolsRunningStatus: toolsRunningStatus, toolsVersionStatus: toolsVersionStatus, toolsVersion: toolsVersion, windowsConfiguration: default);
         }
     }
 }

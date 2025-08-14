@@ -55,7 +55,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="moName"> Gets or sets the vCenter Managed Object name for the resource. </param>
         /// <param name="inventoryType"> The inventory type. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal InventoryItemDetails(string inventoryItemId, string moName, InventoryType? inventoryType, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal InventoryItemDetails(string inventoryItemId, string moName, VCenterInventoryType? inventoryType, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             InventoryItemId = inventoryItemId;
             MoName = moName;
@@ -68,6 +68,6 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Gets or sets the vCenter Managed Object name for the resource. </summary>
         public string MoName { get; set; }
         /// <summary> The inventory type. </summary>
-        public InventoryType? InventoryType { get; set; }
+        public VCenterInventoryType? InventoryType { get; set; }
     }
 }

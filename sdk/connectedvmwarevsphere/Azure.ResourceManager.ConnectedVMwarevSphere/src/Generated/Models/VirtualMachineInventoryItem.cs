@@ -17,7 +17,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         public VirtualMachineInventoryItem()
         {
             IPAddresses = new ChangeTrackingList<string>();
-            InventoryType = InventoryType.VirtualMachine;
+            InventoryType = VCenterInventoryType.VirtualMachine;
         }
 
         /// <summary> Initializes a new instance of <see cref="VirtualMachineInventoryItem"/>. </summary>
@@ -51,7 +51,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="numCpus"> Gets or sets the number of vCPU for the vm. </param>
         /// <param name="storageProfile"> Storage properties. </param>
         /// <param name="networkProfile"> Network properties. </param>
-        internal VirtualMachineInventoryItem(InventoryType inventoryType, string managedResourceId, string moRefId, string moName, ProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData, OSType? osType, string osName, IList<string> ipAddresses, string folderPath, InventoryItemDetails host, InventoryItemDetails resourcePool, InventoryItemDetails cluster, string instanceUuid, string smbiosUuid, string powerState, string toolsRunningStatus, string toolsVersionStatus, string toolsVersion, FirmwareType? firmwareType, bool? changeTrackingSupported, bool? changeTrackingEnabled, int? maxSnapshots, int? numberOfSnapshots, string diskEnabledUuid, string computerName, int? memorySizeMB, int? numCpus, StorageProfileInventory storageProfile, NetworkProfileInventory networkProfile) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
+        internal VirtualMachineInventoryItem(VCenterInventoryType inventoryType, string managedResourceId, string moRefId, string moName, VMwareResourceProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData, VMwareOSType? osType, string osName, IList<string> ipAddresses, string folderPath, InventoryItemDetails host, InventoryItemDetails resourcePool, InventoryItemDetails cluster, string instanceUuid, string smbiosUuid, string powerState, string toolsRunningStatus, string toolsVersionStatus, string toolsVersion, VMwareFirmwareType? firmwareType, bool? changeTrackingSupported, bool? changeTrackingEnabled, int? maxSnapshots, int? numberOfSnapshots, string diskEnabledUuid, string computerName, int? memorySizeMB, int? numCpus, StorageProfileInventory storageProfile, NetworkProfileInventory networkProfile) : base(inventoryType, managedResourceId, moRefId, moName, provisioningState, serializedAdditionalRawData)
         {
             OSType = osType;
             OSName = osName;
@@ -81,7 +81,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         }
 
         /// <summary> Gets or sets the type of the os. </summary>
-        public OSType? OSType { get; set; }
+        public VMwareOSType? OSType { get; set; }
         /// <summary> Gets or sets os name. </summary>
         public string OSName { get; set; }
         /// <summary> Gets or sets the nic ip addresses. </summary>
@@ -107,7 +107,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Gets or sets the current version of VMware Tools. </summary>
         public string ToolsVersion { get; }
         /// <summary> Firmware type. </summary>
-        public FirmwareType? FirmwareType { get; }
+        public VMwareFirmwareType? FirmwareType { get; }
         /// <summary> Gets a value indicating whether change tracking is supported. </summary>
         public bool? ChangeTrackingSupported { get; }
         /// <summary> Gets a value indicating whether change tracking is enabled. </summary>

@@ -114,7 +114,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
             string label = default;
             IReadOnlyList<string> ipAddresses = default;
             string macAddress = default;
-            NICType? nicType = default;
+            VMwareNicType? nicType = default;
             string networkMoRefId = default;
             string networkMoName = default;
             int? deviceKey = default;
@@ -152,7 +152,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                     {
                         continue;
                     }
-                    nicType = new NICType(property.Value.GetString());
+                    nicType = new VMwareNicType(property.Value.GetString());
                     continue;
                 }
                 if (property.NameEquals("networkMoRefId"u8))
