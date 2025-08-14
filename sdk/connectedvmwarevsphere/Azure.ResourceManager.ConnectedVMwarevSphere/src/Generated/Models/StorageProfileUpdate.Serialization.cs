@@ -81,7 +81,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
             {
                 return null;
             }
-            IList<VMwareVirtualDiskUpdate> disks = default;
+            IList<VirtualDiskUpdate> disks = default;
             IDictionary<string, BinaryData> serializedAdditionalRawData = default;
             Dictionary<string, BinaryData> rawDataDictionary = new Dictionary<string, BinaryData>();
             foreach (var property in element.EnumerateObject())
@@ -92,10 +92,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                     {
                         continue;
                     }
-                    List<VMwareVirtualDiskUpdate> array = new List<VMwareVirtualDiskUpdate>();
+                    List<VirtualDiskUpdate> array = new List<VirtualDiskUpdate>();
                     foreach (var item in property.Value.EnumerateArray())
                     {
-                        array.Add(VMwareVirtualDiskUpdate.DeserializeVMwareVirtualDiskUpdate(item, options));
+                        array.Add(VirtualDiskUpdate.DeserializeVirtualDiskUpdate(item, options));
                     }
                     disks = array;
                     continue;
@@ -106,7 +106,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
                 }
             }
             serializedAdditionalRawData = rawDataDictionary;
-            return new StorageProfileUpdate(disks ?? new ChangeTrackingList<VMwareVirtualDiskUpdate>(), serializedAdditionalRawData);
+            return new StorageProfileUpdate(disks ?? new ChangeTrackingList<VirtualDiskUpdate>(), serializedAdditionalRawData);
         }
 
         BinaryData IPersistableModel<StorageProfileUpdate>.Write(ModelReaderWriterOptions options)

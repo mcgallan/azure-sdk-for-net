@@ -25,8 +25,8 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <summary> Initializes a new instance of VmInstanceHybridIdentityMetadataRestOperations. </summary>
         /// <param name="pipeline"> The HTTP pipeline for sending and receiving REST requests and responses. </param>
         /// <param name="applicationId"> The application id to use for user agent. </param>
-        /// <param name="endpoint"> server parameter. </param>
-        /// <param name="apiVersion"> Api Version. </param>
+        /// <param name="endpoint"> Service host. </param>
+        /// <param name="apiVersion"> The API version to use for this operation. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="pipeline"/> or <paramref name="apiVersion"/> is null. </exception>
         public VmInstanceHybridIdentityMetadataRestOperations(HttpPipeline pipeline, string applicationId, Uri endpoint = null, string apiVersion = default)
         {
@@ -65,7 +65,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         }
 
         /// <summary> Implements HybridIdentityMetadata GET method. </summary>
-        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. </param>
+        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceUri"/> is null. </exception>
         public async Task<Response<VmInstanceHybridIdentityMetadataData>> GetAsync(string resourceUri, CancellationToken cancellationToken = default)
@@ -91,7 +91,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         }
 
         /// <summary> Implements HybridIdentityMetadata GET method. </summary>
-        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. </param>
+        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceUri"/> is null. </exception>
         public Response<VmInstanceHybridIdentityMetadataData> Get(string resourceUri, CancellationToken cancellationToken = default)
@@ -145,7 +145,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         }
 
         /// <summary> Returns the list of HybridIdentityMetadata of the given vm. </summary>
-        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. </param>
+        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceUri"/> is null. </exception>
         public async Task<Response<VmInstanceHybridIdentityMetadataList>> ListAsync(string resourceUri, CancellationToken cancellationToken = default)
@@ -169,7 +169,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         }
 
         /// <summary> Returns the list of HybridIdentityMetadata of the given vm. </summary>
-        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. </param>
+        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceUri"/> is null. </exception>
         public Response<VmInstanceHybridIdentityMetadataList> List(string resourceUri, CancellationToken cancellationToken = default)
@@ -216,7 +216,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
 
         /// <summary> Returns the list of HybridIdentityMetadata of the given vm. </summary>
         /// <param name="nextLink"> The URL to the next page of results. </param>
-        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. </param>
+        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/> or <paramref name="resourceUri"/> is null. </exception>
         public async Task<Response<VmInstanceHybridIdentityMetadataList>> ListNextPageAsync(string nextLink, string resourceUri, CancellationToken cancellationToken = default)
@@ -242,7 +242,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
 
         /// <summary> Returns the list of HybridIdentityMetadata of the given vm. </summary>
         /// <param name="nextLink"> The URL to the next page of results. </param>
-        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. </param>
+        /// <param name="resourceUri"> The fully qualified Azure Resource manager identifier of the resource. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="nextLink"/> or <paramref name="resourceUri"/> is null. </exception>
         public Response<VmInstanceHybridIdentityMetadataList> ListNextPage(string nextLink, string resourceUri, CancellationToken cancellationToken = default)

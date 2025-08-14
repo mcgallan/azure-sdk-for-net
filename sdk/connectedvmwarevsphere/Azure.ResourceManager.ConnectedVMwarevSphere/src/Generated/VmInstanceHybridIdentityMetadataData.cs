@@ -52,7 +52,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
         /// <summary> Initializes a new instance of <see cref="VmInstanceHybridIdentityMetadataData"/>. </summary>
-        public VmInstanceHybridIdentityMetadataData()
+        internal VmInstanceHybridIdentityMetadataData()
         {
         }
 
@@ -65,7 +65,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <param name="publicKey"> Gets or sets the Public Key. </param>
         /// <param name="provisioningState"> Gets the provisioning state. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal VmInstanceHybridIdentityMetadataData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, string resourceUid, string publicKey, VMwareResourceProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(id, name, resourceType, systemData)
+        internal VmInstanceHybridIdentityMetadataData(ResourceIdentifier id, string name, ResourceType resourceType, SystemData systemData, string resourceUid, string publicKey, ProvisioningState? provisioningState, IDictionary<string, BinaryData> serializedAdditionalRawData) : base(id, name, resourceType, systemData)
         {
             ResourceUid = resourceUid;
             PublicKey = publicKey;
@@ -74,10 +74,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         }
 
         /// <summary> The unique identifier for the resource. </summary>
-        public string ResourceUid { get; set; }
+        public string ResourceUid { get; }
         /// <summary> Gets or sets the Public Key. </summary>
-        public string PublicKey { get; set; }
+        public string PublicKey { get; }
         /// <summary> Gets the provisioning state. </summary>
-        public VMwareResourceProvisioningState? ProvisioningState { get; }
+        public ProvisioningState? ProvisioningState { get; }
     }
 }

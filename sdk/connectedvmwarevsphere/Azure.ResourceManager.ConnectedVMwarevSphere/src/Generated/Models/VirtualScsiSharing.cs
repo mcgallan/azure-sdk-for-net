@@ -11,13 +11,13 @@ using System.ComponentModel;
 namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
 {
     /// <summary> Defines the sharing mode for sharing the SCSI bus. </summary>
-    public readonly partial struct VirtualScsiSharing : IEquatable<VirtualScsiSharing>
+    public readonly partial struct VirtualSCSISharing : IEquatable<VirtualSCSISharing>
     {
         private readonly string _value;
 
-        /// <summary> Initializes a new instance of <see cref="VirtualScsiSharing"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="VirtualSCSISharing"/>. </summary>
         /// <exception cref="ArgumentNullException"> <paramref name="value"/> is null. </exception>
-        public VirtualScsiSharing(string value)
+        public VirtualSCSISharing(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
@@ -27,23 +27,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         private const string VirtualSharingValue = "virtualSharing";
 
         /// <summary> noSharing. </summary>
-        public static VirtualScsiSharing NoSharing { get; } = new VirtualScsiSharing(NoSharingValue);
+        public static VirtualSCSISharing NoSharing { get; } = new VirtualSCSISharing(NoSharingValue);
         /// <summary> physicalSharing. </summary>
-        public static VirtualScsiSharing PhysicalSharing { get; } = new VirtualScsiSharing(PhysicalSharingValue);
+        public static VirtualSCSISharing PhysicalSharing { get; } = new VirtualSCSISharing(PhysicalSharingValue);
         /// <summary> virtualSharing. </summary>
-        public static VirtualScsiSharing VirtualSharing { get; } = new VirtualScsiSharing(VirtualSharingValue);
-        /// <summary> Determines if two <see cref="VirtualScsiSharing"/> values are the same. </summary>
-        public static bool operator ==(VirtualScsiSharing left, VirtualScsiSharing right) => left.Equals(right);
-        /// <summary> Determines if two <see cref="VirtualScsiSharing"/> values are not the same. </summary>
-        public static bool operator !=(VirtualScsiSharing left, VirtualScsiSharing right) => !left.Equals(right);
-        /// <summary> Converts a <see cref="string"/> to a <see cref="VirtualScsiSharing"/>. </summary>
-        public static implicit operator VirtualScsiSharing(string value) => new VirtualScsiSharing(value);
+        public static VirtualSCSISharing VirtualSharing { get; } = new VirtualSCSISharing(VirtualSharingValue);
+        /// <summary> Determines if two <see cref="VirtualSCSISharing"/> values are the same. </summary>
+        public static bool operator ==(VirtualSCSISharing left, VirtualSCSISharing right) => left.Equals(right);
+        /// <summary> Determines if two <see cref="VirtualSCSISharing"/> values are not the same. </summary>
+        public static bool operator !=(VirtualSCSISharing left, VirtualSCSISharing right) => !left.Equals(right);
+        /// <summary> Converts a <see cref="string"/> to a <see cref="VirtualSCSISharing"/>. </summary>
+        public static implicit operator VirtualSCSISharing(string value) => new VirtualSCSISharing(value);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj) => obj is VirtualScsiSharing other && Equals(other);
+        public override bool Equals(object obj) => obj is VirtualSCSISharing other && Equals(other);
         /// <inheritdoc />
-        public bool Equals(VirtualScsiSharing other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
+        public bool Equals(VirtualSCSISharing other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]

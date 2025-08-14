@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
 {
     /// <summary> This data object type contains the properties of a SCSI controller device attached to a virtual machine that is reported by the controller. </summary>
-    public partial class VirtualScsiController
+    public partial class VirtualSCSIController
     {
         /// <summary>
         /// Keeps track of any properties unknown to the library.
@@ -45,21 +45,21 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// </summary>
         private IDictionary<string, BinaryData> _serializedAdditionalRawData;
 
-        /// <summary> Initializes a new instance of <see cref="VirtualScsiController"/>. </summary>
-        internal VirtualScsiController()
+        /// <summary> Initializes a new instance of <see cref="VirtualSCSIController"/>. </summary>
+        internal VirtualSCSIController()
         {
         }
 
-        /// <summary> Initializes a new instance of <see cref="VirtualScsiController"/>. </summary>
-        /// <param name="scsiControllerType"> Gets or sets the controller type. </param>
+        /// <summary> Initializes a new instance of <see cref="VirtualSCSIController"/>. </summary>
+        /// <param name="type"> Gets or sets the controller type. </param>
         /// <param name="controllerKey"> Gets or sets the key of the controller. </param>
         /// <param name="busNumber"> Gets or sets the bus number of the controller. </param>
         /// <param name="scsiCtlrUnitNumber"> Gets or sets the SCSI controller unit number. </param>
         /// <param name="sharing"> Gets or sets the sharing mode. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal VirtualScsiController(ScsiControllerType? scsiControllerType, int? controllerKey, int? busNumber, int? scsiCtlrUnitNumber, VirtualScsiSharing? sharing, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal VirtualSCSIController(SCSIControllerType? type, int? controllerKey, int? busNumber, int? scsiCtlrUnitNumber, VirtualSCSISharing? sharing, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
-            ScsiControllerType = scsiControllerType;
+            Type = type;
             ControllerKey = controllerKey;
             BusNumber = busNumber;
             ScsiCtlrUnitNumber = scsiCtlrUnitNumber;
@@ -68,7 +68,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         }
 
         /// <summary> Gets or sets the controller type. </summary>
-        public ScsiControllerType? ScsiControllerType { get; }
+        public SCSIControllerType? Type { get; }
         /// <summary> Gets or sets the key of the controller. </summary>
         public int? ControllerKey { get; }
         /// <summary> Gets or sets the bus number of the controller. </summary>
@@ -76,6 +76,6 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Gets or sets the SCSI controller unit number. </summary>
         public int? ScsiCtlrUnitNumber { get; }
         /// <summary> Gets or sets the sharing mode. </summary>
-        public VirtualScsiSharing? Sharing { get; }
+        public VirtualSCSISharing? Sharing { get; }
     }
 }

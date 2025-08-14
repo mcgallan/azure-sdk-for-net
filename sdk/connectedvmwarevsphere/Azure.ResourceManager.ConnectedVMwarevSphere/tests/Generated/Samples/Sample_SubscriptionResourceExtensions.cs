@@ -18,10 +18,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
     {
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task GetVMwareResourcePools_ListResourcePools()
+        public async Task GetResourcePools_ListResourcePools()
         {
-            // Generated from example definition: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-12-01/examples/ListResourcePools.json
-            // this example is just showing the usage of "ResourcePools_List" operation, for the dependent resources, they will have to be created separately.
+            // Generated from example definition: 2023-12-01/ListResourcePools.json
+            // this example is just showing the usage of "ResourcePool_List" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
             TokenCredential cred = new DefaultAzureCredential();
@@ -35,11 +35,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
             SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
             // invoke the operation and iterate over the result
-            await foreach (VMwareResourcePoolResource item in subscriptionResource.GetVMwareResourcePoolsAsync())
+            await foreach (ResourcePoolResource item in subscriptionResource.GetResourcePoolsAsync())
             {
                 // the variable item is a resource, you could call other operations on this instance as well
                 // but just for demo, we get its data from this resource instance
-                VMwareResourcePoolData resourceData = item.Data;
+                ResourcePoolData resourceData = item.Data;
                 // for demo we just print out the id
                 Console.WriteLine($"Succeeded on id: {resourceData.Id}");
             }
@@ -49,10 +49,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task GetVMwareClusters_ListClusters()
+        public async Task GetClusters_ListClusters()
         {
-            // Generated from example definition: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-12-01/examples/ListClusters.json
-            // this example is just showing the usage of "Clusters_List" operation, for the dependent resources, they will have to be created separately.
+            // Generated from example definition: 2023-12-01/ListClusters.json
+            // this example is just showing the usage of "Cluster_List" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
             TokenCredential cred = new DefaultAzureCredential();
@@ -66,11 +66,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
             SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
             // invoke the operation and iterate over the result
-            await foreach (VMwareClusterResource item in subscriptionResource.GetVMwareClustersAsync())
+            await foreach (ClusterResource item in subscriptionResource.GetClustersAsync())
             {
                 // the variable item is a resource, you could call other operations on this instance as well
                 // but just for demo, we get its data from this resource instance
-                VMwareClusterData resourceData = item.Data;
+                ClusterData resourceData = item.Data;
                 // for demo we just print out the id
                 Console.WriteLine($"Succeeded on id: {resourceData.Id}");
             }
@@ -80,10 +80,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task GetVMwareHosts_ListHosts()
+        public async Task GetHosts_ListHosts()
         {
-            // Generated from example definition: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-12-01/examples/ListHosts.json
-            // this example is just showing the usage of "Hosts_List" operation, for the dependent resources, they will have to be created separately.
+            // Generated from example definition: 2023-12-01/ListHosts.json
+            // this example is just showing the usage of "Host_List" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
             TokenCredential cred = new DefaultAzureCredential();
@@ -97,11 +97,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
             SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
             // invoke the operation and iterate over the result
-            await foreach (VMwareHostResource item in subscriptionResource.GetVMwareHostsAsync())
+            await foreach (HostResource item in subscriptionResource.GetHostsAsync())
             {
                 // the variable item is a resource, you could call other operations on this instance as well
                 // but just for demo, we get its data from this resource instance
-                VMwareHostData resourceData = item.Data;
+                HostData resourceData = item.Data;
                 // for demo we just print out the id
                 Console.WriteLine($"Succeeded on id: {resourceData.Id}");
             }
@@ -111,10 +111,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task GetVMwareDatastores_ListDatastores()
+        public async Task GetDatastores_ListDatastores()
         {
-            // Generated from example definition: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-12-01/examples/ListDatastores.json
-            // this example is just showing the usage of "Datastores_List" operation, for the dependent resources, they will have to be created separately.
+            // Generated from example definition: 2023-12-01/ListDatastores.json
+            // this example is just showing the usage of "Datastore_List" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
             TokenCredential cred = new DefaultAzureCredential();
@@ -128,11 +128,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
             SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
             // invoke the operation and iterate over the result
-            await foreach (VMwareDatastoreResource item in subscriptionResource.GetVMwareDatastoresAsync())
+            await foreach (DatastoreResource item in subscriptionResource.GetDatastoresAsync())
             {
                 // the variable item is a resource, you could call other operations on this instance as well
                 // but just for demo, we get its data from this resource instance
-                VMwareDatastoreData resourceData = item.Data;
+                DatastoreData resourceData = item.Data;
                 // for demo we just print out the id
                 Console.WriteLine($"Succeeded on id: {resourceData.Id}");
             }
@@ -142,10 +142,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task GetVMwareVCenters_ListVCenters()
+        public async Task GetVCenters_ListVCenters()
         {
-            // Generated from example definition: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-12-01/examples/ListVCenters.json
-            // this example is just showing the usage of "VCenters_List" operation, for the dependent resources, they will have to be created separately.
+            // Generated from example definition: 2023-12-01/ListVCenters.json
+            // this example is just showing the usage of "VCenter_List" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
             TokenCredential cred = new DefaultAzureCredential();
@@ -159,11 +159,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
             SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
             // invoke the operation and iterate over the result
-            await foreach (VMwareVCenterResource item in subscriptionResource.GetVMwareVCentersAsync())
+            await foreach (VCenterResource item in subscriptionResource.GetVCentersAsync())
             {
                 // the variable item is a resource, you could call other operations on this instance as well
                 // but just for demo, we get its data from this resource instance
-                VMwareVCenterData resourceData = item.Data;
+                VCenterData resourceData = item.Data;
                 // for demo we just print out the id
                 Console.WriteLine($"Succeeded on id: {resourceData.Id}");
             }
@@ -173,10 +173,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task GetVMwareVmTemplates_ListVirtualMachineTemplates()
+        public async Task GetVirtualMachineTemplates_ListVirtualMachineTemplates()
         {
-            // Generated from example definition: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-12-01/examples/ListVirtualMachineTemplates.json
-            // this example is just showing the usage of "VirtualMachineTemplates_List" operation, for the dependent resources, they will have to be created separately.
+            // Generated from example definition: 2023-12-01/ListVirtualMachineTemplates.json
+            // this example is just showing the usage of "VirtualMachineTemplate_List" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
             TokenCredential cred = new DefaultAzureCredential();
@@ -190,11 +190,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
             SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
             // invoke the operation and iterate over the result
-            await foreach (VMwareVmTemplateResource item in subscriptionResource.GetVMwareVmTemplatesAsync())
+            await foreach (VirtualMachineTemplateResource item in subscriptionResource.GetVirtualMachineTemplatesAsync())
             {
                 // the variable item is a resource, you could call other operations on this instance as well
                 // but just for demo, we get its data from this resource instance
-                VMwareVmTemplateData resourceData = item.Data;
+                VirtualMachineTemplateData resourceData = item.Data;
                 // for demo we just print out the id
                 Console.WriteLine($"Succeeded on id: {resourceData.Id}");
             }
@@ -204,10 +204,10 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
 
         [Test]
         [Ignore("Only validating compilation of examples")]
-        public async Task GetVMwareVirtualNetworks_ListVirtualNetworks()
+        public async Task GetVirtualNetworks_ListVirtualNetworks()
         {
-            // Generated from example definition: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-12-01/examples/ListVirtualNetworks.json
-            // this example is just showing the usage of "VirtualNetworks_List" operation, for the dependent resources, they will have to be created separately.
+            // Generated from example definition: 2023-12-01/ListVirtualNetworks.json
+            // this example is just showing the usage of "VirtualNetwork_List" operation, for the dependent resources, they will have to be created separately.
 
             // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
             TokenCredential cred = new DefaultAzureCredential();
@@ -221,11 +221,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Samples
             SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
             // invoke the operation and iterate over the result
-            await foreach (VMwareVirtualNetworkResource item in subscriptionResource.GetVMwareVirtualNetworksAsync())
+            await foreach (VirtualNetworkResource item in subscriptionResource.GetVirtualNetworksAsync())
             {
                 // the variable item is a resource, you could call other operations on this instance as well
                 // but just for demo, we get its data from this resource instance
-                VMwareVirtualNetworkData resourceData = item.Data;
+                VirtualNetworkData resourceData = item.Data;
                 // for demo we just print out the id
                 Console.WriteLine($"Succeeded on id: {resourceData.Id}");
             }

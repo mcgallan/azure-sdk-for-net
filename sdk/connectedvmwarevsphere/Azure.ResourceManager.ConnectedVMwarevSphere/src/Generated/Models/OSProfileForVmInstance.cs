@@ -62,7 +62,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <param name="toolsVersion"> Gets or sets the current version of VMware Tools. </param>
         /// <param name="windowsConfiguration"> Windows Configuration. </param>
         /// <param name="serializedAdditionalRawData"> Keeps track of any properties unknown to the library. </param>
-        internal OSProfileForVmInstance(string computerName, string adminUsername, string adminPassword, string guestId, VMwareOSType? osType, string osSku, string toolsRunningStatus, string toolsVersionStatus, string toolsVersion, VMwareVmWindowsConfiguration windowsConfiguration, IDictionary<string, BinaryData> serializedAdditionalRawData)
+        internal OSProfileForVmInstance(string computerName, string adminUsername, string adminPassword, string guestId, OSType? osType, string osSku, string toolsRunningStatus, string toolsVersionStatus, string toolsVersion, WindowsConfiguration windowsConfiguration, IDictionary<string, BinaryData> serializedAdditionalRawData)
         {
             ComputerName = computerName;
             AdminUsername = adminUsername;
@@ -86,7 +86,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Gets or sets the guestId. </summary>
         public string GuestId { get; set; }
         /// <summary> Gets or sets the type of the os. </summary>
-        public VMwareOSType? OSType { get; set; }
+        public OSType? OSType { get; set; }
         /// <summary> Gets or sets os sku. </summary>
         public string OSSku { get; }
         /// <summary> Gets or sets the current running status of VMware Tools running in the guest operating system. </summary>
@@ -96,6 +96,6 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         /// <summary> Gets or sets the current version of VMware Tools. </summary>
         public string ToolsVersion { get; }
         /// <summary> Windows Configuration. </summary>
-        public VMwareVmWindowsConfiguration WindowsConfiguration { get; set; }
+        public WindowsConfiguration WindowsConfiguration { get; set; }
     }
 }

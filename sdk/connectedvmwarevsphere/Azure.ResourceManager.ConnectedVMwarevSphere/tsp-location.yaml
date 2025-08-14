@@ -1,0 +1,4 @@
+directory: specification/connectedvmware/ConnectedVMwareSphere.Management
+repo: Azure/azure-rest-api-specs
+commit: eba129f13d4cb85452a82960175bc344a0c00418
+additionalDirectories: []

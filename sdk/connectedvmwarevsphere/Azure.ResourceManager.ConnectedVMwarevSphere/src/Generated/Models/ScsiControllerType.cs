@@ -11,13 +11,13 @@ using System.ComponentModel;
 namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
 {
     /// <summary> Defines the different types of SCSI controllers. </summary>
-    public readonly partial struct ScsiControllerType : IEquatable<ScsiControllerType>
+    public readonly partial struct SCSIControllerType : IEquatable<SCSIControllerType>
     {
         private readonly string _value;
 
-        /// <summary> Initializes a new instance of <see cref="ScsiControllerType"/>. </summary>
+        /// <summary> Initializes a new instance of <see cref="SCSIControllerType"/>. </summary>
         /// <exception cref="ArgumentNullException"> <paramref name="value"/> is null. </exception>
-        public ScsiControllerType(string value)
+        public SCSIControllerType(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
@@ -28,25 +28,25 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Models
         private const string LsilogicsasValue = "lsilogicsas";
 
         /// <summary> lsilogic. </summary>
-        public static ScsiControllerType Lsilogic { get; } = new ScsiControllerType(LsilogicValue);
+        public static SCSIControllerType Lsilogic { get; } = new SCSIControllerType(LsilogicValue);
         /// <summary> buslogic. </summary>
-        public static ScsiControllerType Buslogic { get; } = new ScsiControllerType(BuslogicValue);
+        public static SCSIControllerType Buslogic { get; } = new SCSIControllerType(BuslogicValue);
         /// <summary> pvscsi. </summary>
-        public static ScsiControllerType Pvscsi { get; } = new ScsiControllerType(PvscsiValue);
+        public static SCSIControllerType Pvscsi { get; } = new SCSIControllerType(PvscsiValue);
         /// <summary> lsilogicsas. </summary>
-        public static ScsiControllerType Lsilogicsas { get; } = new ScsiControllerType(LsilogicsasValue);
-        /// <summary> Determines if two <see cref="ScsiControllerType"/> values are the same. </summary>
-        public static bool operator ==(ScsiControllerType left, ScsiControllerType right) => left.Equals(right);
-        /// <summary> Determines if two <see cref="ScsiControllerType"/> values are not the same. </summary>
-        public static bool operator !=(ScsiControllerType left, ScsiControllerType right) => !left.Equals(right);
-        /// <summary> Converts a <see cref="string"/> to a <see cref="ScsiControllerType"/>. </summary>
-        public static implicit operator ScsiControllerType(string value) => new ScsiControllerType(value);
+        public static SCSIControllerType Lsilogicsas { get; } = new SCSIControllerType(LsilogicsasValue);
+        /// <summary> Determines if two <see cref="SCSIControllerType"/> values are the same. </summary>
+        public static bool operator ==(SCSIControllerType left, SCSIControllerType right) => left.Equals(right);
+        /// <summary> Determines if two <see cref="SCSIControllerType"/> values are not the same. </summary>
+        public static bool operator !=(SCSIControllerType left, SCSIControllerType right) => !left.Equals(right);
+        /// <summary> Converts a <see cref="string"/> to a <see cref="SCSIControllerType"/>. </summary>
+        public static implicit operator SCSIControllerType(string value) => new SCSIControllerType(value);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj) => obj is ScsiControllerType other && Equals(other);
+        public override bool Equals(object obj) => obj is SCSIControllerType other && Equals(other);
         /// <inheritdoc />
-        public bool Equals(ScsiControllerType other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
+        public bool Equals(SCSIControllerType other) => string.Equals(_value, other._value, StringComparison.InvariantCultureIgnoreCase);
 
         /// <inheritdoc />
         [EditorBrowsable(EditorBrowsableState.Never)]

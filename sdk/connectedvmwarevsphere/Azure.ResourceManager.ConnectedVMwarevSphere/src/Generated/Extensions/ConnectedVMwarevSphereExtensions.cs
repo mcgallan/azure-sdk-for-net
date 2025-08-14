@@ -33,192 +33,192 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         }
 
         /// <summary>
-        /// Gets an object representing a VMwareVmInstanceResource along with the instance operations that can be performed on it in the ArmClient.
+        /// Gets an object representing a VirtualMachineInstanceResource along with the instance operations that can be performed on it in the ArmClient.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVMwareVmInstance(ResourceIdentifier)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVirtualMachineInstance(ResourceIdentifier)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
         /// <param name="scope"> The scope that the resource will apply against. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="VMwareVmInstanceResource"/> object. </returns>
-        public static VMwareVmInstanceResource GetVMwareVmInstance(this ArmClient client, ResourceIdentifier scope)
+        /// <returns> Returns a <see cref="VirtualMachineInstanceResource"/> object. </returns>
+        public static VirtualMachineInstanceResource GetVirtualMachineInstance(this ArmClient client, ResourceIdentifier scope)
         {
             Argument.AssertNotNull(client, nameof(client));
 
-            return GetMockableConnectedVMwarevSphereArmClient(client).GetVMwareVmInstance(scope);
+            return GetMockableConnectedVMwarevSphereArmClient(client).GetVirtualMachineInstance(scope);
         }
 
         /// <summary>
-        /// Gets an object representing a <see cref="VMwareResourcePoolResource" /> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="VMwareResourcePoolResource.CreateResourceIdentifier" /> to create a <see cref="VMwareResourcePoolResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// Gets an object representing a <see cref="ResourcePoolResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="ResourcePoolResource.CreateResourceIdentifier" /> to create a <see cref="ResourcePoolResource" /> <see cref="ResourceIdentifier" /> from its components.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVMwareResourcePoolResource(ResourceIdentifier)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetResourcePoolResource(ResourceIdentifier)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
         /// <param name="id"> The resource ID of the resource to get. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="VMwareResourcePoolResource"/> object. </returns>
-        public static VMwareResourcePoolResource GetVMwareResourcePoolResource(this ArmClient client, ResourceIdentifier id)
+        /// <returns> Returns a <see cref="ResourcePoolResource"/> object. </returns>
+        public static ResourcePoolResource GetResourcePoolResource(this ArmClient client, ResourceIdentifier id)
         {
             Argument.AssertNotNull(client, nameof(client));
 
-            return GetMockableConnectedVMwarevSphereArmClient(client).GetVMwareResourcePoolResource(id);
+            return GetMockableConnectedVMwarevSphereArmClient(client).GetResourcePoolResource(id);
         }
 
         /// <summary>
-        /// Gets an object representing a <see cref="VMwareClusterResource" /> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="VMwareClusterResource.CreateResourceIdentifier" /> to create a <see cref="VMwareClusterResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// Gets an object representing a <see cref="ClusterResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="ClusterResource.CreateResourceIdentifier" /> to create a <see cref="ClusterResource" /> <see cref="ResourceIdentifier" /> from its components.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVMwareClusterResource(ResourceIdentifier)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetClusterResource(ResourceIdentifier)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
         /// <param name="id"> The resource ID of the resource to get. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="VMwareClusterResource"/> object. </returns>
-        public static VMwareClusterResource GetVMwareClusterResource(this ArmClient client, ResourceIdentifier id)
+        /// <returns> Returns a <see cref="ClusterResource"/> object. </returns>
+        public static ClusterResource GetClusterResource(this ArmClient client, ResourceIdentifier id)
         {
             Argument.AssertNotNull(client, nameof(client));
 
-            return GetMockableConnectedVMwarevSphereArmClient(client).GetVMwareClusterResource(id);
+            return GetMockableConnectedVMwarevSphereArmClient(client).GetClusterResource(id);
         }
 
         /// <summary>
-        /// Gets an object representing a <see cref="VMwareHostResource" /> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="VMwareHostResource.CreateResourceIdentifier" /> to create a <see cref="VMwareHostResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// Gets an object representing a <see cref="HostResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="HostResource.CreateResourceIdentifier" /> to create a <see cref="HostResource" /> <see cref="ResourceIdentifier" /> from its components.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVMwareHostResource(ResourceIdentifier)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetHostResource(ResourceIdentifier)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
         /// <param name="id"> The resource ID of the resource to get. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="VMwareHostResource"/> object. </returns>
-        public static VMwareHostResource GetVMwareHostResource(this ArmClient client, ResourceIdentifier id)
+        /// <returns> Returns a <see cref="HostResource"/> object. </returns>
+        public static HostResource GetHostResource(this ArmClient client, ResourceIdentifier id)
         {
             Argument.AssertNotNull(client, nameof(client));
 
-            return GetMockableConnectedVMwarevSphereArmClient(client).GetVMwareHostResource(id);
+            return GetMockableConnectedVMwarevSphereArmClient(client).GetHostResource(id);
         }
 
         /// <summary>
-        /// Gets an object representing a <see cref="VMwareDatastoreResource" /> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="VMwareDatastoreResource.CreateResourceIdentifier" /> to create a <see cref="VMwareDatastoreResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// Gets an object representing a <see cref="DatastoreResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="DatastoreResource.CreateResourceIdentifier" /> to create a <see cref="DatastoreResource" /> <see cref="ResourceIdentifier" /> from its components.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVMwareDatastoreResource(ResourceIdentifier)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetDatastoreResource(ResourceIdentifier)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
         /// <param name="id"> The resource ID of the resource to get. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="VMwareDatastoreResource"/> object. </returns>
-        public static VMwareDatastoreResource GetVMwareDatastoreResource(this ArmClient client, ResourceIdentifier id)
+        /// <returns> Returns a <see cref="DatastoreResource"/> object. </returns>
+        public static DatastoreResource GetDatastoreResource(this ArmClient client, ResourceIdentifier id)
         {
             Argument.AssertNotNull(client, nameof(client));
 
-            return GetMockableConnectedVMwarevSphereArmClient(client).GetVMwareDatastoreResource(id);
+            return GetMockableConnectedVMwarevSphereArmClient(client).GetDatastoreResource(id);
         }
 
         /// <summary>
-        /// Gets an object representing a <see cref="VMwareVCenterResource" /> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="VMwareVCenterResource.CreateResourceIdentifier" /> to create a <see cref="VMwareVCenterResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// Gets an object representing a <see cref="VCenterResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="VCenterResource.CreateResourceIdentifier" /> to create a <see cref="VCenterResource" /> <see cref="ResourceIdentifier" /> from its components.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVMwareVCenterResource(ResourceIdentifier)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVCenterResource(ResourceIdentifier)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
         /// <param name="id"> The resource ID of the resource to get. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="VMwareVCenterResource"/> object. </returns>
-        public static VMwareVCenterResource GetVMwareVCenterResource(this ArmClient client, ResourceIdentifier id)
+        /// <returns> Returns a <see cref="VCenterResource"/> object. </returns>
+        public static VCenterResource GetVCenterResource(this ArmClient client, ResourceIdentifier id)
         {
             Argument.AssertNotNull(client, nameof(client));
 
-            return GetMockableConnectedVMwarevSphereArmClient(client).GetVMwareVCenterResource(id);
+            return GetMockableConnectedVMwarevSphereArmClient(client).GetVCenterResource(id);
         }
 
         /// <summary>
-        /// Gets an object representing a <see cref="VMwareVmTemplateResource" /> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="VMwareVmTemplateResource.CreateResourceIdentifier" /> to create a <see cref="VMwareVmTemplateResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// Gets an object representing a <see cref="VirtualMachineTemplateResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="VirtualMachineTemplateResource.CreateResourceIdentifier" /> to create a <see cref="VirtualMachineTemplateResource" /> <see cref="ResourceIdentifier" /> from its components.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVMwareVmTemplateResource(ResourceIdentifier)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVirtualMachineTemplateResource(ResourceIdentifier)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
         /// <param name="id"> The resource ID of the resource to get. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="VMwareVmTemplateResource"/> object. </returns>
-        public static VMwareVmTemplateResource GetVMwareVmTemplateResource(this ArmClient client, ResourceIdentifier id)
+        /// <returns> Returns a <see cref="VirtualMachineTemplateResource"/> object. </returns>
+        public static VirtualMachineTemplateResource GetVirtualMachineTemplateResource(this ArmClient client, ResourceIdentifier id)
         {
             Argument.AssertNotNull(client, nameof(client));
 
-            return GetMockableConnectedVMwarevSphereArmClient(client).GetVMwareVmTemplateResource(id);
+            return GetMockableConnectedVMwarevSphereArmClient(client).GetVirtualMachineTemplateResource(id);
         }
 
         /// <summary>
-        /// Gets an object representing a <see cref="VMwareVirtualNetworkResource" /> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="VMwareVirtualNetworkResource.CreateResourceIdentifier" /> to create a <see cref="VMwareVirtualNetworkResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// Gets an object representing a <see cref="VirtualNetworkResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="VirtualNetworkResource.CreateResourceIdentifier" /> to create a <see cref="VirtualNetworkResource" /> <see cref="ResourceIdentifier" /> from its components.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVMwareVirtualNetworkResource(ResourceIdentifier)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVirtualNetworkResource(ResourceIdentifier)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
         /// <param name="id"> The resource ID of the resource to get. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="VMwareVirtualNetworkResource"/> object. </returns>
-        public static VMwareVirtualNetworkResource GetVMwareVirtualNetworkResource(this ArmClient client, ResourceIdentifier id)
+        /// <returns> Returns a <see cref="VirtualNetworkResource"/> object. </returns>
+        public static VirtualNetworkResource GetVirtualNetworkResource(this ArmClient client, ResourceIdentifier id)
         {
             Argument.AssertNotNull(client, nameof(client));
 
-            return GetMockableConnectedVMwarevSphereArmClient(client).GetVMwareVirtualNetworkResource(id);
+            return GetMockableConnectedVMwarevSphereArmClient(client).GetVirtualNetworkResource(id);
         }
 
         /// <summary>
-        /// Gets an object representing a <see cref="VCenterInventoryItemResource" /> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="VCenterInventoryItemResource.CreateResourceIdentifier" /> to create a <see cref="VCenterInventoryItemResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// Gets an object representing an <see cref="InventoryItemResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="InventoryItemResource.CreateResourceIdentifier" /> to create an <see cref="InventoryItemResource" /> <see cref="ResourceIdentifier" /> from its components.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVCenterInventoryItemResource(ResourceIdentifier)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetInventoryItemResource(ResourceIdentifier)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
         /// <param name="id"> The resource ID of the resource to get. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="VCenterInventoryItemResource"/> object. </returns>
-        public static VCenterInventoryItemResource GetVCenterInventoryItemResource(this ArmClient client, ResourceIdentifier id)
+        /// <returns> Returns a <see cref="InventoryItemResource"/> object. </returns>
+        public static InventoryItemResource GetInventoryItemResource(this ArmClient client, ResourceIdentifier id)
         {
             Argument.AssertNotNull(client, nameof(client));
 
-            return GetMockableConnectedVMwarevSphereArmClient(client).GetVCenterInventoryItemResource(id);
+            return GetMockableConnectedVMwarevSphereArmClient(client).GetInventoryItemResource(id);
         }
 
         /// <summary>
-        /// Gets an object representing a <see cref="VMwareVmInstanceResource" /> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="VMwareVmInstanceResource.CreateResourceIdentifier" /> to create a <see cref="VMwareVmInstanceResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// Gets an object representing a <see cref="VirtualMachineInstanceResource" /> along with the instance operations that can be performed on it but with no data.
+        /// You can use <see cref="VirtualMachineInstanceResource.CreateResourceIdentifier" /> to create a <see cref="VirtualMachineInstanceResource" /> <see cref="ResourceIdentifier" /> from its components.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVMwareVmInstanceResource(ResourceIdentifier)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVirtualMachineInstanceResource(ResourceIdentifier)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
         /// <param name="id"> The resource ID of the resource to get. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="VMwareVmInstanceResource"/> object. </returns>
-        public static VMwareVmInstanceResource GetVMwareVmInstanceResource(this ArmClient client, ResourceIdentifier id)
+        /// <returns> Returns a <see cref="VirtualMachineInstanceResource"/> object. </returns>
+        public static VirtualMachineInstanceResource GetVirtualMachineInstanceResource(this ArmClient client, ResourceIdentifier id)
         {
             Argument.AssertNotNull(client, nameof(client));
 
-            return GetMockableConnectedVMwarevSphereArmClient(client).GetVMwareVmInstanceResource(id);
+            return GetMockableConnectedVMwarevSphereArmClient(client).GetVirtualMachineInstanceResource(id);
         }
 
         /// <summary>
@@ -241,39 +241,20 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         }
 
         /// <summary>
-        /// Gets an object representing a <see cref="VmInstanceGuestAgentResource" /> along with the instance operations that can be performed on it but with no data.
-        /// You can use <see cref="VmInstanceGuestAgentResource.CreateResourceIdentifier" /> to create a <see cref="VmInstanceGuestAgentResource" /> <see cref="ResourceIdentifier" /> from its components.
+        /// Gets a collection of ResourcePoolResources in the ResourceGroupResource.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereArmClient.GetVmInstanceGuestAgentResource(ResourceIdentifier)"/> instead.</description>
-        /// </item>
-        /// </summary>
-        /// <param name="client"> The <see cref="ArmClient" /> instance the method will execute against. </param>
-        /// <param name="id"> The resource ID of the resource to get. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="client"/> is null. </exception>
-        /// <returns> Returns a <see cref="VmInstanceGuestAgentResource"/> object. </returns>
-        public static VmInstanceGuestAgentResource GetVmInstanceGuestAgentResource(this ArmClient client, ResourceIdentifier id)
-        {
-            Argument.AssertNotNull(client, nameof(client));
-
-            return GetMockableConnectedVMwarevSphereArmClient(client).GetVmInstanceGuestAgentResource(id);
-        }
-
-        /// <summary>
-        /// Gets a collection of VMwareResourcePoolResources in the ResourceGroupResource.
-        /// <item>
-        /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareResourcePools()"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetResourcePools()"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> is null. </exception>
-        /// <returns> An object representing collection of VMwareResourcePoolResources and their operations over a VMwareResourcePoolResource. </returns>
-        public static VMwareResourcePoolCollection GetVMwareResourcePools(this ResourceGroupResource resourceGroupResource)
+        /// <returns> An object representing collection of ResourcePoolResources and their operations over a ResourcePoolResource. </returns>
+        public static ResourcePoolCollection GetResourcePools(this ResourceGroupResource resourceGroupResource)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareResourcePools();
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetResourcePools();
         }
 
         /// <summary>
@@ -285,7 +266,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>ResourcePools_Get</description>
+        /// <description>ResourcePool_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -293,12 +274,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareResourcePoolResource"/></description>
+        /// <description><see cref="ResourcePoolResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareResourcePoolAsync(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetResourcePoolAsync(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -307,11 +288,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="resourcePoolName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="resourcePoolName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static async Task<Response<VMwareResourcePoolResource>> GetVMwareResourcePoolAsync(this ResourceGroupResource resourceGroupResource, string resourcePoolName, CancellationToken cancellationToken = default)
+        public static async Task<Response<ResourcePoolResource>> GetResourcePoolAsync(this ResourceGroupResource resourceGroupResource, string resourcePoolName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareResourcePoolAsync(resourcePoolName, cancellationToken).ConfigureAwait(false);
+            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetResourcePoolAsync(resourcePoolName, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -323,7 +304,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>ResourcePools_Get</description>
+        /// <description>ResourcePool_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -331,12 +312,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareResourcePoolResource"/></description>
+        /// <description><see cref="ResourcePoolResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareResourcePool(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetResourcePool(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -345,28 +326,28 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="resourcePoolName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="resourcePoolName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static Response<VMwareResourcePoolResource> GetVMwareResourcePool(this ResourceGroupResource resourceGroupResource, string resourcePoolName, CancellationToken cancellationToken = default)
+        public static Response<ResourcePoolResource> GetResourcePool(this ResourceGroupResource resourceGroupResource, string resourcePoolName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareResourcePool(resourcePoolName, cancellationToken);
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetResourcePool(resourcePoolName, cancellationToken);
         }
 
         /// <summary>
-        /// Gets a collection of VMwareClusterResources in the ResourceGroupResource.
+        /// Gets a collection of ClusterResources in the ResourceGroupResource.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareClusters()"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetClusters()"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> is null. </exception>
-        /// <returns> An object representing collection of VMwareClusterResources and their operations over a VMwareClusterResource. </returns>
-        public static VMwareClusterCollection GetVMwareClusters(this ResourceGroupResource resourceGroupResource)
+        /// <returns> An object representing collection of ClusterResources and their operations over a ClusterResource. </returns>
+        public static ClusterCollection GetClusters(this ResourceGroupResource resourceGroupResource)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareClusters();
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetClusters();
         }
 
         /// <summary>
@@ -378,7 +359,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Clusters_Get</description>
+        /// <description>Cluster_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -386,12 +367,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareClusterResource"/></description>
+        /// <description><see cref="ClusterResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareClusterAsync(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetClusterAsync(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -400,11 +381,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="clusterName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="clusterName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static async Task<Response<VMwareClusterResource>> GetVMwareClusterAsync(this ResourceGroupResource resourceGroupResource, string clusterName, CancellationToken cancellationToken = default)
+        public static async Task<Response<ClusterResource>> GetClusterAsync(this ResourceGroupResource resourceGroupResource, string clusterName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareClusterAsync(clusterName, cancellationToken).ConfigureAwait(false);
+            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetClusterAsync(clusterName, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -416,7 +397,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Clusters_Get</description>
+        /// <description>Cluster_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -424,12 +405,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareClusterResource"/></description>
+        /// <description><see cref="ClusterResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareCluster(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetCluster(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -438,28 +419,28 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="clusterName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="clusterName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static Response<VMwareClusterResource> GetVMwareCluster(this ResourceGroupResource resourceGroupResource, string clusterName, CancellationToken cancellationToken = default)
+        public static Response<ClusterResource> GetCluster(this ResourceGroupResource resourceGroupResource, string clusterName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareCluster(clusterName, cancellationToken);
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetCluster(clusterName, cancellationToken);
         }
 
         /// <summary>
-        /// Gets a collection of VMwareHostResources in the ResourceGroupResource.
+        /// Gets a collection of HostResources in the ResourceGroupResource.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareHosts()"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetHosts()"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> is null. </exception>
-        /// <returns> An object representing collection of VMwareHostResources and their operations over a VMwareHostResource. </returns>
-        public static VMwareHostCollection GetVMwareHosts(this ResourceGroupResource resourceGroupResource)
+        /// <returns> An object representing collection of HostResources and their operations over a HostResource. </returns>
+        public static HostCollection GetHosts(this ResourceGroupResource resourceGroupResource)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareHosts();
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetHosts();
         }
 
         /// <summary>
@@ -471,7 +452,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Hosts_Get</description>
+        /// <description>Host_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -479,12 +460,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareHostResource"/></description>
+        /// <description><see cref="HostResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareHostAsync(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetHostAsync(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -493,11 +474,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="hostName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="hostName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static async Task<Response<VMwareHostResource>> GetVMwareHostAsync(this ResourceGroupResource resourceGroupResource, string hostName, CancellationToken cancellationToken = default)
+        public static async Task<Response<HostResource>> GetHostAsync(this ResourceGroupResource resourceGroupResource, string hostName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareHostAsync(hostName, cancellationToken).ConfigureAwait(false);
+            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetHostAsync(hostName, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -509,7 +490,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Hosts_Get</description>
+        /// <description>Host_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -517,12 +498,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareHostResource"/></description>
+        /// <description><see cref="HostResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareHost(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetHost(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -531,28 +512,28 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="hostName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="hostName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static Response<VMwareHostResource> GetVMwareHost(this ResourceGroupResource resourceGroupResource, string hostName, CancellationToken cancellationToken = default)
+        public static Response<HostResource> GetHost(this ResourceGroupResource resourceGroupResource, string hostName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareHost(hostName, cancellationToken);
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetHost(hostName, cancellationToken);
         }
 
         /// <summary>
-        /// Gets a collection of VMwareDatastoreResources in the ResourceGroupResource.
+        /// Gets a collection of DatastoreResources in the ResourceGroupResource.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareDatastores()"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetDatastores()"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> is null. </exception>
-        /// <returns> An object representing collection of VMwareDatastoreResources and their operations over a VMwareDatastoreResource. </returns>
-        public static VMwareDatastoreCollection GetVMwareDatastores(this ResourceGroupResource resourceGroupResource)
+        /// <returns> An object representing collection of DatastoreResources and their operations over a DatastoreResource. </returns>
+        public static DatastoreCollection GetDatastores(this ResourceGroupResource resourceGroupResource)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareDatastores();
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetDatastores();
         }
 
         /// <summary>
@@ -564,7 +545,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Datastores_Get</description>
+        /// <description>Datastore_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -572,12 +553,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareDatastoreResource"/></description>
+        /// <description><see cref="DatastoreResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareDatastoreAsync(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetDatastoreAsync(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -586,11 +567,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="datastoreName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="datastoreName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static async Task<Response<VMwareDatastoreResource>> GetVMwareDatastoreAsync(this ResourceGroupResource resourceGroupResource, string datastoreName, CancellationToken cancellationToken = default)
+        public static async Task<Response<DatastoreResource>> GetDatastoreAsync(this ResourceGroupResource resourceGroupResource, string datastoreName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareDatastoreAsync(datastoreName, cancellationToken).ConfigureAwait(false);
+            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetDatastoreAsync(datastoreName, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -602,7 +583,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Datastores_Get</description>
+        /// <description>Datastore_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -610,12 +591,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareDatastoreResource"/></description>
+        /// <description><see cref="DatastoreResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareDatastore(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetDatastore(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -624,28 +605,28 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="datastoreName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="datastoreName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static Response<VMwareDatastoreResource> GetVMwareDatastore(this ResourceGroupResource resourceGroupResource, string datastoreName, CancellationToken cancellationToken = default)
+        public static Response<DatastoreResource> GetDatastore(this ResourceGroupResource resourceGroupResource, string datastoreName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareDatastore(datastoreName, cancellationToken);
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetDatastore(datastoreName, cancellationToken);
         }
 
         /// <summary>
-        /// Gets a collection of VMwareVCenterResources in the ResourceGroupResource.
+        /// Gets a collection of VCenterResources in the ResourceGroupResource.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareVCenters()"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVCenters()"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> is null. </exception>
-        /// <returns> An object representing collection of VMwareVCenterResources and their operations over a VMwareVCenterResource. </returns>
-        public static VMwareVCenterCollection GetVMwareVCenters(this ResourceGroupResource resourceGroupResource)
+        /// <returns> An object representing collection of VCenterResources and their operations over a VCenterResource. </returns>
+        public static VCenterCollection GetVCenters(this ResourceGroupResource resourceGroupResource)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareVCenters();
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVCenters();
         }
 
         /// <summary>
@@ -657,7 +638,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VCenters_Get</description>
+        /// <description>VCenter_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -665,12 +646,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVCenterResource"/></description>
+        /// <description><see cref="VCenterResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareVCenterAsync(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVCenterAsync(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -679,11 +660,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="vcenterName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="vcenterName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static async Task<Response<VMwareVCenterResource>> GetVMwareVCenterAsync(this ResourceGroupResource resourceGroupResource, string vcenterName, CancellationToken cancellationToken = default)
+        public static async Task<Response<VCenterResource>> GetVCenterAsync(this ResourceGroupResource resourceGroupResource, string vcenterName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareVCenterAsync(vcenterName, cancellationToken).ConfigureAwait(false);
+            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVCenterAsync(vcenterName, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -695,7 +676,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VCenters_Get</description>
+        /// <description>VCenter_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -703,12 +684,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVCenterResource"/></description>
+        /// <description><see cref="VCenterResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareVCenter(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVCenter(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -717,28 +698,28 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="vcenterName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="vcenterName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static Response<VMwareVCenterResource> GetVMwareVCenter(this ResourceGroupResource resourceGroupResource, string vcenterName, CancellationToken cancellationToken = default)
+        public static Response<VCenterResource> GetVCenter(this ResourceGroupResource resourceGroupResource, string vcenterName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareVCenter(vcenterName, cancellationToken);
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVCenter(vcenterName, cancellationToken);
         }
 
         /// <summary>
-        /// Gets a collection of VMwareVmTemplateResources in the ResourceGroupResource.
+        /// Gets a collection of VirtualMachineTemplateResources in the ResourceGroupResource.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareVmTemplates()"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVirtualMachineTemplates()"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> is null. </exception>
-        /// <returns> An object representing collection of VMwareVmTemplateResources and their operations over a VMwareVmTemplateResource. </returns>
-        public static VMwareVmTemplateCollection GetVMwareVmTemplates(this ResourceGroupResource resourceGroupResource)
+        /// <returns> An object representing collection of VirtualMachineTemplateResources and their operations over a VirtualMachineTemplateResource. </returns>
+        public static VirtualMachineTemplateCollection GetVirtualMachineTemplates(this ResourceGroupResource resourceGroupResource)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareVmTemplates();
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVirtualMachineTemplates();
         }
 
         /// <summary>
@@ -750,7 +731,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VirtualMachineTemplates_Get</description>
+        /// <description>VirtualMachineTemplate_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -758,12 +739,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVmTemplateResource"/></description>
+        /// <description><see cref="VirtualMachineTemplateResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareVmTemplateAsync(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVirtualMachineTemplateAsync(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -772,11 +753,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="virtualMachineTemplateName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="virtualMachineTemplateName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static async Task<Response<VMwareVmTemplateResource>> GetVMwareVmTemplateAsync(this ResourceGroupResource resourceGroupResource, string virtualMachineTemplateName, CancellationToken cancellationToken = default)
+        public static async Task<Response<VirtualMachineTemplateResource>> GetVirtualMachineTemplateAsync(this ResourceGroupResource resourceGroupResource, string virtualMachineTemplateName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareVmTemplateAsync(virtualMachineTemplateName, cancellationToken).ConfigureAwait(false);
+            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVirtualMachineTemplateAsync(virtualMachineTemplateName, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -788,7 +769,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VirtualMachineTemplates_Get</description>
+        /// <description>VirtualMachineTemplate_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -796,12 +777,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVmTemplateResource"/></description>
+        /// <description><see cref="VirtualMachineTemplateResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareVmTemplate(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVirtualMachineTemplate(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -810,28 +791,28 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="virtualMachineTemplateName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="virtualMachineTemplateName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static Response<VMwareVmTemplateResource> GetVMwareVmTemplate(this ResourceGroupResource resourceGroupResource, string virtualMachineTemplateName, CancellationToken cancellationToken = default)
+        public static Response<VirtualMachineTemplateResource> GetVirtualMachineTemplate(this ResourceGroupResource resourceGroupResource, string virtualMachineTemplateName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareVmTemplate(virtualMachineTemplateName, cancellationToken);
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVirtualMachineTemplate(virtualMachineTemplateName, cancellationToken);
         }
 
         /// <summary>
-        /// Gets a collection of VMwareVirtualNetworkResources in the ResourceGroupResource.
+        /// Gets a collection of VirtualNetworkResources in the ResourceGroupResource.
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareVirtualNetworks()"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVirtualNetworks()"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> is null. </exception>
-        /// <returns> An object representing collection of VMwareVirtualNetworkResources and their operations over a VMwareVirtualNetworkResource. </returns>
-        public static VMwareVirtualNetworkCollection GetVMwareVirtualNetworks(this ResourceGroupResource resourceGroupResource)
+        /// <returns> An object representing collection of VirtualNetworkResources and their operations over a VirtualNetworkResource. </returns>
+        public static VirtualNetworkCollection GetVirtualNetworks(this ResourceGroupResource resourceGroupResource)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareVirtualNetworks();
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVirtualNetworks();
         }
 
         /// <summary>
@@ -843,7 +824,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VirtualNetworks_Get</description>
+        /// <description>VirtualNetwork_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -851,12 +832,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVirtualNetworkResource"/></description>
+        /// <description><see cref="VirtualNetworkResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareVirtualNetworkAsync(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVirtualNetworkAsync(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -865,11 +846,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="virtualNetworkName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="virtualNetworkName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static async Task<Response<VMwareVirtualNetworkResource>> GetVMwareVirtualNetworkAsync(this ResourceGroupResource resourceGroupResource, string virtualNetworkName, CancellationToken cancellationToken = default)
+        public static async Task<Response<VirtualNetworkResource>> GetVirtualNetworkAsync(this ResourceGroupResource resourceGroupResource, string virtualNetworkName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareVirtualNetworkAsync(virtualNetworkName, cancellationToken).ConfigureAwait(false);
+            return await GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVirtualNetworkAsync(virtualNetworkName, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -881,7 +862,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VirtualNetworks_Get</description>
+        /// <description>VirtualNetwork_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -889,12 +870,12 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVirtualNetworkResource"/></description>
+        /// <description><see cref="VirtualNetworkResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVMwareVirtualNetwork(string,CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereResourceGroupResource.GetVirtualNetwork(string,CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="resourceGroupResource"> The <see cref="ResourceGroupResource" /> instance the method will execute against. </param>
@@ -903,11 +884,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// <exception cref="ArgumentNullException"> <paramref name="resourceGroupResource"/> or <paramref name="virtualNetworkName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="virtualNetworkName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public static Response<VMwareVirtualNetworkResource> GetVMwareVirtualNetwork(this ResourceGroupResource resourceGroupResource, string virtualNetworkName, CancellationToken cancellationToken = default)
+        public static Response<VirtualNetworkResource> GetVirtualNetwork(this ResourceGroupResource resourceGroupResource, string virtualNetworkName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(resourceGroupResource, nameof(resourceGroupResource));
 
-            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVMwareVirtualNetwork(virtualNetworkName, cancellationToken);
+            return GetMockableConnectedVMwarevSphereResourceGroupResource(resourceGroupResource).GetVirtualNetwork(virtualNetworkName, cancellationToken);
         }
 
         /// <summary>
@@ -919,7 +900,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>ResourcePools_List</description>
+        /// <description>ResourcePool_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -927,23 +908,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareResourcePoolResource"/></description>
+        /// <description><see cref="ResourcePoolResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareResourcePools(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetResourcePools(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> An async collection of <see cref="VMwareResourcePoolResource"/> that may take multiple service requests to iterate over. </returns>
-        public static AsyncPageable<VMwareResourcePoolResource> GetVMwareResourcePoolsAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> An async collection of <see cref="ResourcePoolResource"/> that may take multiple service requests to iterate over. </returns>
+        public static AsyncPageable<ResourcePoolResource> GetResourcePoolsAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareResourcePoolsAsync(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetResourcePoolsAsync(cancellationToken);
         }
 
         /// <summary>
@@ -955,7 +936,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>ResourcePools_List</description>
+        /// <description>ResourcePool_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -963,23 +944,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareResourcePoolResource"/></description>
+        /// <description><see cref="ResourcePoolResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareResourcePools(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetResourcePools(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> A collection of <see cref="VMwareResourcePoolResource"/> that may take multiple service requests to iterate over. </returns>
-        public static Pageable<VMwareResourcePoolResource> GetVMwareResourcePools(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> A collection of <see cref="ResourcePoolResource"/> that may take multiple service requests to iterate over. </returns>
+        public static Pageable<ResourcePoolResource> GetResourcePools(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareResourcePools(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetResourcePools(cancellationToken);
         }
 
         /// <summary>
@@ -991,7 +972,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Clusters_List</description>
+        /// <description>Cluster_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -999,23 +980,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareClusterResource"/></description>
+        /// <description><see cref="ClusterResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareClusters(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetClusters(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> An async collection of <see cref="VMwareClusterResource"/> that may take multiple service requests to iterate over. </returns>
-        public static AsyncPageable<VMwareClusterResource> GetVMwareClustersAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> An async collection of <see cref="ClusterResource"/> that may take multiple service requests to iterate over. </returns>
+        public static AsyncPageable<ClusterResource> GetClustersAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareClustersAsync(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetClustersAsync(cancellationToken);
         }
 
         /// <summary>
@@ -1027,7 +1008,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Clusters_List</description>
+        /// <description>Cluster_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -1035,23 +1016,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareClusterResource"/></description>
+        /// <description><see cref="ClusterResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareClusters(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetClusters(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> A collection of <see cref="VMwareClusterResource"/> that may take multiple service requests to iterate over. </returns>
-        public static Pageable<VMwareClusterResource> GetVMwareClusters(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> A collection of <see cref="ClusterResource"/> that may take multiple service requests to iterate over. </returns>
+        public static Pageable<ClusterResource> GetClusters(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareClusters(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetClusters(cancellationToken);
         }
 
         /// <summary>
@@ -1063,7 +1044,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Hosts_List</description>
+        /// <description>Host_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -1071,23 +1052,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareHostResource"/></description>
+        /// <description><see cref="HostResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareHosts(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetHosts(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> An async collection of <see cref="VMwareHostResource"/> that may take multiple service requests to iterate over. </returns>
-        public static AsyncPageable<VMwareHostResource> GetVMwareHostsAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> An async collection of <see cref="HostResource"/> that may take multiple service requests to iterate over. </returns>
+        public static AsyncPageable<HostResource> GetHostsAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareHostsAsync(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetHostsAsync(cancellationToken);
         }
 
         /// <summary>
@@ -1099,7 +1080,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Hosts_List</description>
+        /// <description>Host_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -1107,23 +1088,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareHostResource"/></description>
+        /// <description><see cref="HostResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareHosts(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetHosts(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> A collection of <see cref="VMwareHostResource"/> that may take multiple service requests to iterate over. </returns>
-        public static Pageable<VMwareHostResource> GetVMwareHosts(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> A collection of <see cref="HostResource"/> that may take multiple service requests to iterate over. </returns>
+        public static Pageable<HostResource> GetHosts(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareHosts(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetHosts(cancellationToken);
         }
 
         /// <summary>
@@ -1135,7 +1116,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Datastores_List</description>
+        /// <description>Datastore_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -1143,23 +1124,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareDatastoreResource"/></description>
+        /// <description><see cref="DatastoreResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareDatastores(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetDatastores(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> An async collection of <see cref="VMwareDatastoreResource"/> that may take multiple service requests to iterate over. </returns>
-        public static AsyncPageable<VMwareDatastoreResource> GetVMwareDatastoresAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> An async collection of <see cref="DatastoreResource"/> that may take multiple service requests to iterate over. </returns>
+        public static AsyncPageable<DatastoreResource> GetDatastoresAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareDatastoresAsync(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetDatastoresAsync(cancellationToken);
         }
 
         /// <summary>
@@ -1171,7 +1152,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Datastores_List</description>
+        /// <description>Datastore_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -1179,23 +1160,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareDatastoreResource"/></description>
+        /// <description><see cref="DatastoreResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareDatastores(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetDatastores(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> A collection of <see cref="VMwareDatastoreResource"/> that may take multiple service requests to iterate over. </returns>
-        public static Pageable<VMwareDatastoreResource> GetVMwareDatastores(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> A collection of <see cref="DatastoreResource"/> that may take multiple service requests to iterate over. </returns>
+        public static Pageable<DatastoreResource> GetDatastores(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareDatastores(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetDatastores(cancellationToken);
         }
 
         /// <summary>
@@ -1207,7 +1188,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VCenters_List</description>
+        /// <description>VCenter_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -1215,23 +1196,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVCenterResource"/></description>
+        /// <description><see cref="VCenterResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareVCenters(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVCenters(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> An async collection of <see cref="VMwareVCenterResource"/> that may take multiple service requests to iterate over. </returns>
-        public static AsyncPageable<VMwareVCenterResource> GetVMwareVCentersAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> An async collection of <see cref="VCenterResource"/> that may take multiple service requests to iterate over. </returns>
+        public static AsyncPageable<VCenterResource> GetVCentersAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareVCentersAsync(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVCentersAsync(cancellationToken);
         }
 
         /// <summary>
@@ -1243,7 +1224,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VCenters_List</description>
+        /// <description>VCenter_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -1251,23 +1232,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVCenterResource"/></description>
+        /// <description><see cref="VCenterResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareVCenters(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVCenters(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> A collection of <see cref="VMwareVCenterResource"/> that may take multiple service requests to iterate over. </returns>
-        public static Pageable<VMwareVCenterResource> GetVMwareVCenters(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> A collection of <see cref="VCenterResource"/> that may take multiple service requests to iterate over. </returns>
+        public static Pageable<VCenterResource> GetVCenters(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareVCenters(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVCenters(cancellationToken);
         }
 
         /// <summary>
@@ -1279,7 +1260,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VirtualMachineTemplates_List</description>
+        /// <description>VirtualMachineTemplate_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -1287,23 +1268,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVmTemplateResource"/></description>
+        /// <description><see cref="VirtualMachineTemplateResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareVmTemplates(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVirtualMachineTemplates(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> An async collection of <see cref="VMwareVmTemplateResource"/> that may take multiple service requests to iterate over. </returns>
-        public static AsyncPageable<VMwareVmTemplateResource> GetVMwareVmTemplatesAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> An async collection of <see cref="VirtualMachineTemplateResource"/> that may take multiple service requests to iterate over. </returns>
+        public static AsyncPageable<VirtualMachineTemplateResource> GetVirtualMachineTemplatesAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareVmTemplatesAsync(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVirtualMachineTemplatesAsync(cancellationToken);
         }
 
         /// <summary>
@@ -1315,7 +1296,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VirtualMachineTemplates_List</description>
+        /// <description>VirtualMachineTemplate_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -1323,23 +1304,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVmTemplateResource"/></description>
+        /// <description><see cref="VirtualMachineTemplateResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareVmTemplates(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVirtualMachineTemplates(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> A collection of <see cref="VMwareVmTemplateResource"/> that may take multiple service requests to iterate over. </returns>
-        public static Pageable<VMwareVmTemplateResource> GetVMwareVmTemplates(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> A collection of <see cref="VirtualMachineTemplateResource"/> that may take multiple service requests to iterate over. </returns>
+        public static Pageable<VirtualMachineTemplateResource> GetVirtualMachineTemplates(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareVmTemplates(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVirtualMachineTemplates(cancellationToken);
         }
 
         /// <summary>
@@ -1351,7 +1332,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VirtualNetworks_List</description>
+        /// <description>VirtualNetwork_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -1359,23 +1340,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVirtualNetworkResource"/></description>
+        /// <description><see cref="VirtualNetworkResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareVirtualNetworks(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVirtualNetworks(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> An async collection of <see cref="VMwareVirtualNetworkResource"/> that may take multiple service requests to iterate over. </returns>
-        public static AsyncPageable<VMwareVirtualNetworkResource> GetVMwareVirtualNetworksAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> An async collection of <see cref="VirtualNetworkResource"/> that may take multiple service requests to iterate over. </returns>
+        public static AsyncPageable<VirtualNetworkResource> GetVirtualNetworksAsync(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareVirtualNetworksAsync(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVirtualNetworksAsync(cancellationToken);
         }
 
         /// <summary>
@@ -1387,7 +1368,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VirtualNetworks_List</description>
+        /// <description>VirtualNetwork_List</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -1395,23 +1376,23 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVirtualNetworkResource"/></description>
+        /// <description><see cref="VirtualNetworkResource"/></description>
         /// </item>
         /// </list>
         /// <item>
         /// <term>Mocking</term>
-        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVMwareVirtualNetworks(CancellationToken)"/> instead.</description>
+        /// <description>To mock this method, please mock <see cref="MockableConnectedVMwarevSphereSubscriptionResource.GetVirtualNetworks(CancellationToken)"/> instead.</description>
         /// </item>
         /// </summary>
         /// <param name="subscriptionResource"> The <see cref="SubscriptionResource" /> instance the method will execute against. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="subscriptionResource"/> is null. </exception>
-        /// <returns> A collection of <see cref="VMwareVirtualNetworkResource"/> that may take multiple service requests to iterate over. </returns>
-        public static Pageable<VMwareVirtualNetworkResource> GetVMwareVirtualNetworks(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
+        /// <returns> A collection of <see cref="VirtualNetworkResource"/> that may take multiple service requests to iterate over. </returns>
+        public static Pageable<VirtualNetworkResource> GetVirtualNetworks(this SubscriptionResource subscriptionResource, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNull(subscriptionResource, nameof(subscriptionResource));
 
-            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVMwareVirtualNetworks(cancellationToken);
+            return GetMockableConnectedVMwarevSphereSubscriptionResource(subscriptionResource).GetVirtualNetworks(cancellationToken);
         }
     }
 }

@@ -33,11 +33,11 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
             return apiVersion;
         }
 
-        /// <summary> Gets a collection of VMwareResourcePoolResources in the ResourceGroupResource. </summary>
-        /// <returns> An object representing collection of VMwareResourcePoolResources and their operations over a VMwareResourcePoolResource. </returns>
-        public virtual VMwareResourcePoolCollection GetVMwareResourcePools()
+        /// <summary> Gets a collection of ResourcePoolResources in the ResourceGroupResource. </summary>
+        /// <returns> An object representing collection of ResourcePoolResources and their operations over a ResourcePoolResource. </returns>
+        public virtual ResourcePoolCollection GetResourcePools()
         {
-            return GetCachedClient(client => new VMwareResourcePoolCollection(client, Id));
+            return GetCachedClient(client => new ResourcePoolCollection(client, Id));
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>ResourcePools_Get</description>
+        /// <description>ResourcePool_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -57,7 +57,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareResourcePoolResource"/></description>
+        /// <description><see cref="ResourcePoolResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -66,9 +66,9 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// <exception cref="ArgumentNullException"> <paramref name="resourcePoolName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="resourcePoolName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual async Task<Response<VMwareResourcePoolResource>> GetVMwareResourcePoolAsync(string resourcePoolName, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<ResourcePoolResource>> GetResourcePoolAsync(string resourcePoolName, CancellationToken cancellationToken = default)
         {
-            return await GetVMwareResourcePools().GetAsync(resourcePoolName, cancellationToken).ConfigureAwait(false);
+            return await GetResourcePools().GetAsync(resourcePoolName, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>ResourcePools_Get</description>
+        /// <description>ResourcePool_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -88,7 +88,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareResourcePoolResource"/></description>
+        /// <description><see cref="ResourcePoolResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -97,47 +97,16 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// <exception cref="ArgumentNullException"> <paramref name="resourcePoolName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="resourcePoolName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual Response<VMwareResourcePoolResource> GetVMwareResourcePool(string resourcePoolName, CancellationToken cancellationToken = default)
+        public virtual Response<ResourcePoolResource> GetResourcePool(string resourcePoolName, CancellationToken cancellationToken = default)
         {
-            return GetVMwareResourcePools().Get(resourcePoolName, cancellationToken);
+            return GetResourcePools().Get(resourcePoolName, cancellationToken);
         }
 
-        /// <summary> Gets a collection of VMwareClusterResources in the ResourceGroupResource. </summary>
-        /// <returns> An object representing collection of VMwareClusterResources and their operations over a VMwareClusterResource. </returns>
-        public virtual VMwareClusterCollection GetVMwareClusters()
+        /// <summary> Gets a collection of ClusterResources in the ResourceGroupResource. </summary>
+        /// <returns> An object representing collection of ClusterResources and their operations over a ClusterResource. </returns>
+        public virtual ClusterCollection GetClusters()
         {
-            return GetCachedClient(client => new VMwareClusterCollection(client, Id));
-        }
-
-        /// <summary>
-        /// Implements cluster GET method.
-        /// <list type="bullet">
-        /// <item>
-        /// <term>Request Path</term>
-        /// <description>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters/{clusterName}</description>
-        /// </item>
-        /// <item>
-        /// <term>Operation Id</term>
-        /// <description>Clusters_Get</description>
-        /// </item>
-        /// <item>
-        /// <term>Default Api Version</term>
-        /// <description>2023-12-01</description>
-        /// </item>
-        /// <item>
-        /// <term>Resource</term>
-        /// <description><see cref="VMwareClusterResource"/></description>
-        /// </item>
-        /// </list>
-        /// </summary>
-        /// <param name="clusterName"> Name of the cluster. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="clusterName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="clusterName"/> is an empty string, and was expected to be non-empty. </exception>
-        [ForwardsClientCalls]
-        public virtual async Task<Response<VMwareClusterResource>> GetVMwareClusterAsync(string clusterName, CancellationToken cancellationToken = default)
-        {
-            return await GetVMwareClusters().GetAsync(clusterName, cancellationToken).ConfigureAwait(false);
+            return GetCachedClient(client => new ClusterCollection(client, Id));
         }
 
         /// <summary>
@@ -149,7 +118,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Clusters_Get</description>
+        /// <description>Cluster_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -157,7 +126,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareClusterResource"/></description>
+        /// <description><see cref="ClusterResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -166,16 +135,47 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// <exception cref="ArgumentNullException"> <paramref name="clusterName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="clusterName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual Response<VMwareClusterResource> GetVMwareCluster(string clusterName, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<ClusterResource>> GetClusterAsync(string clusterName, CancellationToken cancellationToken = default)
         {
-            return GetVMwareClusters().Get(clusterName, cancellationToken);
+            return await GetClusters().GetAsync(clusterName, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary> Gets a collection of VMwareHostResources in the ResourceGroupResource. </summary>
-        /// <returns> An object representing collection of VMwareHostResources and their operations over a VMwareHostResource. </returns>
-        public virtual VMwareHostCollection GetVMwareHosts()
+        /// <summary>
+        /// Implements cluster GET method.
+        /// <list type="bullet">
+        /// <item>
+        /// <term>Request Path</term>
+        /// <description>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters/{clusterName}</description>
+        /// </item>
+        /// <item>
+        /// <term>Operation Id</term>
+        /// <description>Cluster_Get</description>
+        /// </item>
+        /// <item>
+        /// <term>Default Api Version</term>
+        /// <description>2023-12-01</description>
+        /// </item>
+        /// <item>
+        /// <term>Resource</term>
+        /// <description><see cref="ClusterResource"/></description>
+        /// </item>
+        /// </list>
+        /// </summary>
+        /// <param name="clusterName"> Name of the cluster. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="clusterName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="clusterName"/> is an empty string, and was expected to be non-empty. </exception>
+        [ForwardsClientCalls]
+        public virtual Response<ClusterResource> GetCluster(string clusterName, CancellationToken cancellationToken = default)
         {
-            return GetCachedClient(client => new VMwareHostCollection(client, Id));
+            return GetClusters().Get(clusterName, cancellationToken);
+        }
+
+        /// <summary> Gets a collection of HostResources in the ResourceGroupResource. </summary>
+        /// <returns> An object representing collection of HostResources and their operations over a HostResource. </returns>
+        public virtual HostCollection GetHosts()
+        {
+            return GetCachedClient(client => new HostCollection(client, Id));
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Hosts_Get</description>
+        /// <description>Host_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -195,7 +195,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareHostResource"/></description>
+        /// <description><see cref="HostResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -204,9 +204,9 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// <exception cref="ArgumentNullException"> <paramref name="hostName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="hostName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual async Task<Response<VMwareHostResource>> GetVMwareHostAsync(string hostName, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<HostResource>> GetHostAsync(string hostName, CancellationToken cancellationToken = default)
         {
-            return await GetVMwareHosts().GetAsync(hostName, cancellationToken).ConfigureAwait(false);
+            return await GetHosts().GetAsync(hostName, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Hosts_Get</description>
+        /// <description>Host_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -226,7 +226,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareHostResource"/></description>
+        /// <description><see cref="HostResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -235,47 +235,16 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// <exception cref="ArgumentNullException"> <paramref name="hostName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="hostName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual Response<VMwareHostResource> GetVMwareHost(string hostName, CancellationToken cancellationToken = default)
+        public virtual Response<HostResource> GetHost(string hostName, CancellationToken cancellationToken = default)
         {
-            return GetVMwareHosts().Get(hostName, cancellationToken);
+            return GetHosts().Get(hostName, cancellationToken);
         }
 
-        /// <summary> Gets a collection of VMwareDatastoreResources in the ResourceGroupResource. </summary>
-        /// <returns> An object representing collection of VMwareDatastoreResources and their operations over a VMwareDatastoreResource. </returns>
-        public virtual VMwareDatastoreCollection GetVMwareDatastores()
+        /// <summary> Gets a collection of DatastoreResources in the ResourceGroupResource. </summary>
+        /// <returns> An object representing collection of DatastoreResources and their operations over a DatastoreResource. </returns>
+        public virtual DatastoreCollection GetDatastores()
         {
-            return GetCachedClient(client => new VMwareDatastoreCollection(client, Id));
-        }
-
-        /// <summary>
-        /// Implements datastore GET method.
-        /// <list type="bullet">
-        /// <item>
-        /// <term>Request Path</term>
-        /// <description>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores/{datastoreName}</description>
-        /// </item>
-        /// <item>
-        /// <term>Operation Id</term>
-        /// <description>Datastores_Get</description>
-        /// </item>
-        /// <item>
-        /// <term>Default Api Version</term>
-        /// <description>2023-12-01</description>
-        /// </item>
-        /// <item>
-        /// <term>Resource</term>
-        /// <description><see cref="VMwareDatastoreResource"/></description>
-        /// </item>
-        /// </list>
-        /// </summary>
-        /// <param name="datastoreName"> Name of the datastore. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="datastoreName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="datastoreName"/> is an empty string, and was expected to be non-empty. </exception>
-        [ForwardsClientCalls]
-        public virtual async Task<Response<VMwareDatastoreResource>> GetVMwareDatastoreAsync(string datastoreName, CancellationToken cancellationToken = default)
-        {
-            return await GetVMwareDatastores().GetAsync(datastoreName, cancellationToken).ConfigureAwait(false);
+            return GetCachedClient(client => new DatastoreCollection(client, Id));
         }
 
         /// <summary>
@@ -287,7 +256,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>Datastores_Get</description>
+        /// <description>Datastore_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -295,7 +264,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareDatastoreResource"/></description>
+        /// <description><see cref="DatastoreResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -304,16 +273,47 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// <exception cref="ArgumentNullException"> <paramref name="datastoreName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="datastoreName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual Response<VMwareDatastoreResource> GetVMwareDatastore(string datastoreName, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<DatastoreResource>> GetDatastoreAsync(string datastoreName, CancellationToken cancellationToken = default)
         {
-            return GetVMwareDatastores().Get(datastoreName, cancellationToken);
+            return await GetDatastores().GetAsync(datastoreName, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary> Gets a collection of VMwareVCenterResources in the ResourceGroupResource. </summary>
-        /// <returns> An object representing collection of VMwareVCenterResources and their operations over a VMwareVCenterResource. </returns>
-        public virtual VMwareVCenterCollection GetVMwareVCenters()
+        /// <summary>
+        /// Implements datastore GET method.
+        /// <list type="bullet">
+        /// <item>
+        /// <term>Request Path</term>
+        /// <description>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores/{datastoreName}</description>
+        /// </item>
+        /// <item>
+        /// <term>Operation Id</term>
+        /// <description>Datastore_Get</description>
+        /// </item>
+        /// <item>
+        /// <term>Default Api Version</term>
+        /// <description>2023-12-01</description>
+        /// </item>
+        /// <item>
+        /// <term>Resource</term>
+        /// <description><see cref="DatastoreResource"/></description>
+        /// </item>
+        /// </list>
+        /// </summary>
+        /// <param name="datastoreName"> Name of the datastore. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="datastoreName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="datastoreName"/> is an empty string, and was expected to be non-empty. </exception>
+        [ForwardsClientCalls]
+        public virtual Response<DatastoreResource> GetDatastore(string datastoreName, CancellationToken cancellationToken = default)
         {
-            return GetCachedClient(client => new VMwareVCenterCollection(client, Id));
+            return GetDatastores().Get(datastoreName, cancellationToken);
+        }
+
+        /// <summary> Gets a collection of VCenterResources in the ResourceGroupResource. </summary>
+        /// <returns> An object representing collection of VCenterResources and their operations over a VCenterResource. </returns>
+        public virtual VCenterCollection GetVCenters()
+        {
+            return GetCachedClient(client => new VCenterCollection(client, Id));
         }
 
         /// <summary>
@@ -325,7 +325,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VCenters_Get</description>
+        /// <description>VCenter_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -333,7 +333,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVCenterResource"/></description>
+        /// <description><see cref="VCenterResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -342,9 +342,9 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// <exception cref="ArgumentNullException"> <paramref name="vcenterName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="vcenterName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual async Task<Response<VMwareVCenterResource>> GetVMwareVCenterAsync(string vcenterName, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<VCenterResource>> GetVCenterAsync(string vcenterName, CancellationToken cancellationToken = default)
         {
-            return await GetVMwareVCenters().GetAsync(vcenterName, cancellationToken).ConfigureAwait(false);
+            return await GetVCenters().GetAsync(vcenterName, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -356,7 +356,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VCenters_Get</description>
+        /// <description>VCenter_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -364,7 +364,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVCenterResource"/></description>
+        /// <description><see cref="VCenterResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -373,47 +373,16 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// <exception cref="ArgumentNullException"> <paramref name="vcenterName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="vcenterName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual Response<VMwareVCenterResource> GetVMwareVCenter(string vcenterName, CancellationToken cancellationToken = default)
+        public virtual Response<VCenterResource> GetVCenter(string vcenterName, CancellationToken cancellationToken = default)
         {
-            return GetVMwareVCenters().Get(vcenterName, cancellationToken);
+            return GetVCenters().Get(vcenterName, cancellationToken);
         }
 
-        /// <summary> Gets a collection of VMwareVmTemplateResources in the ResourceGroupResource. </summary>
-        /// <returns> An object representing collection of VMwareVmTemplateResources and their operations over a VMwareVmTemplateResource. </returns>
-        public virtual VMwareVmTemplateCollection GetVMwareVmTemplates()
+        /// <summary> Gets a collection of VirtualMachineTemplateResources in the ResourceGroupResource. </summary>
+        /// <returns> An object representing collection of VirtualMachineTemplateResources and their operations over a VirtualMachineTemplateResource. </returns>
+        public virtual VirtualMachineTemplateCollection GetVirtualMachineTemplates()
         {
-            return GetCachedClient(client => new VMwareVmTemplateCollection(client, Id));
-        }
-
-        /// <summary>
-        /// Implements virtual machine template GET method.
-        /// <list type="bullet">
-        /// <item>
-        /// <term>Request Path</term>
-        /// <description>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}</description>
-        /// </item>
-        /// <item>
-        /// <term>Operation Id</term>
-        /// <description>VirtualMachineTemplates_Get</description>
-        /// </item>
-        /// <item>
-        /// <term>Default Api Version</term>
-        /// <description>2023-12-01</description>
-        /// </item>
-        /// <item>
-        /// <term>Resource</term>
-        /// <description><see cref="VMwareVmTemplateResource"/></description>
-        /// </item>
-        /// </list>
-        /// </summary>
-        /// <param name="virtualMachineTemplateName"> Name of the virtual machine template resource. </param>
-        /// <param name="cancellationToken"> The cancellation token to use. </param>
-        /// <exception cref="ArgumentNullException"> <paramref name="virtualMachineTemplateName"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="virtualMachineTemplateName"/> is an empty string, and was expected to be non-empty. </exception>
-        [ForwardsClientCalls]
-        public virtual async Task<Response<VMwareVmTemplateResource>> GetVMwareVmTemplateAsync(string virtualMachineTemplateName, CancellationToken cancellationToken = default)
-        {
-            return await GetVMwareVmTemplates().GetAsync(virtualMachineTemplateName, cancellationToken).ConfigureAwait(false);
+            return GetCachedClient(client => new VirtualMachineTemplateCollection(client, Id));
         }
 
         /// <summary>
@@ -425,7 +394,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VirtualMachineTemplates_Get</description>
+        /// <description>VirtualMachineTemplate_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -433,7 +402,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVmTemplateResource"/></description>
+        /// <description><see cref="VirtualMachineTemplateResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -442,16 +411,47 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// <exception cref="ArgumentNullException"> <paramref name="virtualMachineTemplateName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="virtualMachineTemplateName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual Response<VMwareVmTemplateResource> GetVMwareVmTemplate(string virtualMachineTemplateName, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<VirtualMachineTemplateResource>> GetVirtualMachineTemplateAsync(string virtualMachineTemplateName, CancellationToken cancellationToken = default)
         {
-            return GetVMwareVmTemplates().Get(virtualMachineTemplateName, cancellationToken);
+            return await GetVirtualMachineTemplates().GetAsync(virtualMachineTemplateName, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary> Gets a collection of VMwareVirtualNetworkResources in the ResourceGroupResource. </summary>
-        /// <returns> An object representing collection of VMwareVirtualNetworkResources and their operations over a VMwareVirtualNetworkResource. </returns>
-        public virtual VMwareVirtualNetworkCollection GetVMwareVirtualNetworks()
+        /// <summary>
+        /// Implements virtual machine template GET method.
+        /// <list type="bullet">
+        /// <item>
+        /// <term>Request Path</term>
+        /// <description>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}</description>
+        /// </item>
+        /// <item>
+        /// <term>Operation Id</term>
+        /// <description>VirtualMachineTemplate_Get</description>
+        /// </item>
+        /// <item>
+        /// <term>Default Api Version</term>
+        /// <description>2023-12-01</description>
+        /// </item>
+        /// <item>
+        /// <term>Resource</term>
+        /// <description><see cref="VirtualMachineTemplateResource"/></description>
+        /// </item>
+        /// </list>
+        /// </summary>
+        /// <param name="virtualMachineTemplateName"> Name of the virtual machine template resource. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        /// <exception cref="ArgumentNullException"> <paramref name="virtualMachineTemplateName"/> is null. </exception>
+        /// <exception cref="ArgumentException"> <paramref name="virtualMachineTemplateName"/> is an empty string, and was expected to be non-empty. </exception>
+        [ForwardsClientCalls]
+        public virtual Response<VirtualMachineTemplateResource> GetVirtualMachineTemplate(string virtualMachineTemplateName, CancellationToken cancellationToken = default)
         {
-            return GetCachedClient(client => new VMwareVirtualNetworkCollection(client, Id));
+            return GetVirtualMachineTemplates().Get(virtualMachineTemplateName, cancellationToken);
+        }
+
+        /// <summary> Gets a collection of VirtualNetworkResources in the ResourceGroupResource. </summary>
+        /// <returns> An object representing collection of VirtualNetworkResources and their operations over a VirtualNetworkResource. </returns>
+        public virtual VirtualNetworkCollection GetVirtualNetworks()
+        {
+            return GetCachedClient(client => new VirtualNetworkCollection(client, Id));
         }
 
         /// <summary>
@@ -463,7 +463,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VirtualNetworks_Get</description>
+        /// <description>VirtualNetwork_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -471,7 +471,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVirtualNetworkResource"/></description>
+        /// <description><see cref="VirtualNetworkResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -480,9 +480,9 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// <exception cref="ArgumentNullException"> <paramref name="virtualNetworkName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="virtualNetworkName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual async Task<Response<VMwareVirtualNetworkResource>> GetVMwareVirtualNetworkAsync(string virtualNetworkName, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<VirtualNetworkResource>> GetVirtualNetworkAsync(string virtualNetworkName, CancellationToken cancellationToken = default)
         {
-            return await GetVMwareVirtualNetworks().GetAsync(virtualNetworkName, cancellationToken).ConfigureAwait(false);
+            return await GetVirtualNetworks().GetAsync(virtualNetworkName, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -494,7 +494,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Operation Id</term>
-        /// <description>VirtualNetworks_Get</description>
+        /// <description>VirtualNetwork_Get</description>
         /// </item>
         /// <item>
         /// <term>Default Api Version</term>
@@ -502,7 +502,7 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// </item>
         /// <item>
         /// <term>Resource</term>
-        /// <description><see cref="VMwareVirtualNetworkResource"/></description>
+        /// <description><see cref="VirtualNetworkResource"/></description>
         /// </item>
         /// </list>
         /// </summary>
@@ -511,9 +511,9 @@ namespace Azure.ResourceManager.ConnectedVMwarevSphere.Mocking
         /// <exception cref="ArgumentNullException"> <paramref name="virtualNetworkName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="virtualNetworkName"/> is an empty string, and was expected to be non-empty. </exception>
         [ForwardsClientCalls]
-        public virtual Response<VMwareVirtualNetworkResource> GetVMwareVirtualNetwork(string virtualNetworkName, CancellationToken cancellationToken = default)
+        public virtual Response<VirtualNetworkResource> GetVirtualNetwork(string virtualNetworkName, CancellationToken cancellationToken = default)
         {
-            return GetVMwareVirtualNetworks().Get(virtualNetworkName, cancellationToken);
+            return GetVirtualNetworks().Get(virtualNetworkName, cancellationToken);
         }
     }
 }
